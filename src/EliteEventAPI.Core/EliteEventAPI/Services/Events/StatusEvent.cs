@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EliteEventAPI.Services.Events
 {
-    public class StatusModel : EventModelBase
+    public class StatusEvent : EventModelBase
     {
         public override string Eventname => "Status";
 

@@ -1,4 +1,5 @@
 ﻿using EliteEventAPI;
+using EliteEventAPI.Services.Events;
 using System;
 using System.Diagnostics;
 using System.Threading;
@@ -16,12 +17,21 @@ namespace EliteEventAPI
 
             ServiceController.Start();
 
+            eventService.Subscribe<Services.Events.StatusEvent>(StatusCallback);
+
             while (true)
             {
                 eventService.DispatchEvent();
 
                 Thread.Sleep(200);
             }
+
+            
+        }
+
+        private static void StatusCallback(StatusEvent obj)
+        {
+            Console.WriteLine("Update Flags " + obj.Flags.ToString());
         }
     }
 }
