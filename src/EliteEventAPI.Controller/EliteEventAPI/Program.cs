@@ -25,8 +25,6 @@ namespace EliteEventAPI
 
                 Thread.Sleep(200);
             }
-
-            
         }
 
         private static void StatusCallback(StatusEvent obj)
