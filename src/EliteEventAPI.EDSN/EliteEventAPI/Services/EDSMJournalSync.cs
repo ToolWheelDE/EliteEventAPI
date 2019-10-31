@@ -1,5 +1,5 @@
 ﻿using EliteEventAPI.Configuration;
-using EliteEventAPI.Core;
+using EliteEventAPI.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EliteEventAPI.EDSM
+namespace EliteEventAPI.Services
 {
     public sealed class EDSMJournalSync : ServiceBase
     {

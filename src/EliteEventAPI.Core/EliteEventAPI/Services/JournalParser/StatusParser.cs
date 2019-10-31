@@ -6,29 +6,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EliteEventAPI.Core.Parser
+namespace EliteEventAPI.Services.JournalParser
 {
-    class CargoParser
+    class StatusParser
     {
-        private readonly FileSystemWatcher _watcher;
         private readonly EventService _eventmanager;
+        private readonly FileSystemWatcher _watcher;
         private readonly FileInfo _file;
 
-        public CargoParser(EventService eventmanager)
+        public StatusParser(EventService api)
         {
-            _eventmanager = eventmanager;
-
-            _file = new FileInfo(Path.Combine(eventmanager.JournalDirectory.FullName, "cargo.json"));
+            _eventmanager = api;
+            _file = new FileInfo(Path.Combine(_eventmanager.JournalDirectory.FullName, "Status.json"));
             if (_file.Exists)
             {
-                _watcher = new FileSystemWatcher(eventmanager.JournalDirectory.FullName, "cargo.json")
+                _watcher = new FileSystemWatcher(_eventmanager.JournalDirectory.FullName, "Status.json")
                 {
                     EnableRaisingEvents = true
                 };
                 _watcher.Changed += Watcher_Changed;
-
-                Watcher_Changed(null, null);
             }
+
+            Watcher_Changed(null, null);
         }
 
         private void Watcher_Changed(object sender, FileSystemEventArgs e)

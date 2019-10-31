@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EliteEventAPI.Core.Parser
+namespace EliteEventAPI.Services.JournalParser
 {
     sealed class JournalReader
     {

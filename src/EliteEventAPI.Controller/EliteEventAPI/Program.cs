@@ -1,4 +1,4 @@
-﻿using EliteEventAPI.Core;
+﻿using EliteEventAPI;
 using System;
 using System.Diagnostics;
 using System.Threading;
@@ -11,8 +11,8 @@ namespace EliteEventAPI
         {
             Trace.Listeners.Add(new ConsoleTraceListener());
 
-            var eventService = ServiceController.GetService<EventService>();
-            var edsmService = ServiceController.InstallService<EDSM.EDSMJournalSync>();
+            var eventService = ServiceController.GetService<Services.EventService>();
+            var edsmService = ServiceController.InstallService<Services.EDSMJournalSync>();
 
             ServiceController.Start();
 

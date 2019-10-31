@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EliteEventAPI.Core.Events
+namespace EliteEventAPI.Services.Events
 {
     public sealed class Fuel
     {

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace EliteEventAPI.Core.Events
+namespace EliteEventAPI.Services.Events
 {
     public sealed class Inventory
     {

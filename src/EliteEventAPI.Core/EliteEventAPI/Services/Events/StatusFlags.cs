@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EliteEventAPI.Core.Events
+namespace EliteEventAPI.Services.Events
 {
     [Flags]
     public enum StatusFlags : int

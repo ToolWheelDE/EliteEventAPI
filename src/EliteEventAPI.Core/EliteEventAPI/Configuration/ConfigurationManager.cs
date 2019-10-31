@@ -67,11 +67,11 @@ namespace EliteEventAPI.Configuration
                     {
                         var valuenode = _configurationdocument.CreateElement(property.Name);
 
-                        if(property.PropertyType.IsArray)
+                        if (property.PropertyType.IsArray)
                         {
                             valuenode.InnerText = string.Join("|", ((object[])property.GetValue(instance)).Select(m => m.ToString()));
                         }
-                        else if(property.PropertyType.IsEnum)
+                        else if (property.PropertyType.IsEnum)
                         {
                             throw new NotSupportedException("Enum convert not supported");
                         }
@@ -79,7 +79,7 @@ namespace EliteEventAPI.Configuration
                         {
                             valuenode.InnerText = property.GetValue(instance).ToString();
                         }
-                        
+
                         sectionnode.AppendChild(valuenode);
                     }
 

@@ -1,18 +1,17 @@
 ﻿using EliteEventAPI.Configuration;
-using EliteEventAPI.Core.Events;
-using EliteEventAPI.Core.Parser;
+using EliteEventAPI.Services.Events;
+using EliteEventAPI.Services.JournalParser;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EliteEventAPI.Core
+namespace EliteEventAPI.Services
 {
     public delegate void EventServiceEventDelegate(string eventname, EventModelBase model);
     public delegate void EventServiceJasonDelegate(string eventname, string json);

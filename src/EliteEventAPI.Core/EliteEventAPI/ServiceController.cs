@@ -1,4 +1,4 @@
-﻿using EliteEventAPI.Core;
+﻿using EliteEventAPI.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;

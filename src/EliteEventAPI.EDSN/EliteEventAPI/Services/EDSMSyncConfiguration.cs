@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EliteEventAPI.EDSM
+namespace EliteEventAPI.Services
 {
     class EDSMSyncConfiguration : ConfigurationBase
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using EliteEventAPI.Configuration;
 
-namespace EliteEventAPI.Core
+namespace EliteEventAPI.Services
 {
     class EventServiceConfiguration : ConfigurationBase
     {
