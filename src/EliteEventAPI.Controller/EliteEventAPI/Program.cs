@@ -11,14 +11,14 @@ namespace EliteEventAPI
         {
             Trace.Listeners.Add(new ConsoleTraceListener());
 
-            var manager = ServiceController.GetModule<EventService>();
-            var edsm = ServiceController.CreateInstance<EDSM.EDSMJournalSync>();
+            var eventService = ServiceController.GetService<EventService>();
+            var edsmService = ServiceController.InstallService<EDSM.EDSMJournalSync>();
 
             ServiceController.Start();
 
             while (true)
             {
-                manager.DispatchEvent();
+                eventService.DispatchEvent();
 
                 Thread.Sleep(200);
             }

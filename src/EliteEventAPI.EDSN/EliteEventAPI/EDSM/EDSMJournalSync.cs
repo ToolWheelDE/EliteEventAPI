@@ -121,7 +121,7 @@ namespace EliteEventAPI.EDSM
         {
             _configuration = ConfigurationManager.LoadConfiguration<EDSMSyncConfiguration>();
 
-            EventManager = ServiceController.GetModule<EventService>();
+            EventManager = ServiceController.GetService<EventService>();
             EventManager.PreEventCall += Events_PreEventCall;
         }
 

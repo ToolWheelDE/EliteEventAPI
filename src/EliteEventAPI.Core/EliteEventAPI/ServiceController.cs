@@ -13,12 +13,12 @@ namespace EliteEventAPI
 
         static ServiceController()
         {
-            CreateInstance<EventService>();
+            InstallService<EventService>();
         }
 
         public static int Count { get => _instances.Count; }
 
-        public static T CreateInstance<T>()
+        public static T InstallService<T>()
             where T : ServiceBase
         {
             var type = typeof(T);
@@ -42,7 +42,7 @@ namespace EliteEventAPI
             return (T)result;
         }
 
-        public static T GetModule<T>()
+        public static T GetService<T>()
             where T : ServiceBase
         {
             var type = typeof(T);

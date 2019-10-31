@@ -20,16 +20,20 @@ namespace EliteEventAPI.Configuration
         static ConfigurationManager()
         {
             _configurationdocument = new XmlDocument();
-            _configurationdocument.PreserveWhitespace = true;
 
             if (!File.Exists(ConfigurationFile))
             {
+                XmlDeclaration xmlDeclaration = _configurationdocument.CreateXmlDeclaration("1.0", "UTF-8", null);
+                XmlElement root = _configurationdocument.DocumentElement;
+                _configurationdocument.InsertBefore(xmlDeclaration, root);
+
                 _configurationnode = _configurationdocument.CreateElement("configuration");
                 _configurationdocument.AppendChild(_configurationnode);
                 _configurationdocument.Save(ConfigurationFile);
             }
             else
             {
+                _configurationdocument.PreserveWhitespace = true;
                 _configurationdocument.Load(ConfigurationFile);
                 _configurationnode = _configurationdocument.SelectSingleNode("configuration");
             }
@@ -62,7 +66,20 @@ namespace EliteEventAPI.Configuration
                     foreach (var property in instance.Properties)
                     {
                         var valuenode = _configurationdocument.CreateElement(property.Name);
-                        valuenode.InnerText = property.GetValue(instance).ToString();
+
+                        if(property.PropertyType.IsArray)
+                        {
+                            valuenode.InnerText = string.Join("|", ((object[])property.GetValue(instance)).Select(m => m.ToString()));
+                        }
+                        else if(property.PropertyType.IsEnum)
+                        {
+                            throw new NotSupportedException("Enum convert not supported");
+                        }
+                        else
+                        {
+                            valuenode.InnerText = property.GetValue(instance).ToString();
+                        }
+                        
                         sectionnode.AppendChild(valuenode);
                     }
 
