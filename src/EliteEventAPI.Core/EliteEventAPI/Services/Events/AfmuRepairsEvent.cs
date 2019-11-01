@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace EliteEventAPI.Services.Events
 {
-    public partial class AfmuRepairsEvent : EventModelBase
+    public sealed class AfmuRepairsEvent : EventModelBase
     {
         public override string Eventname => "AfmuRepairs";
 

@@ -11,7 +11,7 @@ namespace EliteEventAPI.Services.Events
 
         #region Neasted Classes
 
-        public partial class EncodedModel
+        public sealed class EncodedModel
         {
             [JsonProperty]
             public string Name { get; internal set; }
@@ -23,7 +23,7 @@ namespace EliteEventAPI.Services.Events
             public long Count { get; internal set; }
         }
 
-        public partial class RawModel
+        public sealed class RawModel
         {
             [JsonProperty]
             public string Name { get; internal set; }

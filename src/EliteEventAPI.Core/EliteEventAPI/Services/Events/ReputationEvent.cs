@@ -2,22 +2,20 @@ using Newtonsoft.Json;
 
 namespace EliteEventAPI.Services.Events
 {
-    public partial class ReputationEvent : EventModelBase
+    public sealed class ReputationEvent : EventModelBase
     {
         public override string Eventname => "Reputation";
 
-        [JsonProperty("Empire")]
+        [JsonProperty]
         public double Empire { get; internal set; }
 
-        [JsonProperty("Federation")]
+        [JsonProperty]
         public double Federation { get; internal set; }
 
-        [JsonProperty("Independent")]
+        [JsonProperty]
         public double Independent { get; internal set; }
 
-        [JsonProperty("Alliance")]
+        [JsonProperty]
         public double Alliance { get; internal set; }
-
-
     }
-    }
+}

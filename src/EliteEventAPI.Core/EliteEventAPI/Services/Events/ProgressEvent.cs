@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace EliteEventAPI.Services.Events
 {
-    public partial class ProgressEvent : EventModelBase
+    public sealed class ProgressEvent : EventModelBase
     {
         public override string Eventname => "Progress";
 
