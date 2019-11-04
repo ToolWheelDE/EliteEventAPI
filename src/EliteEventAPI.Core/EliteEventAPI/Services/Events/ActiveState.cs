@@ -2,7 +2,7 @@
 
 namespace EliteEventAPI.Services.Events
 {
-    public partial class ActiveState
+    public sealed class ActiveState
     {
         [JsonProperty]
         public string State { get; internal set; }

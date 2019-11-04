@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace EliteEventAPI.Services.Events
 {
-    public sealed class MaterialDiscardedInfo : EventModelBase
+    public sealed class MaterialDiscardedEvent : EventModelBase
     {
         public override string Eventname => "MaterialDiscarded";
 

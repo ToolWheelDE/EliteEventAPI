@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace EliteEventAPI.Services.Events
 {
-    public partial class FSDTargetEvent : EventModelBase
+    public sealed class FSDTargetEvent : EventModelBase
     {
         public override string Eventname => "FSDTarget";
 

@@ -1,68 +1,21 @@
-namespace EliteAPI.Events
+using Newtonsoft.Json;
+
+namespace EliteEventAPI.Services.Events
 {
-    using System;
-    using System.Collections.Generic;
-
-    using System.Globalization;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Converters;
-
-    public partial class MaterialTradeInfo : IEvent
+    public sealed class MaterialTradeEvent : EventModelBase
     {
-        [JsonProperty("timestamp")]
-        public DateTime Timestamp { get; internal set; }
+        public override string Eventname => "MaterialTrade";
 
-        [JsonProperty("event")]
-        public string Event { get; internal set; }
-
-        [JsonProperty("MarketID")]
+        [JsonProperty("")]
         public long MarketId { get; internal set; }
 
-        [JsonProperty("TraderType")]
+        [JsonProperty("")]
         public string TraderType { get; internal set; }
 
-        [JsonProperty("Paid")]
+        [JsonProperty("")]
         public Paid Paid { get; internal set; }
 
-        [JsonProperty("Received")]
+        [JsonProperty("")]
         public Paid Received { get; internal set; }
-    }
-
-    public partial class Paid
-    {
-        [JsonProperty("Material")]
-        public string Material { get; internal set; }
-
-        [JsonProperty("Material_Localised")]
-        public string MaterialLocalised { get; internal set; }
-
-        [JsonProperty("Category")]
-        public string Category { get; internal set; }
-
-        [JsonProperty("Category_Localised")]
-        public string CategoryLocalised { get; internal set; }
-
-        [JsonProperty("Quantity")]
-        public long Quantity { get; internal set; }
-    }
-
-    public partial class MaterialTradeInfo
-    {
-        public static MaterialTradeInfo Process(string json, EliteDangerousAPI api) => api.Events.InvokeMaterialTradeEvent(JsonConvert.DeserializeObject<MaterialTradeInfo>(json, EliteAPI.Events.MaterialTradeConverter.Settings));
-    }
-
-    
-
-    internal static class MaterialTradeConverter
-    {
-        public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
-        {
-            MissingMemberHandling = MissingMemberHandling.Ignore, MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-            DateParseHandling = DateParseHandling.None,
-            Converters =
-            {
-                new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
-            },
-        };
     }
 }

@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace EliteEventAPI.Services.Events
 {
-    public partial class LocationEvent : EventModelBase
+    public sealed class LocationEvent : EventModelBase
     {
         public override string Eventname => "Location";
 

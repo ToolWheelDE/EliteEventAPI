@@ -14,19 +14,19 @@ using System.Threading.Tasks;
 namespace EliteEventAPI.Services
 {
     public delegate void EventServiceEventDelegate(string eventname, EventModelBase model);
-    public delegate void EventServiceJasonDelegate(string eventname, string json);
+    public delegate void EventServiceJsonDelegate(string eventname, string json);
 
     public sealed class EventService : ServiceBase
     {
         private readonly Queue<string> _queue = new Queue<string>();
         private readonly EventServiceConfiguration _configuration;
 
-        private readonly Dictionary<string, Type> _evetns = new Dictionary<string, Type>();
+        private readonly Dictionary<string, Type> _events = new Dictionary<string, Type>();
         private readonly Dictionary<Type, HashSet<Delegate>> _targets = new Dictionary<Type, HashSet<Delegate>>();
 
-        public event EventServiceJasonDelegate PreEventCall;
+        public event EventServiceJsonDelegate PreEventCall;
         public event EventServiceEventDelegate EventCall;
-        public event EventServiceJasonDelegate UnkownEventCall;
+        public event EventServiceJsonDelegate UnkownEventCall;
 
         public EventService()
         {
@@ -44,14 +44,15 @@ namespace EliteEventAPI.Services
 
         private void ScanEvents()
         {
-            var types = from t in Assembly.GetExecutingAssembly().GetTypes()
+            var types = from asm in AppDomain.CurrentDomain.GetAssemblies()
+                        from t in asm.GetTypes()
                         where t.IsSubclassOf(typeof(EventModelBase))
                         let instance = (EventModelBase)Activator.CreateInstance(t)
                         select new { instance.Eventname, Type = t };
 
             foreach (var item in types)
             {
-                _evetns.Add(item.Eventname, item.Type);
+                _events.Add(item.Eventname, item.Type);
                 _targets.Add(item.Type, new HashSet<Delegate>());
             }
         }
@@ -116,7 +117,7 @@ namespace EliteEventAPI.Services
 
         private Type GetTypeByEventname(string eventname)
         {
-            if (_evetns.TryGetValue(eventname, out Type type))
+            if (_events.TryGetValue(eventname, out Type type))
                 return type;
             else
                 return null;

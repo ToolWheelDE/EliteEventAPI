@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace EliteEventAPI.Services.Events
 {
-    public partial class FSDJumpEvent : EventModelBase
+    public sealed class FSDJumpEvent : EventModelBase
     {
         public override string Eventname => "FSDJump";
 

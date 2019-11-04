@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace EliteEventAPI.Services.Events
 {
-    public partial class JetConeBoostEvent : EventModelBase
+    public sealed class JetConeBoostEvent : EventModelBase
     {
         public override string Eventname => "JetConeBoost";
 

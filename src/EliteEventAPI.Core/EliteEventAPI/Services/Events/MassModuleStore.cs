@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace EliteEventAPI.Services.Events
 {
-    public sealed class MassModuleStoreInfo : EventModelBase
+    public sealed class MassModuleStoreEvent : EventModelBase
     {
         public override string Eventname => "MassModuleStore";
 

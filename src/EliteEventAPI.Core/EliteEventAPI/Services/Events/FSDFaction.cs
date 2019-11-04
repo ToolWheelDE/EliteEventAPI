@@ -2,7 +2,7 @@
 
 namespace EliteEventAPI.Services.Events
 {
-    public partial class FSDFaction
+    public sealed class FSDFaction
     {
         [JsonProperty]
         public string Name { get; internal set; }

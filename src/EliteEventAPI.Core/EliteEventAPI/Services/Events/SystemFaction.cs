@@ -2,7 +2,7 @@
 
 namespace EliteEventAPI.Services.Events
 {
-    public partial class SystemFaction
+    public sealed class SystemFaction
     {
         [JsonProperty]
         public string Name { get; internal set; }
