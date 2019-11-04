@@ -6,16 +6,16 @@ namespace EliteEventAPI.Services.Events
     {
         public override string Eventname => "MaterialTrade";
 
-        [JsonProperty("")]
+        [JsonProperty]
         public long MarketId { get; internal set; }
 
-        [JsonProperty("")]
+        [JsonProperty]
         public string TraderType { get; internal set; }
 
-        [JsonProperty("")]
+        [JsonProperty]
         public Paid Paid { get; internal set; }
 
-        [JsonProperty("")]
+        [JsonProperty]
         public Paid Received { get; internal set; }
     }
 }

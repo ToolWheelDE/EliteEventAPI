@@ -2,13 +2,13 @@
 
 namespace EliteEventAPI.Services.Events
 {
-    public sealed class Paid
+    public sealed class MissionMaterialsReward
     {
         [JsonProperty]
-        public string Material { get; internal set; }
+        public string Name { get; internal set; }
 
-        [JsonProperty("Material_Localised")]
-        public string MaterialLocalised { get; internal set; }
+        [JsonProperty("Name_Localised")]
+        public string NameLocalised { get; internal set; }
 
         [JsonProperty]
         public string Category { get; internal set; }
@@ -17,6 +17,6 @@ namespace EliteEventAPI.Services.Events
         public string CategoryLocalised { get; internal set; }
 
         [JsonProperty]
-        public long Quantity { get; internal set; }
+        public long Count { get; internal set; }
     }
 }
