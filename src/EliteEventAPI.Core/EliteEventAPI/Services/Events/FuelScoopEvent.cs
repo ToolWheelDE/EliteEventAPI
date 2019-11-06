@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace EliteEventAPI.Services.Events
 {
-    public class SupercruiseEntryEvent : EventModelBase
+    public class FuelScoopEvent : EventModelBase
     {
-        public override string Eventname => "SupercruiseEntry";
+        public override string Eventname => "FuelScoop";
 
         [JsonProperty]
-        public string StarSystem { get; internal set; }
+        public double Scooped { get; internal set; }
 
         [JsonProperty]
-        public long SystemAddress { get; internal set; }
+        public double Total { get; internal set; }
     }
 }

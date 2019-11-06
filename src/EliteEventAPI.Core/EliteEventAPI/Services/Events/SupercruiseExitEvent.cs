@@ -11,19 +11,19 @@ namespace EliteEventAPI.Services.Events
     {
         public override string Eventname => "SupercruiseExit";
 
-        [JsonProperty("")]
+        [JsonProperty]
         public string StarSystem { get; internal set; }
 
-        [JsonProperty("")]
+        [JsonProperty]
         public long SystemAddress { get; internal set; }
 
-        [JsonProperty("")]
+        [JsonProperty]
         public string Body { get; internal set; }
 
-        [JsonProperty("")]
+        [JsonProperty]
         public long BodyId { get; internal set; }
 
-        [JsonProperty("")]
+        [JsonProperty]
         public string BodyType { get; internal set; }
     }
 }

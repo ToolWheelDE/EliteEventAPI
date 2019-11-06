@@ -7,14 +7,20 @@ using System.Threading.Tasks;
 
 namespace EliteEventAPI.Services.Events
 {
-    public class SupercruiseEntryEvent : EventModelBase
+    public class StartJumpEvent : EventModelBase
     {
-        public override string Eventname => "SupercruiseEntry";
+        public override string Eventname => "StartJump";
+
+        [JsonProperty]
+        public string JumpType { get; internal set; }
 
         [JsonProperty]
         public string StarSystem { get; internal set; }
 
         [JsonProperty]
         public long SystemAddress { get; internal set; }
+
+        [JsonProperty]
+        public string StarClass { get; internal set; }
     }
 }

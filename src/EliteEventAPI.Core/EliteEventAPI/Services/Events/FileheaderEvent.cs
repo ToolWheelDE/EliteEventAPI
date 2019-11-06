@@ -11,16 +11,16 @@ namespace EliteEventAPI.Services.Events
     {
         public override string Eventname => "Fileheader";
 
-        [JsonProperty("")]
+        [JsonProperty]
         public int Part { get; internal set; }
 
-        [JsonProperty("")]
+        [JsonProperty]
         public string Language { get; internal set; }
 
-        [JsonProperty("")]
+        [JsonProperty]
         public string Gameversion { get; internal set; }
 
-        [JsonProperty("")]
+        [JsonProperty]
         public string Build { get; internal set; }
     }
 }
