@@ -16,5 +16,5 @@ namespace EliteEventAPI.Services.Events
         public object[] Complete { get; internal set; }
     }
 
-   
+
 }

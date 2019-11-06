@@ -50,10 +50,10 @@ namespace EliteEventAPI.Services.Events
     }
 
 
-  
 
 
-   
 
-  
+
+
+
 }
