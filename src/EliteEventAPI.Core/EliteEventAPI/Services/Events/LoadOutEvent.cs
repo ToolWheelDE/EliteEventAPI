@@ -25,10 +25,19 @@ namespace EliteEventAPI.Services.Events
         public long HullValue { get; internal set; }
 
         [JsonProperty]
+        public double HullHealth { get; internal set; }
+
+        [JsonProperty]
         public long ModulesValue { get; internal set; }
 
         [JsonProperty]
-        public double HullHealth { get; internal set; }
+        public long UnladenMass { get; internal set; }
+
+        [JsonProperty]
+        public LoadOutFuel FuelCapacity { get; internal set; }
+
+        [JsonProperty]
+        public int CargoCapacity { get; internal set; }
 
         [JsonProperty]
         public double MaxJumpRange { get; internal set; }
@@ -41,8 +50,5 @@ namespace EliteEventAPI.Services.Events
 
         [JsonProperty]
         public ShipModule[] Modules { get; internal set; }
-
-        [JsonProperty]
-        public int CargoCapacity { get; internal set; }
     }
 }

@@ -35,5 +35,8 @@ namespace EliteEventAPI.Services.Events
 
         [JsonProperty]
         public double TimeRemaining { get; internal set; }
+
+        [JsonProperty]
+        public bool IsStation { get; internal set; }
     }
 }

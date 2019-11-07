@@ -7,6 +7,15 @@ namespace EliteEventAPI.Services.Events
         public override string Eventname => "FSSDiscoveryScan";
 
         [JsonProperty]
+        public string StarSystem { get; internal set; }
+
+        [JsonProperty]
+        public string SystemName { get; internal set; }
+
+        [JsonProperty]
+        public string SystemAddress { get; internal set; }
+
+        [JsonProperty]
         public double Progress { get; internal set; }
 
         [JsonProperty]

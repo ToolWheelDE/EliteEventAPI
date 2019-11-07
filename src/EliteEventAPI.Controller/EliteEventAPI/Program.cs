@@ -23,7 +23,7 @@ namespace EliteEventAPI
             {
                 eventService.DispatchEvent();
 
-                Thread.Sleep(200);
+                Thread.Sleep(10);
             }
         }
 

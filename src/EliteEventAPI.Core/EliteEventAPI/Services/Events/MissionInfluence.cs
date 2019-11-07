@@ -11,6 +11,6 @@ namespace EliteEventAPI.Services.Events
         public string Trend { get; internal set; }
 
         [JsonProperty]
-        public string InfluenceInfluence { get; internal set; }
+        public string Influence { get; internal set; }
     }
 }

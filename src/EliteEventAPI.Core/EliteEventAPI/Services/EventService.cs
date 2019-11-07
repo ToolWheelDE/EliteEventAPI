@@ -2,6 +2,7 @@
 using EliteEventAPI.Services.Events;
 using EliteEventAPI.Services.JournalParser;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -23,6 +24,7 @@ namespace EliteEventAPI.Services
 
         private readonly Dictionary<string, Type> _events = new Dictionary<string, Type>();
         private readonly Dictionary<Type, HashSet<Delegate>> _targets = new Dictionary<Type, HashSet<Delegate>>();
+        private readonly JsonSerializerSettings _jsonsettings;
 
         public event EventServiceJsonDelegate PreEventCall;
         public event EventServiceEventDelegate EventCall;
@@ -32,6 +34,12 @@ namespace EliteEventAPI.Services
         {
             ScanEvents();
 
+            _jsonsettings = new JsonSerializerSettings
+            {
+                MissingMemberHandling = MissingMemberHandling.Error,
+                Error = new EventHandler<Newtonsoft.Json.Serialization.ErrorEventArgs>(JsonErrorEventHandler)
+            };
+
             _configuration = ConfigurationManager.LoadConfiguration<EventServiceConfiguration>();
 
             JournalDirectory = new DirectoryInfo(Path.Combine(Environment.GetEnvironmentVariable("USERPROFILE"), "saved games", "Frontier Developments", "Elite Dangerous"));
@@ -40,6 +48,11 @@ namespace EliteEventAPI.Services
 
             StatusParser = new StatusParser(this);
             CargoParser = new CargoParser(this);
+        }
+
+        private void JsonErrorEventHandler(object sender, Newtonsoft.Json.Serialization.ErrorEventArgs e)
+        {
+            _ = e.ErrorContext.Error.Message;
         }
 
         private void ScanEvents()
@@ -80,7 +93,7 @@ namespace EliteEventAPI.Services
                 {
                     Trace.TraceInformation($"Call event - {eventname}");
 
-                    var model = (EventModelBase)JsonConvert.DeserializeObject(json, modeltype);
+                    var model = (EventModelBase)JsonConvert.DeserializeObject(json, modeltype, _jsonsettings);
                     EventCall?.Invoke(eventname, model);
                     CallEvent(model);
                 }
@@ -163,8 +176,6 @@ namespace EliteEventAPI.Services
 
                         InsertToQueue(json);
                     }
-
-                    Thread.Sleep(100);
                 }
             });
         }

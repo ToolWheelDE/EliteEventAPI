@@ -7,6 +7,18 @@ namespace EliteEventAPI.Services.Events
         public override string Eventname => "Scan";
 
         [JsonProperty]
+        public string StarSystem { get; internal set; }
+
+        [JsonProperty]
+        public string SystemAddress { get; internal set; }
+
+        [JsonProperty]
+        public string StarType { get; internal set; }
+
+        [JsonProperty]
+        public string Subclass { get; internal set; }
+
+        [JsonProperty]
         public string ScanType { get; internal set; }
 
         [JsonProperty]
@@ -43,6 +55,27 @@ namespace EliteEventAPI.Services.Events
         public double MassEm { get; internal set; }
 
         [JsonProperty]
+        public double DistanceFromArrivalLS { get; internal set; }
+
+        [JsonProperty]
+        public double AbsoluteMagnitude { get; internal set; }
+
+        [JsonProperty("Age_MY")]
+        public double AgeMY { get; internal set; }
+
+        [JsonProperty]
+        public string Luminosity { get; internal set; }
+
+        [JsonProperty]
+        public bool WasDiscovered { get; internal set; }
+
+        [JsonProperty]
+        public bool WasMapped { get; internal set; }
+
+        [JsonProperty]
+        public double StellarMass { get; internal set; }
+
+        [JsonProperty]
         public double Radius { get; internal set; }
 
         [JsonProperty]
@@ -62,6 +95,9 @@ namespace EliteEventAPI.Services.Events
 
         [JsonProperty]
         public Composition Composition { get; internal set; }
+
+        [JsonProperty]
+        public AtmosphereComposition[] AtmosphereComposition { get; internal set; }
 
         [JsonProperty]
         public double SemiMajorAxis { get; internal set; }

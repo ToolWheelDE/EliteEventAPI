@@ -10,6 +10,15 @@ namespace EliteEventAPI.Services.Events
         public string StarSystem { get; internal set; }
 
         [JsonProperty]
+        public string Body { get; internal set; }
+
+        [JsonProperty]
+        public string BodyID { get; internal set; }
+
+        [JsonProperty]
+        public string BodyType { get; internal set; }
+
+        [JsonProperty]
         public long SystemAddress { get; internal set; }
 
         [JsonProperty]
@@ -68,5 +77,11 @@ namespace EliteEventAPI.Services.Events
 
         [JsonProperty]
         public string FactionState { get; internal set; }
+
+        [JsonProperty]
+        public int BoostUsed { get; internal set; }
+
+        [JsonProperty]
+        public SystemConflicts[] Conflicts { get; internal set; }
     }
 }

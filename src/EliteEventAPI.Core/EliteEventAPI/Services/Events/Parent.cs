@@ -9,5 +9,14 @@ namespace EliteEventAPI.Services.Events
     {
         [JsonProperty]
         public long Null { get; internal set; }
+
+        [JsonProperty]
+        public long Star { get; internal set; }
+
+        [JsonProperty]
+        public long Planet { get; internal set; }
+
+        [JsonProperty]
+        public long Ring { get; internal set; }
     }
 }

@@ -111,7 +111,7 @@ namespace EliteEventAPI.Services
     "WingJoin",
     "WingLeave" };
 
-        private EDSMSyncConfiguration _configuration;
+        private readonly EDSMSyncConfiguration _configuration;
 
         public override string Name => "EDSM Sync Service";
 

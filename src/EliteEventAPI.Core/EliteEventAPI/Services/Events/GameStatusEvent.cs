@@ -24,7 +24,7 @@ namespace EliteEventAPI.Services.Events
         public int GuiFocus { get; internal set; }
 
         [JsonProperty]
-        public Fuel Fuel { get; internal set; }
+        public StatusFuel Fuel { get; internal set; }
 
         [JsonProperty]
         public string LegalState { get; internal set; }
