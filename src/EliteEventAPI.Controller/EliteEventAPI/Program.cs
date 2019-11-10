@@ -17,19 +17,12 @@ namespace EliteEventAPI
 
             ServiceController.Start();
 
-            eventService.Subscribe<Services.Events.StatusEvent>(StatusCallback);
-
             while (true)
             {
                 eventService.DispatchEvent();
 
-                Thread.Sleep(200);
+                Thread.Sleep(50);
             }
-        }
-
-        private static void StatusCallback(StatusEvent obj)
-        {
-            Console.WriteLine("Update Flags " + obj.Flags.ToString());
         }
     }
 }

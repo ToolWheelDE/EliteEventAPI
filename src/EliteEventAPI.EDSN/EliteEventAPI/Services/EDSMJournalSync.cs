@@ -139,21 +139,22 @@ namespace EliteEventAPI.Services
             {
                 while (Running || _queue.Count > 0)
                 {
-                    Thread.Sleep(500);
-                    if (string.IsNullOrEmpty(_configuration.APIKey) || string.IsNullOrEmpty(_configuration.Commandname))
-                        continue;
-
                     var element = default((string Eventname, string Json));
 
                     lock (_queue)
                     {
                         if (_queue.Count == 0)
                         {
+                            Thread.Sleep(1000);
                             continue;
                         }
 
                         element = _queue.Dequeue();
                     }
+
+                    if (string.IsNullOrWhiteSpace(_configuration.APIKey) || string.IsNullOrWhiteSpace(_configuration.Commandname))
+                        continue;
+
 
                     if (alwaysDiscard.Contains(element.Eventname))
                         continue;
@@ -162,7 +163,7 @@ namespace EliteEventAPI.Services
                     {
                         { "commanderName", _configuration.Commandname },
                         { "apiKey", _configuration.APIKey },
-                        { "fromSoftware", "EliteDangerousController" },
+                        { "fromSoftware", "EliteEventAPIEDSMSync" },
                         { "fromSoftwareVersion", "1.0" },
                         { "message", Uri.EscapeDataString(element.Json) }
                     };
@@ -186,7 +187,41 @@ namespace EliteEventAPI.Services
                             var reader = new StreamReader(response.GetResponseStream());
                             var responsejson = JsonConvert.DeserializeObject<dynamic>(reader.ReadToEnd());
 
-                            Trace.TraceInformation($"Send EDSM {requestjson.@event} {requestjson.SystemName} {responsejson.msg}");
+                            var name = "";
+                            if (!string.IsNullOrEmpty((string)requestjson.BodyName))
+                            {
+                                name = " '" + requestjson.BodyName + "'";
+                            }
+                            else if (!string.IsNullOrEmpty((string)requestjson.SystemName))
+                            {
+                                name = " '" + requestjson.SystemName + "'";
+                            }
+                            else if (!string.IsNullOrEmpty((string)requestjson.Name))
+                            {
+                                name = " '" + requestjson.Name + "'";
+                            }
+                            else if (!string.IsNullOrEmpty((string)requestjson.StarName))
+                            {
+                                name = " '" + requestjson.StarName + "'";
+                            }
+                            else if (!string.IsNullOrEmpty((string)requestjson.StarSystem))
+                            {
+                                name = " '" + requestjson.StarSystem + "'";
+                            }
+                            else if (!string.IsNullOrEmpty((string)requestjson.Power))
+                            {
+                                name = " '" + requestjson.Power + "'";
+                            }
+                            else if (!string.IsNullOrEmpty((string)requestjson.Commander))
+                            {
+                                name = " '" + requestjson.Commander + "'";
+                            }
+                            else
+                            {
+
+                            }
+
+                            Trace.TraceInformation($"Send EDSM {requestjson.@event}{name} {responsejson.msg}");
                         }
                         else
                         {
