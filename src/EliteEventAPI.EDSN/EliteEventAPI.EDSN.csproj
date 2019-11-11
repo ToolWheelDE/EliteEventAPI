@@ -5,11 +5,9 @@
     <RootNamespace />
     <Authors>toolwheel.de</Authors>
     <Company>ToolWheel.de</Company>
-    <Description>
-      Elite Dangerous Event API - EDSM Sync
+    <Description>Elite Dangerous Event API - EDSM Sync
 
-      Service to upload game events to EDSM
-    </Description>
+Service to upload game events to EDSM</Description>
     <PackageProjectUrl>https://github.com/ToolWheelDE/EliteEventAPI</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ToolWheelDE/EliteEventAPI</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
