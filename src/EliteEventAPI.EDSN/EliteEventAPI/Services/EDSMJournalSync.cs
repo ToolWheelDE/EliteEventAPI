@@ -139,23 +139,26 @@ namespace EliteEventAPI.Services
             {
                 while (Running || _queue.Count > 0)
                 {
-                    var element = default((string Eventname, string Json));
+                    (string Eventname, string Json)? element = default((string, string));
 
                     lock (_queue)
                     {
-                        if (_queue.Count == 0)
+                        if (_queue.Count > 0)
                         {
-                            Thread.Sleep(1000);
-                            continue;
+                            element = _queue.Dequeue();
                         }
+                    }
 
-                        element = _queue.Dequeue();
+                    if (!element.HasValue)
+                    {
+                        Thread.Sleep(1000);
+                        continue;
                     }
 
                     if (string.IsNullOrWhiteSpace(_configuration.APIKey) || string.IsNullOrWhiteSpace(_configuration.Commandname))
                         continue;
 
-                    if (alwaysDiscard.Contains(element.Eventname))
+                    if (alwaysDiscard.Contains(element.Value.Eventname))
                         continue;
 
                     var list = new Dictionary<string, string>
@@ -164,7 +167,7 @@ namespace EliteEventAPI.Services
                         { "apiKey", _configuration.APIKey },
                         { "fromSoftware", "EliteEventAPIEDSMSync" },
                         { "fromSoftwareVersion", "1.0" },
-                        { "message", Uri.EscapeDataString(element.Json) }
+                        { "message", Uri.EscapeDataString(element.Value.Json) }
                     };
 
 
@@ -175,7 +178,7 @@ namespace EliteEventAPI.Services
                     writer.Write(string.Join("&", list.Select(m => $"{m.Key}={m.Value}")));
                     writer.Flush();
 
-                    var requestjson = JsonConvert.DeserializeObject<dynamic>(element.Json);
+                    var requestjson = JsonConvert.DeserializeObject<dynamic>(element.Value.Json);
 
                     try
                     {
@@ -232,7 +235,7 @@ namespace EliteEventAPI.Services
                         lock (_queue)
                         {
                             Trace.TraceError(ex.Message);
-                            _queue.Enqueue(element);
+                            _queue.Enqueue(element.Value);
                         }
                     }
                 }
