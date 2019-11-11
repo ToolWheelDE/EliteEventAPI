@@ -8,15 +8,15 @@ namespace EliteEventAPI.Services.Events
     public sealed class Parent
     {
         [JsonProperty]
-        public long Null { get; internal set; }
+        public long? Null { get; internal set; }
 
         [JsonProperty]
-        public long Star { get; internal set; }
+        public long? Star { get; internal set; }
 
         [JsonProperty]
-        public long Planet { get; internal set; }
+        public long? Planet { get; internal set; }
 
         [JsonProperty]
-        public long Ring { get; internal set; }
+        public long? Ring { get; internal set; }
     }
 }

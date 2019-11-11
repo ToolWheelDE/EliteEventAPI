@@ -19,9 +19,9 @@ namespace EliteEventAPI.Services.Events
         public double Progress { get; internal set; }
 
         [JsonProperty]
-        public long BodyCount { get; internal set; }
+        public int BodyCount { get; internal set; }
 
         [JsonProperty]
-        public long NonBodyCount { get; internal set; }
+        public int NonBodyCount { get; internal set; }
     }
 }

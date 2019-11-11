@@ -14,6 +14,7 @@ namespace EliteEventAPI
 
             var eventService = ServiceController.GetService<Services.EventService>();
             var edsmService = ServiceController.InstallService<Services.EDSMJournalSync>();
+            var storage = ServiceController.InstallService<Services.StorageService>();
 
             ServiceController.Start();
 

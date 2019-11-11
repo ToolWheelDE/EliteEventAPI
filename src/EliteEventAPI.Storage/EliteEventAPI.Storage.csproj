@@ -1,12 +1,33 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace />
+    <Authors>toolwheel.de</Authors>
+    <Company>ToolWheel.de</Company>
+    <Description>Elite Dangerous Event API - Storage
+
+Service to upload game events to EDSM</Description>
+    <PackageProjectUrl>https://github.com/ToolWheelDE/EliteEventAPI</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ToolWheelDE/EliteEventAPI</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Version>0.1.0-beta</Version>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReleaseNotes>This is a beta version.</PackageReleaseNotes>
+    <AssemblyVersion>0.1.0.0</AssemblyVersion>
+    <FileVersion>0.1.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="EliteEventAPI\" />
+    <None Include="..\..\LICENSE" Link="LICENSE">
+      <PackagePath></PackagePath>
+      <Pack>True</Pack>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EliteEventAPI.Core\EliteEventAPI.Core.csproj" />
   </ItemGroup>
 
 </Project>

@@ -31,9 +31,6 @@ namespace EliteEventAPI.Services.Events
         public Parent[] Parents { get; internal set; }
 
         [JsonProperty]
-        public double DistanceFromArrivalLs { get; internal set; }
-
-        [JsonProperty]
         public bool TidalLock { get; internal set; }
 
         [JsonProperty]

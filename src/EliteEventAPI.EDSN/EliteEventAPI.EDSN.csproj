@@ -27,7 +27,7 @@ Service to upload game events to EDSM</Description>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="EliteEventAPI.Core" Version="0.1.0-beta" />
+    <ProjectReference Include="..\EliteEventAPI.Core\EliteEventAPI.Core.csproj" />
   </ItemGroup>
 
 </Project>
