@@ -155,7 +155,6 @@ namespace EliteEventAPI.Services
                     if (string.IsNullOrWhiteSpace(_configuration.APIKey) || string.IsNullOrWhiteSpace(_configuration.Commandname))
                         continue;
 
-
                     if (alwaysDiscard.Contains(element.Eventname))
                         continue;
 

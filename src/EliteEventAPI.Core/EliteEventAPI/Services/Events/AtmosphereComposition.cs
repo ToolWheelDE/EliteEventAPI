@@ -2,12 +2,12 @@
 
 namespace EliteEventAPI.Services.Events
 {
-    public sealed class SystemFaction
+    public sealed class AtmosphereComposition
     {
         [JsonProperty]
         public string Name { get; internal set; }
 
         [JsonProperty]
-        public string FactionState { get; internal set; }
+        public double Percent { get; internal set; }
     }
 }

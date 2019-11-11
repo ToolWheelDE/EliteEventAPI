@@ -2,12 +2,15 @@
 
 namespace EliteEventAPI.Services.Events
 {
-    public sealed class SystemFaction
+    public class SystemConflictFaction
     {
         [JsonProperty]
         public string Name { get; internal set; }
 
         [JsonProperty]
-        public string FactionState { get; internal set; }
+        public string Stake { get; internal set; }
+
+        [JsonProperty]
+        public int WonDays { get; internal set; }
     }
 }

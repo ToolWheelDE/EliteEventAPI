@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace EliteEventAPI.Services.Events
 {
-    public class StationFaction
+    public sealed class StatusFuel
     {
         [JsonProperty]
-        public string Name { get; internal set; }
+        public double FuelMain { get; internal set; }
 
         [JsonProperty]
-        public string FactionState { get; internal set; }
+        public double FuelReservoir { get; internal set; }
     }
 }
