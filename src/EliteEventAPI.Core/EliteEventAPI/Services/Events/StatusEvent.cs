@@ -9,25 +9,43 @@ namespace EliteEventAPI.Services.Events
 {
     public class StatusEvent : EventModelBase
     {
-        public override string Eventname => "Status";
+        protected internal override string Eventname => "Status";
 
         [JsonProperty]
-        public StatusFlags Flags { get; internal set; }
+        public ShipStatusFlags Flags { get; internal set; }
 
         [JsonProperty]
         public int[] Pips { get; internal set; }
 
         [JsonProperty]
-        public long FireGroup { get; internal set; }
+        public int FireGroup { get; internal set; }
 
         [JsonProperty]
-        public GuiFocus GuiFocus { get; internal set; }
+        public int GuiFocus { get; internal set; }
 
         [JsonProperty]
         public StatusFuel Fuel { get; internal set; }
 
         [JsonProperty]
         public string LegalState { get; internal set; }
+
+        [JsonProperty]
+        public double? Latitude { get; internal set; }
+
+        [JsonProperty]
+        public double? Longitude { get; internal set; }
+
+        [JsonProperty]
+        public double? Altitude { get; internal set; }
+
+        [JsonProperty]
+        public double? Heading { get; internal set; }
+
+        [JsonProperty]
+        public string BodyName { get; internal set; }
+
+        [JsonProperty]
+        public double? PlanetRadius { get; internal set; }
 
         [JsonProperty]
         public long Cargo { get; internal set; }
@@ -90,27 +108,13 @@ namespace EliteEventAPI.Services.Events
 
         public bool NightVision { get { return GetFlag(28); } }
 
-        public bool OrbitalFlight { get { return GetFlag(29); } }
-
-        public bool FSDJump { get { return GetFlag(30); } }
-
-        public bool SRVHighBeam { get { return GetFlag(31); } }
-
-        public string GameMode { get; internal set; }
-
-        public bool InNoFireZone { get; internal set; }
-
-        public double JumpRange { get; internal set; }
+        public bool HyperJump { get { return GetFlag(30); } }
 
         public bool IsRunning { get { return (Flags != 0); } }
 
-        public bool InMainMenu { get; internal set; }
-
-        public string MusicTrack { get; internal set; }
-
         public bool GetFlag(int bit)
         {
-            return Flags.HasFlag((StatusFlags)(1 << bit));
+            return Flags.HasFlag((ShipStatusFlags)(1 << bit));
         }
     }
 }

@@ -9,6 +9,6 @@ namespace EliteEventAPI.Services.Events
 {
     public class HeatWarningEvent : EventModelBase
     {
-        public override string Eventname => "HeatWarning";
+        protected internal override string Eventname => "HeatWarning";
    }
 }

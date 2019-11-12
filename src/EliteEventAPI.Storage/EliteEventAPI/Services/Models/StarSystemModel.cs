@@ -86,5 +86,9 @@ namespace EliteEventAPI.Services.Models
         public int CurrentBodySingals { get => GetValue(() => CurrentBodySingals); }
 
         public int CurrentNonBodySingals { get => GetValue(() => CurrentNonBodySingals); }
+
+        public SystemObject[] SystemObjects { get => _objects.ToArray(); }
+
+        public SignalObject[] SystemSignals { get => _singals.ToArray(); }
     }
 }

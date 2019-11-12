@@ -7,7 +7,7 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class MusicEvent : EventModelBase
     {
-        public override string Eventname => "Music";
+        protected internal override string Eventname => "Music";
 
         [JsonProperty]
         public string MusicTrack { get; internal set; }

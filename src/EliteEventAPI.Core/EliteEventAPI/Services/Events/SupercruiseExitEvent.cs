@@ -9,7 +9,7 @@ namespace EliteEventAPI.Services.Events
 {
     public class SupercruiseExitEvent : EventModelBase
     {
-        public override string Eventname => "SupercruiseExit";
+        protected internal override string Eventname => "SupercruiseExit";
 
         [JsonProperty]
         public string StarSystem { get; internal set; }

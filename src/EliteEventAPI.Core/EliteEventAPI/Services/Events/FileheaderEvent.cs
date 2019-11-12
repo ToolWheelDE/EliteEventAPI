@@ -9,7 +9,7 @@ namespace EliteEventAPI.Services.Events
 {
     public class FileheaderEvent : EventModelBase
     {
-        public override string Eventname => "Fileheader";
+        protected internal override string Eventname => "Fileheader";
 
         [JsonProperty]
         public int Part { get; internal set; }

@@ -4,7 +4,7 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class LocationEvent : EventModelBase
     {
-        public override string Eventname => "Location";
+        protected internal override string Eventname => "Location";
 
         [JsonProperty]
         public bool Docked { get; internal set; }

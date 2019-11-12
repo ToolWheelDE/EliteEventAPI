@@ -9,7 +9,7 @@ namespace EliteEventAPI.Services.Events
 {
     public class DockingCancelledEvent : EventModelBase
     {
-        public override string Eventname => "DockingCancelled";
+        protected internal override string Eventname => "DockingCancelled";
 
         [JsonProperty]
         public long MarketId { get; internal set; }

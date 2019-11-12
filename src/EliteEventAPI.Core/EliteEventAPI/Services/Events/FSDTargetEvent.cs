@@ -4,7 +4,7 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class FSDTargetEvent : EventModelBase
     {
-        public override string Eventname => "FSDTarget";
+        protected internal override string Eventname => "FSDTarget";
 
         [JsonProperty]
         public string Name { get; internal set; }

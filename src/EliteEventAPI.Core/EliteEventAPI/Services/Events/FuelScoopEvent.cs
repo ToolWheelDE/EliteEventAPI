@@ -9,7 +9,7 @@ namespace EliteEventAPI.Services.Events
 {
     public class FuelScoopEvent : EventModelBase
     {
-        public override string Eventname => "FuelScoop";
+        protected internal override string Eventname => "FuelScoop";
 
         [JsonProperty]
         public double Scooped { get; internal set; }

@@ -7,7 +7,7 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class CommanderEvent : EventModelBase
     {
-        public override string Eventname => "Commander";
+        protected internal override string Eventname => "Commander";
 
         [JsonProperty]
         public string FID { get; internal set; }

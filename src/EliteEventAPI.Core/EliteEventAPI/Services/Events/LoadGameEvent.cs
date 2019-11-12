@@ -7,7 +7,7 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class LoadGameEvent : EventModelBase
     {
-        public override string Eventname => "LoadGame";
+        protected internal override string Eventname => "LoadGame";
 
         [JsonProperty]
         public string Fid { get; internal set; }

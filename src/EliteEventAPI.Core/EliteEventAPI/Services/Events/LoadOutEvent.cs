@@ -7,7 +7,7 @@ namespace EliteEventAPI.Services.Events
 {
     public class LoadOutEvent : EventModelBase
     {
-        public override string Eventname => "Loadout";
+        protected internal override string Eventname => "Loadout";
 
         [JsonProperty]
         public string Ship { get; internal set; }

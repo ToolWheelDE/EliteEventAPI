@@ -4,7 +4,7 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class MissionRedirectedEvent : EventModelBase
     {
-        public override string Eventname => "MissionRedirected";
+        protected internal override string Eventname => "MissionRedirected";
 
         [JsonProperty]
         public long MissionId { get; internal set; }

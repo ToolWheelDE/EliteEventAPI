@@ -4,7 +4,7 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class MassModuleStoreEvent : EventModelBase
     {
-        public override string Eventname => "MassModuleStore";
+        protected internal override string Eventname => "MassModuleStore";
 
         [JsonProperty]
         public long MarketId { get; internal set; }

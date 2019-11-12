@@ -4,7 +4,7 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class MaterialDiscardedEvent : EventModelBase
     {
-        public override string Eventname => "MaterialDiscarded";
+        protected internal override string Eventname => "MaterialDiscarded";
 
         [JsonProperty]
         public string Category { get; internal set; }

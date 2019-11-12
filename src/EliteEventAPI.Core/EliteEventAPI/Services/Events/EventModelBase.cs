@@ -9,7 +9,7 @@ namespace EliteEventAPI.Services.Events
 {
     public abstract class EventModelBase
     {
-        public abstract string Eventname { get; }
+        protected internal abstract string Eventname { get; }
 
         [JsonProperty("timestamp")]
         public DateTime Timestamp { get; internal set; }

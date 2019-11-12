@@ -7,7 +7,7 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class MaterialsEvent : EventModelBase
     {
-        public override string Eventname => "Materials";
+        protected internal override string Eventname => "Materials";
 
         #region Neasted Classes
 

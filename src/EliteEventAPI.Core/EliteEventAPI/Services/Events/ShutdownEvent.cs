@@ -6,6 +6,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class ShutdownEvent : EventModelBase
     {
-        public override string Eventname => "Shutdown";
+        protected internal override string Eventname => "Shutdown";
     }
 }

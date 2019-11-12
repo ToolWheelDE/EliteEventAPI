@@ -9,7 +9,7 @@ namespace EliteEventAPI.Services.Events
 {
     public class DockingTimeoutEvent : EventModelBase
     {
-        public override string Eventname => "DockingTimeout";
+        protected internal override string Eventname => "DockingTimeout";
 
         [JsonProperty]
         public long MarketId { get; internal set; }

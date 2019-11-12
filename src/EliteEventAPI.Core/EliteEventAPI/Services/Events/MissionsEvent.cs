@@ -4,7 +4,7 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class MissionsEvent : EventModelBase
     {
-        public override string Eventname => "Missions";
+        protected internal override string Eventname => "Missions";
 
         [JsonProperty]
         public MissionActive[] Active { get; internal set; }

@@ -9,7 +9,7 @@ namespace EliteEventAPI.Services.Events
 {
     public class DockingDeniedEvent : EventModelBase
     {
-        public override string Eventname => "DockingDenied";
+        protected internal override string Eventname => "DockingDenied";
 
         [JsonProperty]
         public string Reason { get; internal set; }

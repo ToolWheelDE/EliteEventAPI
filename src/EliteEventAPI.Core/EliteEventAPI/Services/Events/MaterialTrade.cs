@@ -4,7 +4,7 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class MaterialTradeEvent : EventModelBase
     {
-        public override string Eventname => "MaterialTrade";
+        protected internal override string Eventname => "MaterialTrade";
 
         [JsonProperty]
         public long MarketId { get; internal set; }

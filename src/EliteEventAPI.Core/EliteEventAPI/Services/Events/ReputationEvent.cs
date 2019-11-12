@@ -4,7 +4,7 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class ReputationEvent : EventModelBase
     {
-        public override string Eventname => "Reputation";
+        protected internal override string Eventname => "Reputation";
 
         [JsonProperty]
         public double Empire { get; internal set; }
