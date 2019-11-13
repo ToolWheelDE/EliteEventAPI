@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace EliteEventAPI
 {
+    /// <summary>
+    /// Controller to manage Services
+    /// </summary>
     public static class ServiceController
     {
         private static readonly Dictionary<Type, ServiceBase> _instances = new Dictionary<Type, ServiceBase>();
@@ -16,8 +19,17 @@ namespace EliteEventAPI
             InstallService<EventService>();
         }
 
+        /// <summary>
+        /// Returns the count of installed services.
+        /// </summary>
         public static int Count { get => _instances.Count; }
 
+
+        /// <summary>
+        /// Installs the specified service
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public static T InstallService<T>()
             where T : ServiceBase
         {
@@ -42,6 +54,11 @@ namespace EliteEventAPI
             return (T)result;
         }
 
+        /// <summary>
+        /// Delivers an installed service
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public static T GetService<T>()
             where T : ServiceBase
         {
@@ -53,6 +70,9 @@ namespace EliteEventAPI
             return null;
         }
 
+        /// <summary>
+        /// Start the runtime
+        /// </summary>
         public static void Start()
         {
             foreach (var item in _instances.Values)
@@ -62,6 +82,9 @@ namespace EliteEventAPI
             }
         }
 
+        /// <summary>
+        /// Stop the runtime
+        /// </summary>
         public static void Stop()
         {
             foreach (var item in _instances.Values)

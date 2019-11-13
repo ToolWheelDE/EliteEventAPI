@@ -4,15 +4,30 @@ using System.Text;
 
 namespace EliteEventAPI
 {
+    /// <summary>
+    /// Baseclass to create own services
+    /// </summary>
     public abstract class ServiceBase
     {
+        /// <summary>
+        /// Servicename
+        /// </summary>
         public abstract string Name { get; }
 
+        /// <summary>
+        /// Indicates whether the service is currently running. 
+        /// </summary>
         public bool Running { get; internal set; }
 
+        /// <summary>
+        /// Called when the service is initialized.
+        /// </summary>
         protected internal virtual void OnInitialize()
         { }
 
+        /// <summary>
+        /// Is called when another service has been installed and the Inject service is running.
+        /// </summary>
         protected internal virtual void OnModuleInjectUpdate()
         { }
 
@@ -36,9 +51,15 @@ namespace EliteEventAPI
             OnStop();
         }
 
+        /// <summary>
+        /// Is called when the service is started
+        /// </summary>
         protected virtual void OnStart()
         { }
 
+        /// <summary>
+        /// Is called when the service ist stopped
+        /// </summary>
         protected virtual void OnStop()
         { }
     }
