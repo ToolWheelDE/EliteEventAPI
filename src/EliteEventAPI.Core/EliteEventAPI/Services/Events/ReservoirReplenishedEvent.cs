@@ -9,10 +9,10 @@ namespace EliteEventAPI.Services.Events
     {
         protected internal override string Eventname => "ReservoirReplenished";
 
-        [JsonProperty("FuelMain")]
+        [JsonProperty]
         public double FuelMain { get; set; }
 
-        [JsonProperty("FuelReservoir")]
+        [JsonProperty]
         public double FuelReservoir { get; set; }
     }
 }
