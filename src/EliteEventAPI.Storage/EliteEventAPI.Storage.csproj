@@ -5,14 +5,14 @@
     <RootNamespace />
     <Authors>toolwheel.de</Authors>
     <Company>ToolWheel.de</Company>
-    <Description>Elite Dangerous Event API - Storage
+    <Description>Elite Dangerous Event API - Data Storage
 
 Service to upload game events to EDSM</Description>
     <PackageProjectUrl>https://github.com/ToolWheelDE/EliteEventAPI</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ToolWheelDE/EliteEventAPI</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <Version>0.1.0-beta</Version>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageReleaseNotes>This is a beta version.</PackageReleaseNotes>
     <AssemblyVersion>0.1.0.0</AssemblyVersion>
@@ -27,7 +27,7 @@ Service to upload game events to EDSM</Description>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EliteEventAPI.Core\EliteEventAPI.Core.csproj" />
+    <PackageReference Include="EliteEventAPI.Core" Version="0.2.0-beta" />
   </ItemGroup>
 
 </Project>
