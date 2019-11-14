@@ -5,7 +5,7 @@ namespace EliteEventAPI.Services.Models
 {
     public class SystemObject
     {
-        public ObjectType Type { get; private set; }
+        public ObjectType ObjectType { get; private set; }
 
         public long Id { get; internal set; }
 
@@ -23,7 +23,7 @@ namespace EliteEventAPI.Services.Models
         {
             return new StarObject()
             {
-                Type = ObjectType.Star,
+                ObjectType = ObjectType.Star,
                 Scantype = obj.ScanType,
 
                 Name = obj.BodyName,
@@ -42,7 +42,7 @@ namespace EliteEventAPI.Services.Models
         {
             return new PlanetObject()
             {
-                Type = ObjectType.Planet,
+                ObjectType = ObjectType.Planet,
                 Scantype = obj.ScanType,
 
                 Name = obj.BodyName,
@@ -62,7 +62,7 @@ namespace EliteEventAPI.Services.Models
         {
             return new ClusterBeltObject()
             {
-                Type = ObjectType.ClusterBelt,
+                ObjectType = ObjectType.ClusterBelt,
                 Scantype = obj.ScanType,
 
                 Name = obj.BodyName,

@@ -7,8 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EliteEventAPI.EDSN" Version="0.1.0-beta" />
-    <PackageReference Include="EliteEventAPI.Storage" Version="0.1.0-beta" />
+    <ProjectReference Include="..\EliteEventAPI.Core\EliteEventAPI.Core.csproj" />
+    <ProjectReference Include="..\EliteEventAPI.EDSM\EliteEventAPI.EDSM.csproj" />
+    <ProjectReference Include="..\EliteEventAPI.Storage\EliteEventAPI.Storage.csproj" />
   </ItemGroup>
 
 </Project>

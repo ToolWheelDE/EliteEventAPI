@@ -68,8 +68,8 @@ namespace EliteEventAPI.Services.Models
 
             _objects.Add(systemobject);
 
-            SetValue(() => CurrentBodySingals, _objects.Where(m => m.Type == ObjectType.Star || m.Type == ObjectType.Planet).Count());
-            SetValue(() => CurrentNonBodySingals, _objects.Where(m => m.Type == ObjectType.ClusterBelt).Count());
+            SetValue(() => CurrentBodySingals, _objects.Where(m => m.ObjectType == ObjectType.Star || m.ObjectType == ObjectType.Planet).Count());
+            SetValue(() => CurrentNonBodySingals, _objects.Where(m => m.ObjectType == ObjectType.ClusterBelt).Count());
             OnAction("AddObject");
         }
 
