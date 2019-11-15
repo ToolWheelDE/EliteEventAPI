@@ -47,7 +47,55 @@ namespace EliteEventAPI.Services
             Reader = new JournalReader(this);
 
             StatusParser = new StatusParser(this);
-            CargoParser = new CargoParser(this);
+
+            Subscribe<InternalModuleInfoEvent>(InternalModuleInfoCallback);
+            Subscribe<InternalCargoEvent>(InternaCargoCallback);
+        }
+
+        private void InternaCargoCallback(InternalCargoEvent obj)
+        {
+            if (obj.Inventory == null)
+            {
+                var file = new FileInfo(Path.Combine(JournalDirectory.FullName, "cargo.json"));
+                if (file.Exists)
+                {
+                    using (var reader = new StreamReader(file.Open(FileMode.Open, FileAccess.Read, FileShare.ReadWrite)))
+                    {
+                        var json = reader.ReadToEnd();
+                        var eventobject = JsonConvert.DeserializeObject<CargoEvent>(json);
+
+                        CallEvent(eventobject);
+                    }
+                }
+            }
+            else
+            {
+                var cargoobject = new CargoEvent()
+                {
+                    Event = obj.Event,
+                    Timestamp = obj.Timestamp,
+                    Count = obj.Count,
+                    Vessel = obj.Vessel,
+                    Inventory = obj.Inventory
+                };
+
+                CallEvent(cargoobject);
+            }
+        }
+
+        private void InternalModuleInfoCallback(InternalModuleInfoEvent obj)
+        {
+            var file = new FileInfo(Path.Combine(JournalDirectory.FullName, "modulesinfo.json"));
+            if (file.Exists)
+            {
+                using (var reader = new StreamReader(file.Open(FileMode.Open, FileAccess.Read, FileShare.ReadWrite)))
+                {
+                    var json = reader.ReadToEnd();
+                    var eventobject = JsonConvert.DeserializeObject<ModulesInfoEvent>(json);
+
+                    CallEvent(eventobject);
+                }
+            }
         }
 
         private void JsonErrorEventHandler(object sender, Newtonsoft.Json.Serialization.ErrorEventArgs e)
@@ -193,7 +241,5 @@ namespace EliteEventAPI.Services
         internal JournalReader Reader { get; }
 
         internal StatusParser StatusParser { get; }
-
-        internal CargoParser CargoParser { get; }
     }
 }

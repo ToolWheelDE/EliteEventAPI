@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EliteEventAPI.Services.Models
+namespace EliteEventAPI.Services.Storage.Models
 {
     public sealed class NavigationModel : ModelBase
     {

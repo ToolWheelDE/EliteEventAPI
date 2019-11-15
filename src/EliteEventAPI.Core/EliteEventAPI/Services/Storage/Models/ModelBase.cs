@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EliteEventAPI.Services.Models
+namespace EliteEventAPI.Services.Storage.Models
 {
     public delegate void ModelPropertyDelegate(ModelBase sender, string propertyname, object value);
     public delegate void ModelActionDelegate(ModelBase sender, string action);

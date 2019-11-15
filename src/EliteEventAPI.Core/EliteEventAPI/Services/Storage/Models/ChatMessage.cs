@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EliteEventAPI.Services
+namespace EliteEventAPI.Services.Storage.Models
 {
     internal class ChatMessage
     {

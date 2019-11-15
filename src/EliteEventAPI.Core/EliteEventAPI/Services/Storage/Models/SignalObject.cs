@@ -1,4 +1,4 @@
-﻿namespace EliteEventAPI.Services.Models
+﻿namespace EliteEventAPI.Services.Storage.Models
 {
     public class SignalObject
     {

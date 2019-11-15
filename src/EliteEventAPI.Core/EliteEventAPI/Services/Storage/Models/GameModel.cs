@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using EliteEventAPI.Services.Events;
-using EliteEventAPI.Services.Models;
 
-namespace EliteEventAPI.Services
+namespace EliteEventAPI.Services.Storage.Models
 {
     public sealed class GameModel : ModelBase
     {

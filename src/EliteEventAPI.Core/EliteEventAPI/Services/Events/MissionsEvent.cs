@@ -15,6 +15,4 @@ namespace EliteEventAPI.Services.Events
         [JsonProperty]
         public object[] Complete { get; internal set; }
     }
-
-
 }

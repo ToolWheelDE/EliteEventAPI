@@ -1,7 +1,7 @@
 ﻿using System;
 using EliteEventAPI.Services.Events;
 
-namespace EliteEventAPI.Services.Models
+namespace EliteEventAPI.Services.Storage.Models
 {
     public class SystemObject
     {

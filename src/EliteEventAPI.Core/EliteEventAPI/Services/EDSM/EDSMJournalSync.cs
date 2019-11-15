@@ -10,7 +10,7 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EliteEventAPI.Services
+namespace EliteEventAPI.Services.EDSM
 {
     public sealed class EDSMJournalSync : ServiceBase
     {

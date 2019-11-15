@@ -1,7 +1,7 @@
 ﻿using EliteEventAPI.Configuration;
 using EliteEventAPI.Services;
 using EliteEventAPI.Services.Events;
-using EliteEventAPI.Services.Models;
+using EliteEventAPI.Services.Storage.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EliteEventAPI.Services
+namespace EliteEventAPI.Services.Storage
 {
     public sealed class StorageService : ServiceBase
     {

@@ -5,8 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-
-namespace EliteEventAPI.Services.Models
+namespace EliteEventAPI.Services.Storage.Models
 {
     public sealed class StarSystemModel : ModelBase
     {

@@ -5,9 +5,9 @@ using System.Text;
 
 namespace EliteEventAPI.Services.Events
 {
-    public sealed class CargoEvent : EventModelBase
+    internal sealed class InternalCargoEvent : EventModelBase
     {
-        protected internal override string Eventname => "*Cargo";
+        protected internal override string Eventname => "Cargo";
 
         [JsonProperty]
         public string Vessel { get; internal set; }

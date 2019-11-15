@@ -8,8 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EliteEventAPI.Core\EliteEventAPI.Core.csproj" />
-    <ProjectReference Include="..\EliteEventAPI.EDSM\EliteEventAPI.EDSM.csproj" />
-    <ProjectReference Include="..\EliteEventAPI.Storage\EliteEventAPI.Storage.csproj" />
   </ItemGroup>
 
 </Project>
