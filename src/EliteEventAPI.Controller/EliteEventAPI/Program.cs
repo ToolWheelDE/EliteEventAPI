@@ -21,19 +21,12 @@ namespace EliteEventAPI
 
             ServiceController.Start();
 
-            eventService.Subscribe<CargoEvent>(TestCall);
-
             while (true)
             {
                 eventService.DispatchEvent();
 
-                Thread.Sleep(50);
+                Thread.Sleep(10);
             }
-        }
-
-        private static void TestCall(CargoEvent obj)
-        {
-           
         }
     }
 }
