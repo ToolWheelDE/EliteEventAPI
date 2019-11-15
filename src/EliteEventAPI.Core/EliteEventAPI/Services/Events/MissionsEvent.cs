@@ -7,12 +7,12 @@ namespace EliteEventAPI.Services.Events
         protected internal override string Eventname => "Missions";
 
         [JsonProperty]
-        public MissionActive[] Active { get; internal set; }
+        public MissionDetails[] Active { get; internal set; }
 
         [JsonProperty]
-        public object[] Failed { get; internal set; }
+        public MissionDetails[] Failed { get; internal set; }
 
         [JsonProperty]
-        public object[] Complete { get; internal set; }
+        public MissionDetails[] Complete { get; internal set; }
     }
 }

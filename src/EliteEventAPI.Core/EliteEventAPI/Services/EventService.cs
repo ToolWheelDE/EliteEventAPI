@@ -50,6 +50,38 @@ namespace EliteEventAPI.Services
 
             Subscribe<InternalModuleInfoEvent>(InternalModuleInfoCallback);
             Subscribe<InternalCargoEvent>(InternaCargoCallback);
+            Subscribe<InternalOutfittingEvent>(InternalOutfittingCallback);
+            Subscribe<InternalMarketEvent>(InternalMarketCallback);
+        }
+
+        private void InternalMarketCallback(InternalMarketEvent obj)
+        {
+            var file = new FileInfo(Path.Combine(JournalDirectory.FullName, "market.json"));
+            if (file.Exists)
+            {
+                using (var reader = new StreamReader(file.Open(FileMode.Open, FileAccess.Read, FileShare.ReadWrite)))
+                {
+                    var json = reader.ReadToEnd();
+                    var eventobject = JsonConvert.DeserializeObject<MarketEvent>(json);
+
+                    CallEvent(eventobject);
+                }
+            }
+        }
+
+        private void InternalOutfittingCallback(InternalOutfittingEvent obj)
+        {
+            var file = new FileInfo(Path.Combine(JournalDirectory.FullName, "outfitting.json"));
+            if (file.Exists)
+            {
+                using (var reader = new StreamReader(file.Open(FileMode.Open, FileAccess.Read, FileShare.ReadWrite)))
+                {
+                    var json = reader.ReadToEnd();
+                    var eventobject = JsonConvert.DeserializeObject<OutfittingEvent>(json);
+
+                    CallEvent(eventobject);
+                }
+            }
         }
 
         private void InternaCargoCallback(InternalCargoEvent obj)

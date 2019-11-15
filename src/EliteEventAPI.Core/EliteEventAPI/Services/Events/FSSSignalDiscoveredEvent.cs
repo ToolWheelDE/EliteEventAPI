@@ -30,6 +30,9 @@ namespace EliteEventAPI.Services.Events
         [JsonProperty]
         public string SpawningFaction { get; internal set; }
 
+        [JsonProperty("SpawningFaction_Localised")]
+        public string SpawningFactionLocalised { get; internal set; }
+
         [JsonProperty]
         public long ThreatLevel { get; internal set; }
 

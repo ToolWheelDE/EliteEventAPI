@@ -2,7 +2,7 @@
 
 namespace EliteEventAPI.Services.Events
 {
-    public sealed class MissionActive
+    public sealed class MissionDetails
     {
         [JsonProperty]
         public long MissionId { get; internal set; }
