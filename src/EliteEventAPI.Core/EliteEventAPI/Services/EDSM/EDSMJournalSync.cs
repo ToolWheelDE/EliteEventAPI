@@ -139,7 +139,7 @@ namespace EliteEventAPI.Services.EDSM
             {
                 while (Running || _queue.Count > 0)
                 {
-                    (string Eventname, string Json)? element = default((string, string));
+                    (string Eventname, string Json)? element = default((string, string)?);
 
                     lock (_queue)
                     {
@@ -151,7 +151,7 @@ namespace EliteEventAPI.Services.EDSM
 
                     if (!element.HasValue)
                     {
-                        Thread.Sleep(1000);
+                        Thread.Sleep(2000);
                         continue;
                     }
 
