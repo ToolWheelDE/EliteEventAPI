@@ -25,7 +25,7 @@ namespace EliteEventAPI.Services.Events
         [JsonProperty]
         public double Quality { get; internal set; }
 
-        [JsonProperty("", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("ExperimentalEffect", NullValueHandling = NullValueHandling.Ignore)]
         public string ExperimentalEffect { get; internal set; }
 
         [JsonProperty("ExperimentalEffect_Localised", NullValueHandling = NullValueHandling.Ignore)]
