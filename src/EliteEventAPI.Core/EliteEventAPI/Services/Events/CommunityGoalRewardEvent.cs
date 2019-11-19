@@ -9,11 +9,11 @@ namespace EliteEventAPI.Services.Events
     {
         protected internal override string Eventname => "CommunityGoalReward";
 
-        [JsonProperty("")]
+        [JsonProperty]
         public string Name { get; internal set; }
-        [JsonProperty("")]
+        [JsonProperty]
         public string System { get; internal set; }
-        [JsonProperty("")]
+        [JsonProperty]
         public long Reward { get; internal set; }
     }
 }

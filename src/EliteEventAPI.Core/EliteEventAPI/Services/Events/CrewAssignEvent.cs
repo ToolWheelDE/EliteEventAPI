@@ -9,13 +9,13 @@ namespace EliteEventAPI.Services.Events
     {
         protected internal override string Eventname => "CrewAssign";
 
-        [JsonProperty("")]
+        [JsonProperty]
         public string Name { get; internal set; }
 
-        [JsonProperty("")]
+        [JsonProperty]
         public long CrewId { get; internal set; }
 
-        [JsonProperty("")]
+        [JsonProperty]
         public string Role { get; internal set; }
     }
 }
