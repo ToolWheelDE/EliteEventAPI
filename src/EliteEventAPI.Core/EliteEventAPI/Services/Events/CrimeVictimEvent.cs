@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class CrimeVictimEvent : EventModelBase
     {
-        protected internal override string Eventname => "CrimeVictim";
-
         [JsonProperty]
         public string Offender { get; internal set; }
 

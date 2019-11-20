@@ -4,8 +4,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class ProgressEvent : EventModelBase
     {
-        protected internal override string Eventname => "Progress";
-
         [JsonProperty]
         public long Combat { get; internal set; }
 

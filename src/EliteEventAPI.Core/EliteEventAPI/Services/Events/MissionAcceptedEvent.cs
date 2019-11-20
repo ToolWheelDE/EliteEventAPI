@@ -5,8 +5,6 @@ namespace EliteEventAPI.Services.Events
 {
     public partial class MissionAcceptedEvent : EventModelBase
     {
-        protected internal override string Eventname => "MissionAccepted";
-
         [JsonProperty]
         public string Faction { get; internal set; }
 

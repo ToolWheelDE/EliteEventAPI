@@ -5,10 +5,11 @@ using System.Text;
 
 namespace EliteEventAPI.Services.Events
 {
+    /// <summary>
+    /// Triggerd on startup
+    /// </summary>
     public sealed class LoadGameEvent : EventModelBase
     {
-        protected internal override string Eventname => "LoadGame";
-
         [JsonProperty]
         public string Fid { get; internal set; }
 

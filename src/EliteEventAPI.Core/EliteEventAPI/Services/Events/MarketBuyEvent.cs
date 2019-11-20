@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class MarketBuyEvent : EventModelBase
     {
-        protected internal override string Eventname => "MarketBuy";
-
         [JsonProperty]
         public long MarketId { get; internal set; }
 

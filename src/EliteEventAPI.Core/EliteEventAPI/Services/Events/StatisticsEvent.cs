@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class StatisticsEvent : EventModelBase
     {
-        protected internal override string Eventname => "Statistics";
-
         [JsonProperty("Bank_Account")]
         public Dictionary<string, long> BankAccount { get; internal set; }
 

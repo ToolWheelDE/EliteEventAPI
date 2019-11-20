@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class HullDamageEvent : EventModelBase
     {
-        protected internal override string Eventname => "HullDamage";
-
         [JsonProperty]
         public double Health { get; internal set; }
 

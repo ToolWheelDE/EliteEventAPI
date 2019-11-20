@@ -5,35 +5,11 @@ using System.Text;
 
 namespace EliteEventAPI.Services.Events
 {
+    /// <summary>
+    /// Triggerd on startup
+    /// </summary>
     public sealed class MaterialsEvent : EventModelBase
     {
-        protected internal override string Eventname => "Materials";
-
-        #region Neasted Classes
-
-        public sealed class EncodedModel
-        {
-            [JsonProperty]
-            public string Name { get; internal set; }
-
-            [JsonProperty("Name_Localised")]
-            public string NameLocalised { get; internal set; }
-
-            [JsonProperty]
-            public long Count { get; internal set; }
-        }
-
-        public sealed class RawModel
-        {
-            [JsonProperty]
-            public string Name { get; internal set; }
-
-            [JsonProperty]
-            public long Count { get; internal set; }
-        }
-
-        #endregion
-
         [JsonProperty]
         public RawModel[] Raw { get; internal set; }
 

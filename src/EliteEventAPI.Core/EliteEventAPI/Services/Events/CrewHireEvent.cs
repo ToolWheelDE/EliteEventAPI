@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class CrewHireEvent : EventModelBase
     {
-        protected internal override string Eventname => "CrewHire";
-
         [JsonProperty]
         public string Name { get; internal set; }
 

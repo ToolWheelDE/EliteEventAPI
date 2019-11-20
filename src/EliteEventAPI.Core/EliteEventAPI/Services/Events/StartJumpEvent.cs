@@ -9,8 +9,6 @@ namespace EliteEventAPI.Services.Events
 {
     public class StartJumpEvent : EventModelBase
     {
-        protected internal override string Eventname => "StartJump";
-
         [JsonProperty]
         public string JumpType { get; internal set; }
 

@@ -5,10 +5,11 @@ using System.Text;
 
 namespace EliteEventAPI.Services.Events
 {
+    /// <summary>
+    /// Triggerd on startup
+    /// </summary>
     public sealed class PassengersEvent : EventModelBase
     {
-        protected internal override string Eventname => "Passengers";
-
         [JsonProperty]
         public Manifest[] Manifest { get; internal set; }
     }

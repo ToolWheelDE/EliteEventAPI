@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class EngineerApplyEvent : EventModelBase
     {
-        protected internal override string Eventname => "EngineerApply";
-
         [JsonProperty]
         public string Engineer { get; internal set; }
 

@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class DatalinkVoucherEvent : EventModelBase
     {
-        protected internal override string Eventname => "DatalinkVoucher";
-
         [JsonProperty]
         public long Reward { get; internal set; }
 

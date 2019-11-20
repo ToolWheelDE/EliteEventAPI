@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class FriendsEvent : EventModelBase
     {
-        protected internal override string Eventname => "Friends";
-
         [JsonProperty]
         public string Status { get; internal set; }
 

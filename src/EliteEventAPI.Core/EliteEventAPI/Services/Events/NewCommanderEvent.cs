@@ -5,10 +5,11 @@ using System.Text;
 
 namespace EliteEventAPI.Services.Events
 {
+    /// <summary>
+    /// Triggerd if a new commander is created
+    /// </summary>
     public sealed class NewCommanderEvent : EventModelBase
     {
-        protected internal override string Eventname => "NewCommander";
-
         [JsonProperty]
         public string Name { get; internal set; }
 

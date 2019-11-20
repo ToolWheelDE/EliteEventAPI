@@ -1,12 +1,9 @@
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace EliteEventAPI.Services.Events
 {
-    public sealed class MaterialDiscoveredEvent : EventModelBase
+    public sealed class EncodedModel
     {
-        [JsonProperty]
-        public string Category { get; internal set; }
-
         [JsonProperty]
         public string Name { get; internal set; }
 
@@ -14,6 +11,6 @@ namespace EliteEventAPI.Services.Events
         public string NameLocalised { get; internal set; }
 
         [JsonProperty]
-        public long DiscoveryNumber { get; internal set; }
+        public long Count { get; internal set; }
     }
 }

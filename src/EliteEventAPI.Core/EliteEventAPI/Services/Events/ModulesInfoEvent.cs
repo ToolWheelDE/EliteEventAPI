@@ -5,9 +5,9 @@ using System.Text;
 
 namespace EliteEventAPI.Services.Events
 {
-    public sealed class ModulesInfoEvent : EventModelBase
+    public sealed class ModuleInfoEvent : EventModelBase
     {
-        protected internal override string Eventname => "*ModulesInfo";
+        protected internal override string Eventname => "*ModuleInfo";
 
         [JsonProperty]
         public ModuleSlot[] Modules { get; internal set; }

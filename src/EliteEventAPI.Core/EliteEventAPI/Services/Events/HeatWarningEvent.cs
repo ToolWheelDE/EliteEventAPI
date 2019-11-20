@@ -8,7 +8,5 @@ using System.Threading.Tasks;
 namespace EliteEventAPI.Services.Events
 {
     public class HeatWarningEvent : EventModelBase
-    {
-        protected internal override string Eventname => "HeatWarning";
-   }
+    {   }
 }

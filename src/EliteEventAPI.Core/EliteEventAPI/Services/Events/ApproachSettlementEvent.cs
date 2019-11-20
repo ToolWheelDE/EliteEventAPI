@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class ApproachSettlementEvent : EventModelBase
     {
-        protected internal override string Eventname => "ApproachSettlement";
-
         [JsonProperty]
         public string Name { get; internal set; }
 

@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class ModuleSellRemoteEvent : EventModelBase
     {
-        protected internal override string Eventname => "ModuleSellRemote";
-
         [JsonProperty]
         public long StorageSlot { get; internal set; }
 

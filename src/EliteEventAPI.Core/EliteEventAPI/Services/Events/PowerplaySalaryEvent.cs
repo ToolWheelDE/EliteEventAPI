@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class PowerplaySalaryEvent : EventModelBase
     {
-        protected internal override string Eventname => "PowerplaySalary";
-
         [JsonProperty]
         public string Power { get; internal set; }
 

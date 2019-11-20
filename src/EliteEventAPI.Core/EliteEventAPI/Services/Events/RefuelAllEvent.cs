@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class RefuelAllEvent : EventModelBase
     {
-        protected internal override string Eventname => "RefuelAll";
-
         [JsonProperty]
         public int Cost { get; internal set; }
 

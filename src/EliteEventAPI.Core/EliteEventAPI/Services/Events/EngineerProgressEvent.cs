@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class EngineerProgressEvent : EventModelBase
     {
-        protected internal override string Eventname => "EngineerProgress";
-
         [JsonProperty]
         public Engineer[] Engineers { get; internal set; }
 

@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class ReservoirReplenishedEvent : EventModelBase
     {
-        protected internal override string Eventname => "ReservoirReplenished";
-
         [JsonProperty]
         public double FuelMain { get; set; }
 

@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class LeaveBodyEvent : EventModelBase
     {
-        protected internal override string Eventname => "LeaveBody";
-
         [JsonProperty]
         public string StarSystem { get; internal set; }
 

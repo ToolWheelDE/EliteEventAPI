@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class ReceiveTextEvent : EventModelBase
     {
-        protected internal override string Eventname => "ReceiveText";
-
         [JsonProperty]
         public string From { get; internal set; }
 

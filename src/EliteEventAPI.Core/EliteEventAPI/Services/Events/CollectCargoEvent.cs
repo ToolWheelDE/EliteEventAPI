@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class CollectCargoEvent : EventModelBase
     {
-        protected internal override string Eventname => "CollectCargo";
-
         [JsonProperty]
         public string Type { get; internal set; }
 

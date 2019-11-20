@@ -4,8 +4,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class FSSAllBodiesFoundEvent : EventModelBase
     {
-        protected internal override string Eventname => "FSSAllBodiesFound";
-
         [JsonProperty]
         public string SystemName { get; internal set; }
 

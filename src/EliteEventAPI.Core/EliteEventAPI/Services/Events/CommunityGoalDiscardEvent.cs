@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class CommunityGoalDiscardEvent : EventModelBase
     {
-        protected internal override string Eventname => "CommunityGoalDiscard";
-
         [JsonProperty]
         public string Name { get; internal set; }
 

@@ -5,13 +5,20 @@ using System.Text;
 
 namespace EliteEventAPI.Services.Events
 {
-    public class LoadOutEvent : EventModelBase
+    /// <summary>
+    /// Triggerd on change the ship or docking SRV back in ship. ( Also on startup )
+    /// </summary>
+    public class LoadoutEvent : EventModelBase
     {
-        protected internal override string Eventname => "Loadout";
-
+        /// <summary>
+        /// Shipname
+        /// </summary>
         [JsonProperty]
         public string Ship { get; internal set; }
 
+        /// <summary>
+        /// ShipId
+        /// </summary>
         [JsonProperty]
         public long ShipId { get; internal set; }
 

@@ -9,8 +9,6 @@ namespace EliteEventAPI.Services.Events
 {
     public class DockingGrantedEvent : EventModelBase
     {
-        protected internal override string Eventname => "DockingGranted";
-
         [JsonProperty]
         public int LandingPad { get; internal set; }
 

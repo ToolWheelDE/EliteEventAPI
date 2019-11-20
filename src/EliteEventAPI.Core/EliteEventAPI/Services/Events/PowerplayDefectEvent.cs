@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class PowerplayDefectEvent : EventModelBase
     {
-        protected internal override string Eventname => "PowerplayDefect";
-
         [JsonProperty]
         public string FromPower { get; internal set; }
 

@@ -2,10 +2,11 @@ using Newtonsoft.Json;
 
 namespace EliteEventAPI.Services.Events
 {
+    /// <summary>
+    /// Triggerd on startup
+    /// </summary>
     public sealed class MissionsEvent : EventModelBase
     {
-        protected internal override string Eventname => "Missions";
-
         [JsonProperty]
         public MissionDetails[] Active { get; internal set; }
 

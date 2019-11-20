@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class RepairAllEvent : EventModelBase
     {
-        protected internal override string Eventname => "RepairAll";
-
         [JsonProperty]
         public int Cost { get; internal set; }
     }

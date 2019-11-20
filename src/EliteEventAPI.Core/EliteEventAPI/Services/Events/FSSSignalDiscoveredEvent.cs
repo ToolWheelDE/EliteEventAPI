@@ -4,8 +4,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class FSSSignalDiscoveredEvent : EventModelBase
     {
-        protected internal override string Eventname => "FSSSignalDiscovered";
-
         [JsonProperty]
         public long SystemAddress { get; internal set; }
 

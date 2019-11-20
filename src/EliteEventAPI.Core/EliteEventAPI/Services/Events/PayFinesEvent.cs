@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class PayFinesEvent : EventModelBase
     {
-        protected internal override string Eventname => "PayFines";
-
         [JsonProperty]
         public long Amount { get; internal set; }
 

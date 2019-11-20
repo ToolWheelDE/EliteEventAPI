@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class ModuleBuyEvent : EventModelBase
     {
-        protected internal override string Eventname => "ModuleBuy";
-
         [JsonProperty]
         public string Slot { get; internal set; }
 

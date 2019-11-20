@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class ApproachBodyEvent : EventModelBase
     {
-        protected internal override string Eventname => "ApproachBody";
-
         [JsonProperty]
         public string StarSystem { get; internal set; }
 

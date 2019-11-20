@@ -6,9 +6,9 @@ using System.Text;
 namespace EliteEventAPI.Services.Events
 {
     /// <summary>
-    /// Triggerd on startup
+    /// Is triggerd if you reset the game
     /// </summary>
-    public sealed class CommanderEvent : EventModelBase
+    public class ClearSavedGameEvent : EventModelBase
     {
         /// <summary>
         /// Player ID

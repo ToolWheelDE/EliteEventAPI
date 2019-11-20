@@ -4,8 +4,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class FSDJumpEvent : EventModelBase
     {
-        protected internal override string Eventname => "FSDJump";
-
         [JsonProperty]
         public string StarSystem { get; internal set; }
 

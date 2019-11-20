@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class FactionKillBondEvent : EventModelBase
     {
-        protected internal override string Eventname => "FactionKillBond";
-
         [JsonProperty]
         public long Reward { get; internal set; }
 

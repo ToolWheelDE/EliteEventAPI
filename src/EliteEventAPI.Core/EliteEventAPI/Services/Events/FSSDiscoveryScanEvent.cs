@@ -4,8 +4,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class FSSDiscoveryScanEvent : EventModelBase
     {
-        protected internal override string Eventname => "FSSDiscoveryScan";
-
         [JsonProperty]
         public string StarSystem { get; internal set; }
 

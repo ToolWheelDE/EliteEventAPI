@@ -1,12 +1,9 @@
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace EliteEventAPI.Services.Events
 {
-    public sealed class MaterialDiscardedEvent : EventModelBase
+    public sealed class RawModel
     {
-        [JsonProperty]
-        public string Category { get; internal set; }
-
         [JsonProperty]
         public string Name { get; internal set; }
 

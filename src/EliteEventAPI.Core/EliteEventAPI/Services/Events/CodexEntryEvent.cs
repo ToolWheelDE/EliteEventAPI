@@ -7,9 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class CodexEntryEvent : EventModelBase
     {
-        protected internal override string Eventname => "CodexEntry";
-
-
         [JsonProperty]
         public long EntryId { get; internal set; }
 

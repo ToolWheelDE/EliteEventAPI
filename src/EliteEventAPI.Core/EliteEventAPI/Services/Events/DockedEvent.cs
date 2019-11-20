@@ -9,8 +9,6 @@ namespace EliteEventAPI.Services.Events
 {
     public class DockedEvent : EventModelBase
     {
-        protected internal override string Eventname => "Docked";
-
         [JsonProperty]
         public string StationName { get; internal set; }
 

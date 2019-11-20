@@ -9,8 +9,6 @@ namespace EliteEventAPI.Services.Events
 {
     public class UndockedEvent : EventModelBase
     {
-        protected internal override string Eventname => "Undocked";
-
         [JsonProperty]
         public string StationName { get; internal set; }
 

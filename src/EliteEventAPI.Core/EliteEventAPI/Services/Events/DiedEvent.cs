@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class DiedEvent : EventModelBase
     {
-        protected internal override string Eventname => "Died";
-
         [JsonProperty]
         public string KillerName { get; internal set; }
 

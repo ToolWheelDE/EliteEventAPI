@@ -5,10 +5,8 @@ using System.Text;
 
 namespace EliteEventAPI.Services.Events
 {
-    public sealed class PowerPlayEvent : EventModelBase
+    public sealed class PowerplayEvent : EventModelBase
     {
-        protected internal override string Eventname => "Powerplay";
-
         [JsonProperty]
         public string Power { get; internal set; }
 

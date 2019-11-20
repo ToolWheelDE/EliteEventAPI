@@ -4,8 +4,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class AfmuRepairsEvent : EventModelBase
     {
-        protected internal override string Eventname => "AfmuRepairs";
-
         [JsonProperty]
         public string Module { get; internal set; }
 

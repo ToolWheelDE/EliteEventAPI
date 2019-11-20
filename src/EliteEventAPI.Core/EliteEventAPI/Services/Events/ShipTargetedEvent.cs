@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class ShipTargetedEvent : EventModelBase
     {
-        protected internal override string Eventname => "ShipTargeted";
-
         [JsonProperty]
         public bool TargetLocked { get; internal set; }
 

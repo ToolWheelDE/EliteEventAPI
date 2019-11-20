@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class PVPKillEvent : EventModelBase
     {
-        protected internal override string Eventname => "PVPKill";
-
         [JsonProperty]
         public string Victim { get; internal set; }
 

@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class RankEvent : EventModelBase
     {
-        protected internal override string Eventname => "Rank";
-
         [JsonProperty]
         public long Combat { get; internal set; }
 

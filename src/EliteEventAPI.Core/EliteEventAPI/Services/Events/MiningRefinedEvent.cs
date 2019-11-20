@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class MiningRefinedEvent : EventModelBase
     {
-        protected internal override string Eventname => "MiningRefined";
-
         [JsonProperty]
         public string Type { get; internal set; }
 

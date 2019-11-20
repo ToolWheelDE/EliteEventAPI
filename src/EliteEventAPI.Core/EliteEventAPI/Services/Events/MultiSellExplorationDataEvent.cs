@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class MultiSellExplorationDataEvent : EventModelBase
     {
-        protected internal override string Eventname => "MultiSellExplorationData";
-
         [JsonProperty]
         public DiscovererData[] Discovered { get; internal set; }
 

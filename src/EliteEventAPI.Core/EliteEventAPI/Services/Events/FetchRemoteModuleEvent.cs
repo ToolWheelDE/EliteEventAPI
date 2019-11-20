@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class FetchRemoteModuleEvent : EventModelBase
     {
-        protected internal override string Eventname => "FetchRemoteModule";
-
         [JsonProperty]
         public long StorageSlot { get; internal set; }
 

@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class InterdictedEvent : EventModelBase
     {
-        protected internal override string Eventname => "Interdicted";
-
         [JsonProperty]
         public bool Submitted { get; internal set; }
 

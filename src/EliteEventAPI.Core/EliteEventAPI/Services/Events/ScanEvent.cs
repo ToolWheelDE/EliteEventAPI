@@ -4,8 +4,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class ScanEvent : EventModelBase
     {
-        protected internal override string Eventname => "Scan";
-
         [JsonProperty]
         public string StarSystem { get; internal set; }
 

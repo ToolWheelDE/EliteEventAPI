@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class LiftoffEvent : EventModelBase
     {
-        protected internal override string Eventname => "Liftoff";
-
         [JsonProperty]
         public bool PlayerControlled { get; internal set; }
 

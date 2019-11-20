@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class BountyEvent : EventModelBase
     {
-        protected internal override string Eventname => "Bounty";
-
         [JsonProperty]
         public Reward[] Rewards { get; internal set; }
 

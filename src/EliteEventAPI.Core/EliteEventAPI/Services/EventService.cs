@@ -123,7 +123,7 @@ namespace EliteEventAPI.Services
                 using (var reader = new StreamReader(file.Open(FileMode.Open, FileAccess.Read, FileShare.ReadWrite)))
                 {
                     var json = reader.ReadToEnd();
-                    var eventobject = JsonConvert.DeserializeObject<ModulesInfoEvent>(json);
+                    var eventobject = JsonConvert.DeserializeObject<ModuleInfoEvent>(json);
 
                     CallEvent(eventobject);
                 }

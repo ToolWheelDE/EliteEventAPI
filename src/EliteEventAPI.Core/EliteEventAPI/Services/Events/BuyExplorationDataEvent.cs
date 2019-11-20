@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class BuyExplorationDataEvent : EventModelBase
     {
-        protected internal override string Eventname => "BuyExplorationData";
-
         [JsonProperty]
         public string System { get; internal set; }
 

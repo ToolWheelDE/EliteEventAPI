@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class ProspectedAsteroidEvent : EventModelBase
     {
-        protected internal override string Eventname => "ProspectedAsteroid";
-
         [JsonProperty]
         public ProspectedMaterial[] Materials { get; set; }
 

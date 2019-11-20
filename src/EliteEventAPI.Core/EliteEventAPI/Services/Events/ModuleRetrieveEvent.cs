@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class ModuleRetrieveEvent : EventModelBase
     {
-        protected internal override string Eventname => "ModuleRetrieve";
-
         [JsonProperty]
         public long MarketId { get; internal set; }
 

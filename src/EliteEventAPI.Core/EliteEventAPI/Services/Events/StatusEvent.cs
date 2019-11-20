@@ -9,8 +9,6 @@ namespace EliteEventAPI.Services.Events
 {
     public class StatusEvent : EventModelBase
     {
-        protected internal override string Eventname => "Status";
-
         [JsonProperty]
         public ShipStatusFlags Flags { get; internal set; }
 

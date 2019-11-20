@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class PromotionEvent : EventModelBase
     {
-        protected internal override string Eventname => "Promotion";
-
         [JsonProperty]
         public int? Combat { get; internal set; }
 

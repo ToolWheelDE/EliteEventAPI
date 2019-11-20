@@ -6,6 +6,5 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class DockFighterEvent : EventModelBase
     {
-        protected internal override string Eventname => "DockFighter";
     }
 }

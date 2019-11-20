@@ -7,8 +7,6 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class DiscoveryScanEvent : EventModelBase
     {
-        protected internal override string Eventname => "DiscoveryScan";
-
         [JsonProperty]
         public long SystemAddress { get; internal set; }
 
