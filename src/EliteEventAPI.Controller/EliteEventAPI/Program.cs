@@ -16,6 +16,10 @@ namespace EliteEventAPI
             Trace.Listeners.Add(new ConsoleTraceListener());
 
             var eventService = ServiceController.GetService<EventService>();
+
+            var eventslist = string.Join(Environment.NewLine, eventService.GetEventNames());
+
+            
             var edsmService = ServiceController.InstallService<EDSMJournalSync>();
             var storage = ServiceController.InstallService<StorageService>();
 

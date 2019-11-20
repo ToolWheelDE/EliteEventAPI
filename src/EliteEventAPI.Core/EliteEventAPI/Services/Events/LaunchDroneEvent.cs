@@ -9,7 +9,7 @@ namespace EliteEventAPI.Services.Events
     {
         protected internal override string Eventname => "LaunchDrone";
 
-        [JsonProperty("")]
+        [JsonProperty]
         public string Type { get; internal set; }
     }
 }

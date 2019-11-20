@@ -5,10 +5,8 @@ using System.Text;
 
 namespace EliteEventAPI.Services.Events
 {
-    public sealed class LiftoffEvent : EventModelBase
+    public sealed class TouchdownEvent : EventModelBase
     {
-        protected internal override string Eventname => "Liftoff";
-
         [JsonProperty]
         public bool PlayerControlled { get; internal set; }
 

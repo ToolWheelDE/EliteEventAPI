@@ -268,6 +268,21 @@ namespace EliteEventAPI.Services
             }
         }
 
+        public IEnumerable<string> GetEventNames()
+        {
+            return _events.Keys.ToArray();
+        }
+
+        public IEnumerable<string> GetEventClassnames()
+        {
+            return _events.Values.Select(m => m.Name).ToArray();
+        }
+
+        public IEnumerable<Type> GetEventTypes()
+        {
+            return _events.Values.ToArray();
+        }
+
         public DirectoryInfo JournalDirectory { get; }
 
         internal JournalReader Reader { get; }

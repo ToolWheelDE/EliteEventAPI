@@ -9,10 +9,10 @@ namespace EliteEventAPI.Services.Events
     {
         protected internal override string Eventname => "LaunchSRV";
 
-        [JsonProperty("")]
+        [JsonProperty]
         public string Loadout { get; internal set; }
 
-        [JsonProperty("")]
+        [JsonProperty]
         public bool PlayerControlled { get; internal set; }
     }
 }
