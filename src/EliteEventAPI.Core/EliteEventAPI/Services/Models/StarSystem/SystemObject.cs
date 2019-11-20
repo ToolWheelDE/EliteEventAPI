@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Linq;
 using EliteEventAPI.Services.Events;
+using EliteEventAPI.Services.Storage.Models;
 
-namespace EliteEventAPI.Services.Storage.Models
+namespace EliteEventAPI.Services.Models.StarSystem
 {
     public class SystemObject
     {
@@ -17,7 +20,44 @@ namespace EliteEventAPI.Services.Storage.Models
 
         public string Scantype { get; internal set; }
 
+        internal static ObjectType GetObjectType(ScanEvent obj)
+        {
+            if (!string.IsNullOrEmpty(obj.StarType))
+            {
+                return ObjectType.Star;
+            }
+            else if (!string.IsNullOrEmpty(obj.PlanetClass))
+            {
+                return ObjectType.Planet;
+            }
+            else if (obj.Parents.Sum(m => m.Ring) > 0)
+            {
+                return ObjectType.ClusterBelt;
+            }
+            else
+            {
+                Trace.TraceWarning("Unkown Scan objecttype");
+                return 0;
+            }
+        }
 
+        internal static SystemObject GetObject(ScanEvent obj)
+        {
+            switch (GetObjectType(obj))
+            {
+                case ObjectType.Star:
+                    return CreateStar(obj);
+
+                case ObjectType.Planet:
+                    return CreatePlanet(obj);
+
+                case ObjectType.ClusterBelt:
+                    return CreateCluster(obj);
+
+                default:
+                    return null;
+            }
+        }
 
         internal static StarObject CreateStar(ScanEvent obj)
         {
@@ -38,7 +78,7 @@ namespace EliteEventAPI.Services.Storage.Models
             };
         }
 
-        internal static SystemObject CreatePlanet(ScanEvent obj)
+        internal static PlanetObject CreatePlanet(ScanEvent obj)
         {
             return new PlanetObject()
             {
@@ -58,7 +98,7 @@ namespace EliteEventAPI.Services.Storage.Models
             };
         }
 
-        internal static SystemObject CreateCluster(ScanEvent obj)
+        internal static ClusterBeltObject CreateCluster(ScanEvent obj)
         {
             return new ClusterBeltObject()
             {

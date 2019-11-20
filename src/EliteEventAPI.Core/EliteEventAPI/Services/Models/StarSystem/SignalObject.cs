@@ -1,4 +1,4 @@
-﻿namespace EliteEventAPI.Services.Storage.Models
+﻿namespace EliteEventAPI.Services.Models.StarSystem
 {
     public class SignalObject
     {

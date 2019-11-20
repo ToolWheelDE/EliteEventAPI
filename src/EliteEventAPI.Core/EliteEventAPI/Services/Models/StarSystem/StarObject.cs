@@ -1,6 +1,6 @@
 ﻿using EliteEventAPI.Services.Events;
 
-namespace EliteEventAPI.Services.Storage.Models
+namespace EliteEventAPI.Services.Models.StarSystem
 {
     public sealed class StarObject : SystemObject
     {
