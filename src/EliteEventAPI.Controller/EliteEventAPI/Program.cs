@@ -2,7 +2,7 @@
 using EliteEventAPI.Services;
 using EliteEventAPI.Services.EDSM;
 using EliteEventAPI.Services.Events;
-using EliteEventAPI.Services.Starsystem;
+using EliteEventAPI.Services.StarsystemMap;
 using EliteEventAPI.Services.Storage;
 using System;
 using System.Diagnostics;
@@ -22,7 +22,7 @@ namespace EliteEventAPI
                         
             var edsmService = ServiceController.InstallService<EDSMJournalSync>();
             var storage = ServiceController.InstallService<StorageService>();
-            var starsystem = ServiceController.InstallService<StarsystemService>();
+            var starsystem = ServiceController.InstallService<StarsystemMapService>();
 
             ServiceController.Start();
 

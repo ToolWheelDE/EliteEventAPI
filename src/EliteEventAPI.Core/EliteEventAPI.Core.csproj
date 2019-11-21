@@ -31,8 +31,4 @@ EliteEventAPI is a powerful event-based API for reading the game actions of Elit
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="EliteEventAPI\Services\StarSystem\Models\" />
-  </ItemGroup>
-
 </Project>

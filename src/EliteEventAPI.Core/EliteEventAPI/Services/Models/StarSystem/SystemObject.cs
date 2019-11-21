@@ -110,5 +110,18 @@ namespace EliteEventAPI.Services.Models.StarSystem
                 Parents = obj.Parents,
             };
         }
+
+        internal static RingObject CreateRing(ScanEvent obj)
+        {
+            return new RingObject()
+            {
+                ObjectType = ObjectType.Ring,
+                Scantype = obj.ScanType,
+
+                Name = obj.BodyName,
+                Id = obj.BodyId,
+                Parents = obj.Parents,
+            };
+        }
     }
 }

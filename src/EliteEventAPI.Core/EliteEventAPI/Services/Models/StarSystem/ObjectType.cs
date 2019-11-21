@@ -5,6 +5,7 @@ namespace EliteEventAPI.Services.Models.StarSystem
     {
         Star = 1,
         Planet = 2,
-        ClusterBelt = 3
+        ClusterBelt = 3,
+        Ring = 4
     }
 }
