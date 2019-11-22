@@ -121,7 +121,7 @@ namespace EliteEventAPI.Services.StarsystemMap
                 parentnode.ChildList.Add(childnode);
                 childnode.ParentList.Add(parentnode);
 
-                UpdateStarsystemMap.Invoke(childnode);
+                UpdateStarsystemMap?.Invoke(childnode);
             }
 
             if (parents.Star.HasValue)
@@ -144,7 +144,7 @@ namespace EliteEventAPI.Services.StarsystemMap
                 parentnode.ChildList.Add(childnode);
                 childnode.ParentList.Add(parentnode);
 
-                UpdateStarsystemMap.Invoke(childnode);
+                UpdateStarsystemMap?.Invoke(childnode);
             }
 
             if (parents.Planet.HasValue)
@@ -167,7 +167,7 @@ namespace EliteEventAPI.Services.StarsystemMap
                 parentnode.ChildList.Add(childnode);
                 childnode.ParentList.Add(parentnode);
 
-                UpdateStarsystemMap.Invoke(childnode);
+                UpdateStarsystemMap?.Invoke(childnode);
             }
 
             if (parents.Ring.HasValue)
@@ -190,7 +190,7 @@ namespace EliteEventAPI.Services.StarsystemMap
                 parentnode.ChildList.Add(childnode);
                 childnode.ParentList.Add(parentnode);
 
-                UpdateStarsystemMap.Invoke(childnode);
+                UpdateStarsystemMap?.Invoke(childnode);
             }
         }
 
