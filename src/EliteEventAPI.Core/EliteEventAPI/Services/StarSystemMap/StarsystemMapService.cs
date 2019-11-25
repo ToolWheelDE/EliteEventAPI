@@ -60,8 +60,6 @@ namespace EliteEventAPI.Services.StarsystemMap
                 default:
                     break;
             }
-
-
         }
 
         private void HandleClusterBeltObject(ClusterBeltObject obj)

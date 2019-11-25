@@ -11,12 +11,12 @@ EliteEventAPI is a powerful event-based API for reading the game actions of Elit
     <PackageProjectUrl>https://github.com/ToolWheelDE/EliteEventAPI</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ToolWheelDE/EliteEventAPI</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <Version>0.5.0-beta</Version>
+    <Version>0.6.0-beta</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageReleaseNotes>This is a beta version.</PackageReleaseNotes>
-    <AssemblyVersion>0.5.0.0</AssemblyVersion>
-    <FileVersion>0.5.0.0</FileVersion>
+    <AssemblyVersion>0.6.0.0</AssemblyVersion>
+    <FileVersion>0.6.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
