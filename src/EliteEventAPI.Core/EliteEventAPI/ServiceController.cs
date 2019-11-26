@@ -13,10 +13,16 @@ namespace EliteEventAPI
     public static class ServiceController
     {
         private static readonly Dictionary<Type, ServiceBase> _instances = new Dictionary<Type, ServiceBase>();
+        private static readonly EventService _eventservice;
 
         static ServiceController()
         {
-            InstallService<EventService>();
+            _eventservice= InstallService<EventService>();
+        }
+
+        public static void DispatchEvent()
+        {
+            _eventservice.DispatchEvent();
         }
 
         /// <summary>

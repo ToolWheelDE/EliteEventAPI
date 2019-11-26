@@ -21,12 +21,20 @@ namespace EliteEventAPI.Services.Storage
             EventService = ServiceController.GetService<EventService>();
             EventService.Subscribe<StatusEvent>(GameStatusCallback);
 
+            EventService.PreEventCall += EventService_PreEventCall;
+
             Game = new GameModel(EventService);
             Commander = new CommanderModel(EventService);
             Navigation = new NavigationModel(EventService);
             StarSystem = new StarSystemModel(EventService);
             Ship = new ShipModel(EventService);
             Missions = new MissionsModel(EventService);
+        }
+
+        private void EventService_PreEventCall(string eventname, DateTime timestamp, string json)
+        {
+            CurrentEvent = eventname;
+            CurrentEventTimeStamp = timestamp;
         }
 
         private void GameStatusCallback(StatusEvent obj)
@@ -49,6 +57,11 @@ namespace EliteEventAPI.Services.Storage
         public StarSystemModel StarSystem { get; }
 
         public ShipModel Ship { get; }
+
         public MissionsModel Missions { get; }
+
+        public string CurrentEvent { get; private set; }
+
+        public DateTime CurrentEventTimeStamp { get; private set; }
     }
 }

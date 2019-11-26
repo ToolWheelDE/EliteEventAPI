@@ -125,7 +125,7 @@ namespace EliteEventAPI.Services.EDSM
             EventManager.PreEventCall += Events_PreEventCall;
         }
 
-        private void Events_PreEventCall(string eventname, string json)
+        private void Events_PreEventCall(string eventname,DateTime timestamp, string json)
         {
             lock (_queue)
             {

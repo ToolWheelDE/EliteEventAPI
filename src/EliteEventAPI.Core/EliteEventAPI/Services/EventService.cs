@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 namespace EliteEventAPI.Services
 {
     public delegate void EventServiceEventDelegate(string eventname, EventModelBase model);
-    public delegate void EventServiceJsonDelegate(string eventname, string json);
+    public delegate void EventServiceJsonDelegate(string eventname, DateTime timestamp, string json);
 
     public sealed class EventService : ServiceBase
     {
@@ -163,8 +163,9 @@ namespace EliteEventAPI.Services
         {
             var eventobject = JsonConvert.DeserializeObject<dynamic>(json);
             var eventname = (string)eventobject.@event;
+            var timestamp = (DateTime)eventobject.timestamp;
 
-            PreEventCall?.Invoke(eventname, json);
+            PreEventCall?.Invoke(eventname, timestamp, json);
 
             if (!_configuration.Exclude.Contains(eventname))
             {
@@ -180,7 +181,7 @@ namespace EliteEventAPI.Services
                 else
                 {
                     Trace.TraceError($"!!! Unkown event - {eventname}");
-                    UnkownEventCall?.Invoke(eventname, json);
+                    UnkownEventCall?.Invoke(eventname, timestamp, json);
                 }
             }
             else
