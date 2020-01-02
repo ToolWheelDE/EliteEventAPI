@@ -12,5 +12,11 @@ namespace EliteEventAPI.Services.Events
 
         [JsonProperty]
         public string Progress { get; internal set; }
+
+        [JsonProperty]
+        public int RankProgress { get; internal set; }
+
+        [JsonProperty]
+        public int Rank { get; internal set; }
     }
 }

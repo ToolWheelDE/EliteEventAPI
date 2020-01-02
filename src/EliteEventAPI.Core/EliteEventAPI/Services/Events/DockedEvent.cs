@@ -50,5 +50,8 @@ namespace EliteEventAPI.Services.Events
 
         [JsonProperty]
         public double DistFromStarLs { get; internal set; }
+
+        [JsonProperty]
+        public long ActiveFine { get; internal set; }
     }
 }

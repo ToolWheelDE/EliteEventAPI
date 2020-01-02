@@ -21,5 +21,8 @@ namespace EliteEventAPI.Services.Events
 
         [JsonProperty]
         public long Bounty { get; internal set; }
+
+        [JsonProperty]
+        public int Fine { get; internal set; }
     }
 }

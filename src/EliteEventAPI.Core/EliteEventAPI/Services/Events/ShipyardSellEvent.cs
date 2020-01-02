@@ -20,6 +20,12 @@ namespace EliteEventAPI.Services.Events
         public long ShipPrice { get; internal set; }
 
         [JsonProperty]
+        public long ShipMarketId { get; internal set; }
+
+        [JsonProperty]
         public long MarketId { get; internal set; }
+
+        [JsonProperty]
+        public string System { get; internal set; }
     }
 }
