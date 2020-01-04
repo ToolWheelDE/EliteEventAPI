@@ -20,7 +20,7 @@ namespace EliteEventAPI
 
             var eventslist = string.Join(Environment.NewLine, eventService.GetEventNames());
                         
-            var edsmService = ServiceController.InstallService<EDSMJournalSync>();
+           // var edsmService = ServiceController.InstallService<EDSMJournalSync>();
             var storage = ServiceController.InstallService<StorageService>();
             var starsystem = ServiceController.InstallService<StarsystemMapService>();
 

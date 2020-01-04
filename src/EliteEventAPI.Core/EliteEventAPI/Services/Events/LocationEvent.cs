@@ -17,6 +17,15 @@ namespace EliteEventAPI.Services.Events
         public double[] StarPos { get; internal set; }
 
         [JsonProperty]
+        public string[] Powers { get; internal set; }
+
+        [JsonProperty]
+        public string PowerplayState { get; internal set; }
+
+        [JsonProperty]
+        public Conflict[] Conflicts { get; internal set; }
+
+        [JsonProperty]
         public string SystemAllegiance { get; internal set; }
 
         [JsonProperty]
