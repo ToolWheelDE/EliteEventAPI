@@ -6,5 +6,9 @@ namespace EliteEventAPI.Services.Events
 {
     public sealed class SelfDestructEvent : EventModelBase
     {
+        public SelfDestructEvent():base()
+        {
+
+        }
     }
 }

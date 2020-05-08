@@ -35,6 +35,7 @@ namespace EliteEventAPI.Services.StarsystemMap
         private void FSDJumpCallback(FSDJumpEvent obj)
         {
             _nodes.Clear();
+            UpdateStarsystemMap?.Invoke(null);
         }
 
         public override string Name => "Starsystem map";
@@ -60,6 +61,21 @@ namespace EliteEventAPI.Services.StarsystemMap
                 default:
                     break;
             }
+        }
+
+        public IEnumerable<SystemNode> GetAllNodes()
+        {
+            return _nodes.ToArray();
+        }
+
+        public IEnumerable<SystemNode> GetRootElements()
+        {
+            return _nodes.Where(m => !m.HasParents);
+        }
+
+        public IEnumerable<SystemNode> GetChildNodes(SystemNode item)
+        {
+            return item.ChildList;
         }
 
         private void HandleClusterBeltObject(ClusterBeltObject obj)
@@ -94,7 +110,7 @@ namespace EliteEventAPI.Services.StarsystemMap
                 _nodes.Add(childnode);
             }
         }
-
+                
         private void CheckNodeObjects(SystemObject obj)
         {
             var parents = ExtractParents(obj);
@@ -138,6 +154,7 @@ namespace EliteEventAPI.Services.StarsystemMap
                     childnode = SystemNode.CreateNodeFromObject(obj);
                     _nodes.Add(childnode);
                 }
+
 
                 parentnode.ChildList.Add(childnode);
                 childnode.ParentList.Add(parentnode);

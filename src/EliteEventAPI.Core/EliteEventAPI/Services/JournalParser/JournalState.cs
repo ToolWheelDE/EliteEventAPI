@@ -8,9 +8,8 @@ namespace EliteEventAPI.Services.JournalParser
 {
     enum JournalState
     {
-        New = 0,
-        ClosedShutdown,
-        ClosedContinue,
-        Scanning
+        Scanning,
+        Progress,
+        Closed
     }
 }

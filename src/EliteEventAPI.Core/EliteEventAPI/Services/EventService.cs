@@ -52,6 +52,9 @@ namespace EliteEventAPI.Services
             Subscribe<InternalCargoEvent>(InternaCargoCallback);
             Subscribe<InternalOutfittingEvent>(InternalOutfittingCallback);
             Subscribe<InternalMarketEvent>(InternalMarketCallback);
+
+            Subscribe<ShutdownEvent>(ShutdownCallback);
+
         }
 
         private void InternalMarketCallback(InternalMarketEvent obj)
@@ -153,8 +156,7 @@ namespace EliteEventAPI.Services
         private void ShutdownCallback(ShutdownEvent obj)
         {
             Trace.TraceWarning($"Shutdown found on {obj.Timestamp}");
-
-            Reader.CurrentJournal.State = JournalState.ClosedShutdown;
+            Reader.CurrentJournal.State = JournalState.Closed;
         }
 
         public override string Name => "Events";
@@ -172,21 +174,31 @@ namespace EliteEventAPI.Services
                 var modeltype = GetTypeByEventname(eventname);
                 if (modeltype != null)
                 {
-                    Trace.TraceInformation($"Call event - {eventname}");
+                    Trace.TraceInformation($"Call event       : [{timestamp}] {eventname}");
 
-                    var model = (EventModelBase)JsonConvert.DeserializeObject(json, modeltype, _jsonsettings);
+                    var model = default(EventModelBase);
+
+                    try
+                    {
+                        model = (EventModelBase)JsonConvert.DeserializeObject(json, modeltype, _jsonsettings);
+                    }
+                    catch (Exception ex)
+                    {
+                        Trace.TraceError($"!!! Unkown format : [{timestamp}] {eventname} - {ex.Message}");
+                    }
+
                     EventCall?.Invoke(eventname, model);
                     CallEvent(model);
                 }
                 else
                 {
-                    Trace.TraceError($"!!! Unkown event - {eventname}");
+                    Trace.TraceError($"!!! Unkown event : [{timestamp}] {eventname}");
                     UnkownEventCall?.Invoke(eventname, timestamp, json);
                 }
             }
             else
             {
-                Trace.TraceWarning($"Exclude event - {eventname}");
+                Trace.TraceWarning($"Exclude event    : [{timestamp}] {eventname}");
             }
         }
 
@@ -241,7 +253,7 @@ namespace EliteEventAPI.Services
             {
                 while (Running)
                 {
-                    if (Reader.CurrentJournal == null || Reader.CurrentJournal.State != JournalState.New)
+                    if (Reader.CurrentJournal == null || Reader.CurrentJournal.State != JournalState.Progress)
                     {
                         Thread.Sleep(500);
                         Reader.ScanFiles();

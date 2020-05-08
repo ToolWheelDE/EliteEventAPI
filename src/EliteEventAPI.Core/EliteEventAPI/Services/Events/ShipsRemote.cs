@@ -11,6 +11,9 @@ namespace EliteEventAPI.Services.Events
         public string ShipType { get; internal set; }
 
         [JsonProperty]
+        public bool InTransit { get; internal set; }
+
+        [JsonProperty]
         public string StarSystem { get; internal set; }
 
         [JsonProperty]

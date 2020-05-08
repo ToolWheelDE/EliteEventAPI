@@ -48,6 +48,8 @@ namespace EliteEventAPI.Services.StarSystemMap.Models
 
         public long BodyId { get => IsDiscovered ? Object.Id : _bodyid; internal set => _bodyid = value; }
 
+        public bool HasParents { get => ParentList.Count > 0; }
+
         public override string ToString()
         {
             if (Object != null)

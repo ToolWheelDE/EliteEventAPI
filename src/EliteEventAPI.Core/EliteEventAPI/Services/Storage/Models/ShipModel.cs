@@ -10,6 +10,78 @@ namespace EliteEventAPI.Services.Storage.Models
         public ShipModel(EventService eventservice)
         {
             eventservice.Subscribe<StatusEvent>(GameStatusCallback);
+            eventservice.Subscribe<DockedEvent>(DockedCallback);
+            eventservice.Subscribe<UndockedEvent>(UndockedCallback);
+            eventservice.Subscribe<DockingGrantedEvent>(DockingGrantedCallback);
+            eventservice.Subscribe<DockingRequestedEvent>(DockingRequestedCallback);
+            eventservice.Subscribe<DockingDeniedEvent>(DockingDeniedCallback);
+            eventservice.Subscribe<DockingCancelledEvent>(DockingCancelledCallback);
+            eventservice.Subscribe<DockingTimeoutEvent>(DockingTimeoutCallback);
+            eventservice.Subscribe<LoadGameEvent>(LoadGameCallback);
+
+            eventservice.Subscribe<ShipyardSwapEvent>(ShipyardSwapCallback);
+            eventservice.Subscribe<StoredShipsEvent>(StoredShipsCallback);
+
+            SetValue(() => DockingState, DockingStates.Undocked);
+            SetValue(() => DockLandingPad, null);
+        }
+
+        private void StoredShipsCallback(StoredShipsEvent obj)
+        {
+            
+        }
+
+        private void ShipyardSwapCallback(ShipyardSwapEvent obj)
+        {
+  
+        }
+
+        private void LoadGameCallback(LoadGameEvent obj)
+        {
+            SetValue(() => Shipname, string.IsNullOrEmpty(obj.ShipName) ? obj.Ship : obj.ShipName);
+            SetValue(() => ShipIdent, obj.ShipIdent);
+            SetValue(() => ShipId, obj.ShipId);
+        }
+
+        private void UndockedCallback(UndockedEvent obj)
+        {
+            SetValue(() => DockingState, DockingStates.Undocked);
+            SetValue(() => DockLandingPad, null);
+        }
+
+        private void DockingTimeoutCallback(DockingTimeoutEvent obj)
+        {
+            SetValue(() => DockingState, DockingStates.Timeout);
+            SetValue(() => DockLandingPad, null);
+        }
+
+        private void DockingCancelledCallback(DockingCancelledEvent obj)
+        {
+            SetValue(() => DockingState, DockingStates.Cancelled);
+            SetValue(() => DockLandingPad, null);
+        }
+
+        private void DockingDeniedCallback(DockingDeniedEvent obj)
+        {
+            SetValue(() => DockingState, DockingStates.Denied);
+            SetValue(() => DockLandingPad, null);
+        }
+
+        private void DockingRequestedCallback(DockingRequestedEvent obj)
+        {
+            SetValue(() => DockingState, DockingStates.Requested);
+            SetValue(() => DockLandingPad, null);
+        }
+
+        private void DockingGrantedCallback(DockingGrantedEvent obj)
+        {
+            SetValue(() => DockingState, DockingStates.Granted);
+            SetValue(() => DockLandingPad, obj.LandingPad);
+        }
+
+        private void DockedCallback(DockedEvent obj)
+        {
+            SetValue(() => DockingState, DockingStates.Docked);
         }
 
         private void GameStatusCallback(StatusEvent obj)
@@ -74,6 +146,16 @@ namespace EliteEventAPI.Services.Storage.Models
             SetValue(() => NightVision, obj.NightVision);
             SetValue(() => HyperJump, obj.HyperJump);
         }
+
+        public string Shipname { get => GetValue(() => Shipname); }
+
+        public string ShipIdent { get => GetValue(() => ShipIdent); }
+
+        public long ShipId { get => GetValue(() => ShipId); }
+
+        public DockingStates DockingState { get => GetValue(() => DockingState); }
+
+        public int? DockLandingPad { get => GetValue(() => DockLandingPad); }
 
         public double Heading { get; private set; }
 

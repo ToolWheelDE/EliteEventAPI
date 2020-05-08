@@ -22,35 +22,40 @@ namespace EliteEventAPI.Services.JournalParser
 
         public void ScanFiles()
         {
-            var foundfiles = _master.JournalDirectory.GetFiles("Journal.*.*.log").OrderBy(m => m.CreationTime).Select(m => new JournalFile(m));
+            CurrentJournal = _files.Where(m => m.State != JournalState.Closed).FirstOrDefault();
 
-            foreach (var file in foundfiles)
+            if (CurrentJournal == null)
             {
-                var forcenext = false;
-                CurrentJournal = file;
-                file.State = JournalState.Scanning;
+                var foundfiles = _master.JournalDirectory.GetFiles("Journal.*.*.log").OrderBy(m => m.CreationTime).Select(m => new JournalFile(m));
 
-                if (_files.Add(file))
+                foreach (var file in foundfiles)
                 {
-                    // Datei vorab untersuchen
-                    while (!file.EndOfStream)
+                    var forcenext = false;
+                    CurrentJournal = file;
+                    file.State = JournalState.Scanning;
+
+                    if (_files.Add(file))
                     {
-                        var line = file.Reader.ReadLine();
-                        if (line.IndexOf("Shutdown", StringComparison.InvariantCultureIgnoreCase) >= 0)
+                        // Datei vorab untersuchen
+                        while (!file.EndOfStream)
                         {
-                            file.State = JournalState.ClosedShutdown;
-                            forcenext = true;
-                            Trace.TraceWarning($"Journal {file.Name} -> Shutdown");
+                            var line = file.Reader.ReadLine();
+                            if (line.IndexOf("Shutdown", StringComparison.InvariantCultureIgnoreCase) >= 0)
+                            {
+                                file.State = JournalState.Closed;
+                                forcenext = true;
+                                Trace.TraceWarning($"Journal {file.Name} -> Shutdown");
+                            }
                         }
+
+                        if (forcenext)
+                            continue;
+
+                        file.State = JournalState.Progress;
+                        file.ResetStream();
+                        Trace.TraceInformation($"Journal {file.Name} -> Ok");
+                        return;
                     }
-
-                    if (forcenext)
-                        continue;
-
-                    file.State = JournalState.New;
-                    file.ResetStream();
-                    Trace.TraceInformation($"Journal {file.Name} -> Ok");
-                    return;
                 }
             }
         }

@@ -14,6 +14,15 @@ namespace EliteEventAPI.Services.Events
         public long MissionId { get; internal set; }
 
         [JsonProperty]
+        public string Commodity { get; internal set; }
+
+        [JsonProperty("Commodity_Localised")]
+        public string CommodityLocalised {get;internal set;}
+
+        [JsonProperty]
+        public int Count { get; internal set; }
+
+        [JsonProperty]
         public string TargetType { get; internal set; }
 
         [JsonProperty("TargetType_Localised")]
@@ -39,6 +48,9 @@ namespace EliteEventAPI.Services.Events
 
         [JsonProperty]
         public long Reward { get; internal set; }
+
+        [JsonProperty]
+        public Commodity[] CommodityReward { get; internal set; }
 
         [JsonProperty]
         public MissionMaterialsReward[] MaterialsReward { get; internal set; }

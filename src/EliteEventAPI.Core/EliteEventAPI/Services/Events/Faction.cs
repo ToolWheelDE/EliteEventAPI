@@ -11,6 +11,12 @@ namespace EliteEventAPI.Services.Events
         public string FactionState { get; internal set; }
 
         [JsonProperty]
+        public RecoveringState[] RecoveringStates {get;internal set; }
+
+        [JsonProperty]
+        public PendingState[] PendingStates { get; internal set; }
+
+        [JsonProperty]
         public string Government { get; internal set; }
 
         [JsonProperty]

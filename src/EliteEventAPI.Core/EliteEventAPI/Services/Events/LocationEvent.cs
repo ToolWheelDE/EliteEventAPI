@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace EliteEventAPI.Services.Events
 {
@@ -6,6 +7,39 @@ namespace EliteEventAPI.Services.Events
     {
         [JsonProperty]
         public bool Docked { get; internal set; }
+
+        [JsonProperty]
+        public string StationName { get; internal set; }
+
+        [JsonProperty]
+        public string StationType { get; internal set; }
+
+        [JsonProperty]
+        public long MarketID { get; internal set; }
+
+        [JsonProperty]
+        public SystemFaction StationFaction { get; internal set; }
+
+        [JsonProperty]
+        public string StationGovernment { get; internal set; }
+
+        [JsonProperty("StationGovernment_Localised")]
+        public string StationGovernmentLocalised { get; internal set; }
+
+        [JsonProperty]
+        public string StationAllegiance { get; internal set; }
+
+        [JsonProperty]
+        public List<string> StationServices { get; internal set; }
+
+        [JsonProperty]
+        public string StationEconomy { get; internal set; }
+
+        [JsonProperty("StationEconomy_Localised")]
+        public string StationEconomyLocalised { get; internal set; }
+
+        [JsonProperty]
+        public StationEconomy[] StationEconomies { get; internal set; }
 
         [JsonProperty]
         public string StarSystem { get; internal set; }

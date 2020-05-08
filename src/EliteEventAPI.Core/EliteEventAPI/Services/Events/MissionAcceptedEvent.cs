@@ -24,10 +24,19 @@ namespace EliteEventAPI.Services.Events
         public long Count { get; internal set; }
 
         [JsonProperty]
+        public string TargetFaction { get; internal set; }
+
+        [JsonProperty]
+        public string DestinationStation { get; internal set; }
+
+        [JsonProperty]
         public string DestinationSystem { get; internal set; }
 
         [JsonProperty]
         public DateTime Expiry { get; internal set; }
+
+        [JsonProperty]
+        public bool Wing { get; internal set; }
 
         [JsonProperty]
         public string Influence { get; internal set; }

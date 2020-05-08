@@ -51,5 +51,8 @@ namespace EliteEventAPI.Services.Events
 
         [JsonProperty]
         public double SubsystemHealth { get; internal set; }
+
+        [JsonProperty]
+        public string Power { get; internal set; }
     }
 }
