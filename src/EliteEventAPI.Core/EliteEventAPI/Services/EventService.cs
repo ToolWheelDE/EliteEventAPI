@@ -52,6 +52,7 @@ namespace EliteEventAPI.Services
             Subscribe<InternalCargoEvent>(InternaCargoCallback);
             Subscribe<InternalOutfittingEvent>(InternalOutfittingCallback);
             Subscribe<InternalMarketEvent>(InternalMarketCallback);
+            Subscribe<InternalNavRouteEvent>(InternalNavRouteCallback);
 
             Subscribe<ShutdownEvent>(ShutdownCallback);
 
@@ -127,6 +128,21 @@ namespace EliteEventAPI.Services
                 {
                     var json = reader.ReadToEnd();
                     var eventobject = JsonConvert.DeserializeObject<ModuleInfoEvent>(json);
+
+                    CallEvent(eventobject);
+                }
+            }
+        }
+
+        private void InternalNavRouteCallback(InternalNavRouteEvent obj)
+        {
+            var file = new FileInfo(Path.Combine(JournalDirectory.FullName, "navroute.json"));
+            if (file.Exists)
+            {
+                using (var reader = new StreamReader(file.Open(FileMode.Open, FileAccess.Read, FileShare.ReadWrite)))
+                {
+                    var json = reader.ReadToEnd();
+                    var eventobject = JsonConvert.DeserializeObject<NavRouteEvent>(json);
 
                     CallEvent(eventobject);
                 }

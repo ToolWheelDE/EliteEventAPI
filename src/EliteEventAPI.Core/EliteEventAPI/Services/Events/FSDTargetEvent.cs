@@ -11,6 +11,9 @@ namespace EliteEventAPI.Services.Events
         public long SystemAddress { get; internal set; }
 
         [JsonProperty]
+        public string StarClass { get; internal set; }
+
+        [JsonProperty]
         public int RemainingJumpsInRoute { get; internal set; }
     }
 }
