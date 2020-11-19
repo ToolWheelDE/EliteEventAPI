@@ -17,5 +17,8 @@ namespace EliteEventAPI.Services.Events
 
         [JsonProperty]
         public string StarSystem { get; internal set; }
+
+        [JsonProperty]
+        public string StationType { get; internal set; }
     }
 }

@@ -34,6 +34,10 @@ namespace EliteEventAPI.Services.Models.StarSystem
             {
                 return ObjectType.ClusterBelt;
             }
+            else if (string.IsNullOrEmpty(obj.PlanetClass) || string.IsNullOrEmpty(obj.StarType))
+            {
+                return ObjectType.Ring;
+            }
             else
             {
                 Trace.TraceWarning("Unkown Scan objecttype");
@@ -53,6 +57,9 @@ namespace EliteEventAPI.Services.Models.StarSystem
 
                 case ObjectType.ClusterBelt:
                     return CreateCluster(obj);
+
+                case ObjectType.Ring:
+                    return CreateRing(obj);
 
                 default:
                     return null;

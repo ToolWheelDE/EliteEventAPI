@@ -22,6 +22,9 @@ namespace EliteEventAPI.Services.StarSystemMap.Models
                 case ObjectType.ClusterBelt:
                     return new ClusterBeltNode((ClusterBeltObject)obj);
 
+                case ObjectType.Ring:
+                    return new RingNode((RingObject)obj);
+
                 default:
                     throw new NotSupportedException($"Not supported: {obj.ObjectType}");
             }

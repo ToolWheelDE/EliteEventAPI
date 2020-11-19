@@ -11,6 +11,9 @@ namespace EliteEventAPI.Services.Events
         public string BodyName { get; internal set; }
 
         [JsonProperty]
+        public long SystemAddress { get; internal set; }
+
+        [JsonProperty]
         public long BodyId { get; internal set; }
 
         [JsonProperty]

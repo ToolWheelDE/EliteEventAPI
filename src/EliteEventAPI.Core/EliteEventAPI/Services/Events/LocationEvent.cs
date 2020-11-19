@@ -1,3 +1,4 @@
+using System;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -19,6 +20,10 @@ namespace EliteEventAPI.Services.Events
 
         [JsonProperty]
         public SystemFaction StationFaction { get; internal set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+        [Obsolete]
+        public double DistFromStarLS { get; internal set; }
 
         [JsonProperty]
         public string StationGovernment { get; internal set; }

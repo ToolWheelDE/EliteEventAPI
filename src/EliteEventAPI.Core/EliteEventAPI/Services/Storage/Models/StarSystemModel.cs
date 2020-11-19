@@ -47,24 +47,7 @@ namespace EliteEventAPI.Services.Storage.Models
 
         private void FSSScanCallback(ScanEvent obj)
         {
-            var systemobject = default(SystemObject);
-
-            if (!string.IsNullOrEmpty(obj.StarType))
-            {
-                systemobject = SystemObject.CreateStar(obj);
-            }
-            else if (!string.IsNullOrEmpty(obj.PlanetClass))
-            {
-                systemobject = SystemObject.CreatePlanet(obj);
-            }
-            else if (obj.Parents.Sum(m => m.Ring) > 0)
-            {
-                systemobject = SystemObject.CreateCluster(obj);
-            }
-            else
-            {
-                Trace.TraceWarning("Unkown Scan objecttype");
-            }
+            var systemobject = SystemObject.GetObject(obj);
 
             _objects.Add(systemobject);
 

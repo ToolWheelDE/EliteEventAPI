@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace EliteEventAPI.Services.StarsystemMap
 {
-        public delegate void UpdateStarsystemMapDelegate(SystemNode node);
+    public delegate void UpdateStarsystemMapDelegate(SystemNode node);
 
     public sealed class StarsystemMapService : ServiceBase
     {
@@ -58,6 +58,10 @@ namespace EliteEventAPI.Services.StarsystemMap
                     HandleClusterBeltObject((ClusterBeltObject)systemobject);
                     break;
 
+                case ObjectType.Ring:
+                    HandleRingObject((RingObject)systemobject);
+                    break;
+
                 default:
                     break;
             }
@@ -76,6 +80,12 @@ namespace EliteEventAPI.Services.StarsystemMap
         public IEnumerable<SystemNode> GetChildNodes(SystemNode item)
         {
             return item.ChildList;
+        }
+
+        private void HandleRingObject(RingObject obj)
+        {
+            CheckDiscovere(obj);
+            CheckNodeObjects(obj);
         }
 
         private void HandleClusterBeltObject(ClusterBeltObject obj)
@@ -110,19 +120,19 @@ namespace EliteEventAPI.Services.StarsystemMap
                 _nodes.Add(childnode);
             }
         }
-                
+
         private void CheckNodeObjects(SystemObject obj)
         {
-            var parents = ExtractParents(obj);
+            var currentParent = ExtractParents(obj);
 
-            if (parents.Null.HasValue)
+            if (currentParent.Ring.HasValue)
             {
-                var parentnode = _nodes.Where(m => m.BodyId == parents.Null).FirstOrDefault();
+                var parentnode = _nodes.Where(m => m.BodyId == currentParent.Ring).FirstOrDefault();
                 var childnode = _nodes.Where(m => m.BodyId == obj.Id).FirstOrDefault();
 
                 if (parentnode == null)
                 {
-                    parentnode = new BarycenterNode(parents.Null.Value);
+                    parentnode = new RingNode(currentParent.Ring.Value);
                     _nodes.Add(parentnode);
                 }
 
@@ -136,16 +146,18 @@ namespace EliteEventAPI.Services.StarsystemMap
                 childnode.ParentList.Add(parentnode);
 
                 UpdateStarsystemMap?.Invoke(childnode);
+
+                return;
             }
 
-            if (parents.Star.HasValue)
+            if (currentParent.Planet.HasValue)
             {
-                var parentnode = _nodes.Where(m => m.BodyId == parents.Star).FirstOrDefault();
+                var parentnode = _nodes.Where(m => m.BodyId == currentParent.Planet).FirstOrDefault();
                 var childnode = _nodes.Where(m => m.BodyId == obj.Id).FirstOrDefault();
 
                 if (parentnode == null)
                 {
-                    parentnode = new StarNode(parents.Star.Value);
+                    parentnode = new PlanetNode(currentParent.Planet.Value);
                     _nodes.Add(parentnode);
                 }
 
@@ -155,21 +167,22 @@ namespace EliteEventAPI.Services.StarsystemMap
                     _nodes.Add(childnode);
                 }
 
-
                 parentnode.ChildList.Add(childnode);
                 childnode.ParentList.Add(parentnode);
 
                 UpdateStarsystemMap?.Invoke(childnode);
+
+                return;
             }
 
-            if (parents.Planet.HasValue)
+            if (currentParent.Star.HasValue)
             {
-                var parentnode = _nodes.Where(m => m.BodyId == parents.Planet).FirstOrDefault();
+                var parentnode = _nodes.Where(m => m.BodyId == currentParent.Star).FirstOrDefault();
                 var childnode = _nodes.Where(m => m.BodyId == obj.Id).FirstOrDefault();
 
                 if (parentnode == null)
                 {
-                    parentnode = new PlanetNode(parents.Planet.Value);
+                    parentnode = new StarNode(currentParent.Star.Value);
                     _nodes.Add(parentnode);
                 }
 
@@ -179,20 +192,23 @@ namespace EliteEventAPI.Services.StarsystemMap
                     _nodes.Add(childnode);
                 }
 
+
                 parentnode.ChildList.Add(childnode);
                 childnode.ParentList.Add(parentnode);
 
                 UpdateStarsystemMap?.Invoke(childnode);
+
+                return;
             }
 
-            if (parents.Ring.HasValue)
+            if (currentParent.Null.HasValue)
             {
-                var parentnode = _nodes.Where(m => m.BodyId == parents.Ring).FirstOrDefault();
+                var parentnode = _nodes.Where(m => m.BodyId == currentParent.Null).FirstOrDefault();
                 var childnode = _nodes.Where(m => m.BodyId == obj.Id).FirstOrDefault();
 
                 if (parentnode == null)
                 {
-                    parentnode = new RingNode(parents.Ring.Value);
+                    parentnode = new BarycenterNode(currentParent.Null.Value);
                     _nodes.Add(parentnode);
                 }
 
@@ -206,6 +222,8 @@ namespace EliteEventAPI.Services.StarsystemMap
                 childnode.ParentList.Add(parentnode);
 
                 UpdateStarsystemMap?.Invoke(childnode);
+
+                return;
             }
         }
 
