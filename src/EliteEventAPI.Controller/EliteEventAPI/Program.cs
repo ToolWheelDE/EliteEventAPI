@@ -1,4 +1,6 @@
 ﻿using EliteEventAPI;
+using EliteEventAPI.Diagnostics.Logging;
+using EliteEventAPI.Diagnostics.Logging.Targets;
 using EliteEventAPI.Services;
 using EliteEventAPI.Services.EDSM;
 using EliteEventAPI.Services.Events;
@@ -14,7 +16,10 @@ namespace EliteEventAPI
     {
         static void Main()
         {
-            Trace.Listeners.Add(new ConsoleTraceListener());
+            LoggerManager.IsEnabled = true;
+            LoggerManager.MaxLevel = LoggerMessageType.Error;
+            LoggerManager.MinLevel = LoggerMessageType.Trace;
+            LoggerManager.Add("console", new ConsoleLoggerTarget());
 
             var eventService = ServiceController.GetService<EventService>();
 

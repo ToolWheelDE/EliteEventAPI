@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EliteEventAPI.Diagnostics.Logging;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -11,10 +12,13 @@ namespace EliteEventAPI.Services.JournalParser
     sealed class JournalReader
     {
         private readonly HashSet<JournalFile> _files = new HashSet<JournalFile>();
+        private ClassLogger logger;
         private readonly EventService _master;
 
         public JournalReader(EventService master)
         {
+            logger = new ClassLogger(this);
+
             _master = master;
         }
 
@@ -44,7 +48,7 @@ namespace EliteEventAPI.Services.JournalParser
                             {
                                 file.State = JournalState.Closed;
                                 forcenext = true;
-                                Trace.TraceWarning($"Journal {file.Name} -> Shutdown");
+                                logger.Warning($"Journal {file.Name} -> Shutdown");
                             }
                         }
 
@@ -53,7 +57,7 @@ namespace EliteEventAPI.Services.JournalParser
 
                         file.State = JournalState.Progress;
                         file.ResetStream();
-                        Trace.TraceInformation($"Journal {file.Name} -> Ok");
+                        logger.Normal($"Journal {file.Name} -> Ok");
                         return;
                     }
                 }

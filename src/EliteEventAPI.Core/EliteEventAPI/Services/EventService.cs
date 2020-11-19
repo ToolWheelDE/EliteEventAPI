@@ -1,4 +1,5 @@
 ﻿using EliteEventAPI.Configuration;
+using EliteEventAPI.Diagnostics.Logging;
 using EliteEventAPI.Services.Events;
 using EliteEventAPI.Services.JournalParser;
 using Newtonsoft.Json;
@@ -19,6 +20,8 @@ namespace EliteEventAPI.Services
 
     public sealed class EventService : ServiceBase
     {
+        private ClassLogger logger ;
+
         private readonly Queue<string> _queue = new Queue<string>();
         private readonly EventServiceConfiguration _configuration;
 
@@ -32,6 +35,8 @@ namespace EliteEventAPI.Services
 
         public EventService()
         {
+            logger = new ClassLogger(this);
+
             ScanEvents();
 
             _jsonsettings = new JsonSerializerSettings
@@ -151,7 +156,7 @@ namespace EliteEventAPI.Services
 
         private void JsonErrorEventHandler(object sender, Newtonsoft.Json.Serialization.ErrorEventArgs e)
         {
-            Trace.TraceError($"Json parser error - Object: {e.CurrentObject} Message: { e.ErrorContext.Error.Message}");
+            logger.Error($"Json parser error - Object: {e.CurrentObject} Message: { e.ErrorContext.Error.Message}");
         }
 
         private void ScanEvents()
@@ -171,7 +176,7 @@ namespace EliteEventAPI.Services
 
         private void ShutdownCallback(ShutdownEvent obj)
         {
-            Trace.TraceWarning($"Shutdown found on {obj.Timestamp}");
+            logger.Warning($"Shutdown found on {obj.Timestamp}");
             Reader.CurrentJournal.State = JournalState.Closed;
         }
 
@@ -190,7 +195,7 @@ namespace EliteEventAPI.Services
                 var modeltype = GetTypeByEventname(eventname);
                 if (modeltype != null)
                 {
-                    Trace.TraceInformation($"Call event       : [{timestamp}] {eventname}");
+                    logger.Debug($"Call event       : [{timestamp}] {eventname}");
 
                     var model = default(EventModelBase);
 
@@ -200,7 +205,7 @@ namespace EliteEventAPI.Services
                     }
                     catch (Exception ex)
                     {
-                        Trace.TraceError($"!!! Unkown format : [{timestamp}] {eventname} - {ex.Message}");
+                        logger.Error($"!!! Unkown format : [{timestamp}] {eventname} - {ex.Message}");
                     }
 
                     EventCall?.Invoke(eventname, model);
@@ -208,13 +213,13 @@ namespace EliteEventAPI.Services
                 }
                 else
                 {
-                    Trace.TraceError($"!!! Unkown event : [{timestamp}] {eventname}");
+                    logger.Error($"!!! Unkown event : [{timestamp}] {eventname}");
                     UnkownEventCall?.Invoke(eventname, timestamp, json);
                 }
             }
             else
             {
-                Trace.TraceWarning($"Exclude event    : [{timestamp}] {eventname}");
+                logger.Warning($"Exclude event    : [{timestamp}] {eventname}");
             }
         }
 

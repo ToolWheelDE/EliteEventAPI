@@ -1,4 +1,5 @@
 ﻿using EliteEventAPI.Configuration;
+using EliteEventAPI.Diagnostics.Logging;
 using EliteEventAPI.Services;
 using Newtonsoft.Json;
 using System;
@@ -112,6 +113,7 @@ namespace EliteEventAPI.Services.EDSM
     "WingLeave" };
 
         private readonly EDSMSyncConfiguration _configuration;
+        private ClassLogger logger;
 
         public override string Name => "EDSM Sync Service";
 
@@ -119,6 +121,8 @@ namespace EliteEventAPI.Services.EDSM
 
         public EDSMJournalSync()
         {
+            logger = new ClassLogger(this);
+
             _configuration = ConfigurationManager.LoadConfiguration<EDSMSyncConfiguration>();
 
             EventManager = ServiceController.GetService<EventService>();
@@ -223,18 +227,18 @@ namespace EliteEventAPI.Services.EDSM
 
                             }
 
-                            Trace.TraceInformation($"Send EDSM {requestjson.@event}{name} {responsejson.msg}");
+                            logger.Normal($"Send EDSM {requestjson.@event}{name} {responsejson.msg}");
                         }
                         else
                         {
-                            Trace.TraceWarning($"Error send EDSM {requestjson.@event}");
+                            logger.Warning($"Error send EDSM {requestjson.@event}");
                         }
                     }
                     catch (Exception ex)
                     {
                         lock (_queue)
                         {
-                            Trace.TraceError(ex.Message);
+                            logger.Error(ex.Message);
                             _queue.Enqueue(element.Value);
                         }
                     }

@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Linq;
 using EliteEventAPI.Services.Events;
 using EliteEventAPI.Services.Storage.Models;
+using Pandora;
 
 namespace EliteEventAPI.Services.Models.StarSystem
 {
@@ -40,7 +41,7 @@ namespace EliteEventAPI.Services.Models.StarSystem
             }
             else
             {
-                Trace.TraceWarning("Unkown Scan objecttype");
+                Logger.Warning("Unkown Scan objecttype");
                 return 0;
             }
         }
