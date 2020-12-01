@@ -1,4 +1,5 @@
 ﻿using EliteEventAPI.Services;
+using EliteEventAPI.Services.Journal;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,11 +14,11 @@ namespace EliteEventAPI
     public static class ServiceController
     {
         private static readonly Dictionary<Type, ServiceBase> _instances = new Dictionary<Type, ServiceBase>();
-        private static readonly EventService _eventservice;
+        private static readonly JournalEventService _eventservice;
 
         static ServiceController()
         {
-            _eventservice= InstallService<EventService>();
+            _eventservice = InstallService<JournalEventService>();
         }
 
         public static void DispatchEvent()

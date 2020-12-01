@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DotNetZip" Version="1.15.0" />
+    <PackageReference Include="NetMQ" Version="4.0.1.6" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\EliteEventAPI.Core\EliteEventAPI.Core.csproj" />
   </ItemGroup>
 

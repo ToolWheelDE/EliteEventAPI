@@ -1,4 +1,5 @@
-﻿using EliteEventAPI.Services.Events;
+﻿using EliteEventAPI.Services.Journal;
+using EliteEventAPI.Services.Journal.Events;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,9 +8,9 @@ namespace EliteEventAPI.Services.Storage.Models
 {
     public sealed class NavigationModel : ModelBase
     {
-        private Queue<NavigationPoint> _history = new Queue<NavigationPoint>();
+        private readonly Queue<NavigationPoint> _history = new Queue<NavigationPoint>();
 
-        public NavigationModel(EventService eventservice)
+        public NavigationModel(JournalEventService eventservice)
         {
 
             eventservice.Subscribe<LocationEvent>(LocationCallback);
@@ -47,20 +48,20 @@ namespace EliteEventAPI.Services.Storage.Models
         {
             SetValue(() => SystemName, obj.StarSystem);
 
-            AddNavigationPoint(obj.Timestamp, obj.StarSystem, NavigationPointType.Current,null);
+            AddNavigationPoint(obj.Timestamp, obj.StarSystem, NavigationPointType.Current, null);
         }
 
         private void AddNavigationPoint(DateTime timestamp, string starSystem, NavigationPointType current, double? jumpdistance)
         {
             var point = new NavigationPoint()
-                {
+            {
                 Timestamp = timestamp,
-                Type=current,
+                Type = current,
                 StarName = starSystem,
                 JumpDistance = jumpdistance
             };
 
-            if(_history.Count ==20)
+            if (_history.Count == 20)
             {
                 _history.Dequeue();
             }

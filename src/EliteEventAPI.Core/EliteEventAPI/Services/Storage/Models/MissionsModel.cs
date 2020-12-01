@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using EliteEventAPI.Services.Events;
+using EliteEventAPI.Services.Journal;
+using EliteEventAPI.Services.Journal.Events;
 
 namespace EliteEventAPI.Services.Storage.Models
 {
     public sealed class MissionsModel : ModelBase
     {
-        private List<Mission> _missions = new List<Mission>();
+        private readonly List<Mission> _missions = new List<Mission>();
 
-        public MissionsModel(EventService eventservice)
+        public MissionsModel(JournalEventService eventservice)
         {
             eventservice.Subscribe<MissionAbandonedEvent>(MissionAbandonedCallback);
             eventservice.Subscribe<MissionAcceptedEvent>(MissionAcceptedCallback);

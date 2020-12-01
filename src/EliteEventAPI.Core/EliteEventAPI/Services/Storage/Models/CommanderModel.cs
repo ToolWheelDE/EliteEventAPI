@@ -1,4 +1,5 @@
-﻿using EliteEventAPI.Services.Events;
+﻿using EliteEventAPI.Services.Journal;
+using EliteEventAPI.Services.Journal.Events;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +8,7 @@ namespace EliteEventAPI.Services.Storage.Models
 {
     public sealed class CommanderModel : ModelBase
     {
-        public CommanderModel(EventService eventservice)
+        public CommanderModel(JournalEventService eventservice)
         {
             eventservice.Subscribe<CommanderEvent>(CallbackCommanderEvent);
         }

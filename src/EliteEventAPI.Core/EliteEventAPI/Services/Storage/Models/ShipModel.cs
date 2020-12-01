@@ -1,4 +1,5 @@
-﻿using EliteEventAPI.Services.Events;
+﻿using EliteEventAPI.Services.Journal;
+using EliteEventAPI.Services.Journal.Events;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +8,7 @@ namespace EliteEventAPI.Services.Storage.Models
 {
     public sealed class ShipModel : ModelBase
     {
-        public ShipModel(EventService eventservice)
+        public ShipModel(JournalEventService eventservice)
         {
             eventservice.Subscribe<StatusEvent>(GameStatusCallback);
             eventservice.Subscribe<DockedEvent>(DockedCallback);
@@ -28,12 +29,12 @@ namespace EliteEventAPI.Services.Storage.Models
 
         private void StoredShipsCallback(StoredShipsEvent obj)
         {
-            
+
         }
 
         private void ShipyardSwapCallback(ShipyardSwapEvent obj)
         {
-  
+
         }
 
         private void LoadGameCallback(LoadGameEvent obj)

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
-using EliteEventAPI.Services.Events;
+using EliteEventAPI.Services.Journal.Events;
 using EliteEventAPI.Services.Storage.Models;
 using Pandora;
 

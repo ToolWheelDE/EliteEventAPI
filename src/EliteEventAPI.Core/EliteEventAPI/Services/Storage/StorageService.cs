@@ -1,6 +1,7 @@
 ﻿using EliteEventAPI.Configuration;
 using EliteEventAPI.Services;
-using EliteEventAPI.Services.Events;
+using EliteEventAPI.Services.Journal;
+using EliteEventAPI.Services.Journal.Events;
 using EliteEventAPI.Services.Storage.Models;
 using Newtonsoft.Json;
 using System;
@@ -18,7 +19,7 @@ namespace EliteEventAPI.Services.Storage
     {
         public StorageService()
         {
-            EventService = ServiceController.GetService<EventService>();
+            EventService = ServiceController.GetService<JournalEventService>();
             EventService.Subscribe<StatusEvent>(GameStatusCallback);
 
             EventService.PreEventCall += EventService_PreEventCall;
@@ -46,7 +47,7 @@ namespace EliteEventAPI.Services.Storage
 
         public bool JournalSystemRunning { get; private set; }
 
-        public EventService EventService { get; }
+        public JournalEventService EventService { get; }
 
         public GameModel Game { get; }
 

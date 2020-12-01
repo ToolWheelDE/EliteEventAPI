@@ -1,6 +1,7 @@
 ﻿using EliteEventAPI.Configuration;
 using EliteEventAPI.Services;
-using EliteEventAPI.Services.Events;
+using EliteEventAPI.Services.Journal;
+using EliteEventAPI.Services.Journal.Events;
 using EliteEventAPI.Services.Models.StarSystem;
 using EliteEventAPI.Services.StarSystemMap.Models;
 using EliteEventAPI.Services.Storage.Models;
@@ -22,11 +23,11 @@ namespace EliteEventAPI.Services.StarsystemMap
     {
         public event UpdateStarsystemMapDelegate UpdateStarsystemMap;
 
-        private List<SystemNode> _nodes = new List<SystemNode>();
+        private readonly List<SystemNode> _nodes = new List<SystemNode>();
 
         public StarsystemMapService()
         {
-            var events = ServiceController.GetService<EventService>();
+            var events = ServiceController.GetService<JournalEventService>();
 
             events.Subscribe<ScanEvent>(ScanCallback);
             events.Subscribe<FSDJumpEvent>(FSDJumpCallback);

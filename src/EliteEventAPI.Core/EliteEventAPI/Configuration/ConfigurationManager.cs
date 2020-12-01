@@ -11,9 +11,9 @@ namespace EliteEventAPI.Configuration
 {
     public class ConfigurationManager
     {
-        private static Dictionary<Type, ConfigurationBase> _configurationbytype = new Dictionary<Type, ConfigurationBase>();
-        private static XmlDocument _configurationdocument;
-        private static XmlNode _configurationnode;
+        private static readonly Dictionary<Type, ConfigurationBase> _configurationbytype = new Dictionary<Type, ConfigurationBase>();
+        private static readonly XmlDocument _configurationdocument;
+        private static readonly XmlNode _configurationnode;
 
         private static readonly string ConfigurationFile = "configuration.xml";
 

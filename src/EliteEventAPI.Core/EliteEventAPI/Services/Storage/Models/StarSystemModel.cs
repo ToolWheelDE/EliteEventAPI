@@ -1,4 +1,5 @@
-﻿using EliteEventAPI.Services.Events;
+﻿using EliteEventAPI.Services.Journal;
+using EliteEventAPI.Services.Journal.Events;
 using EliteEventAPI.Services.Models.StarSystem;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,10 @@ namespace EliteEventAPI.Services.Storage.Models
 {
     public sealed class StarSystemModel : ModelBase
     {
-        private List<SystemObject> _objects = new List<SystemObject>();
-        private List<SignalObject> _singals = new List<SignalObject>();
+        private readonly List<SystemObject> _objects = new List<SystemObject>();
+        private readonly List<SignalObject> _singals = new List<SignalObject>();
 
-        public StarSystemModel(EventService eventservice)
+        public StarSystemModel(JournalEventService eventservice)
         {
             eventservice.Subscribe<FSDJumpEvent>(FSDJumpCallback);
             eventservice.Subscribe<FSSDiscoveryScanEvent>(FSSDiscoveryScanCallback);

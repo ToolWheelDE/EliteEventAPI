@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using EliteEventAPI.Services.Events;
+using EliteEventAPI.Services.Journal;
+using EliteEventAPI.Services.Journal.Events;
 
 namespace EliteEventAPI.Services.Storage.Models
 {
     public sealed class GameModel : ModelBase
     {
-        private Queue<ChatMessage> _messages = new Queue<ChatMessage>();
+        private readonly Queue<ChatMessage> _messages = new Queue<ChatMessage>();
         private int _maxchatmasseges;
 
-        public GameModel(EventService eventservice)
+        public GameModel(JournalEventService eventservice)
         {
             MaxChatMessages = 50;
             eventservice.Subscribe<StatusEvent>(GameStatusCallback);

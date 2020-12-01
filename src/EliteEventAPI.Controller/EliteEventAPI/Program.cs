@@ -2,12 +2,16 @@
 using EliteEventAPI.Diagnostics.Logging;
 using EliteEventAPI.Diagnostics.Logging.Targets;
 using EliteEventAPI.Services;
-using EliteEventAPI.Services.EDSM;
-using EliteEventAPI.Services.Events;
+using EliteEventAPI.Services.Journal;
 using EliteEventAPI.Services.StarsystemMap;
 using EliteEventAPI.Services.Storage;
+using Ionic.Zlib;
+using NetMQ;
+using NetMQ.Sockets;
 using System;
 using System.Diagnostics;
+using System.IO;
+using System.Text;
 using System.Threading;
 
 namespace EliteEventAPI
@@ -21,9 +25,7 @@ namespace EliteEventAPI
             LoggerManager.MinLevel = LoggerMessageType.Trace;
             LoggerManager.Add("console", new ConsoleLoggerTarget());
 
-            var eventService = ServiceController.GetService<EventService>();
-
-            var eventslist = string.Join(Environment.NewLine, eventService.GetEventNames());
+            var journalReader = ServiceController.InstallService<GameJournalReaderService>();
 
             // var edsmService = ServiceController.InstallService<EDSMJournalSync>();
             var storage = ServiceController.InstallService<StorageService>();
@@ -33,7 +35,7 @@ namespace EliteEventAPI
 
             while (true)
             {
-                eventService.DispatchEvent();
+                journalReader.DispatchEvent();
 
                 Thread.Sleep(10);
             }

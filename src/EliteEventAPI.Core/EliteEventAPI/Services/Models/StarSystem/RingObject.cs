@@ -1,4 +1,4 @@
-﻿using EliteEventAPI.Services.Events;
+﻿using EliteEventAPI.Services.Journal.Events;
 
 namespace EliteEventAPI.Services.Models.StarSystem
 {
