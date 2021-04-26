@@ -15,5 +15,11 @@ namespace EliteEventAPI.Services.Journal.Events
 
         [JsonProperty]
         public double Longitude { get; internal set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        public string NearestDestination { get; internal set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        public string NearestDestination_Localised { get; internal set; }
     }
 }

@@ -29,6 +29,14 @@ namespace EliteEventAPI.Services.Journal
             EventService.Subscribe<InternalOutfittingEvent>(InternalOutfittingCallback);
             EventService.Subscribe<InternalMarketEvent>(InternalMarketCallback);
             EventService.Subscribe<InternalNavRouteEvent>(InternalNavRouteCallback);
+            EventService.Subscribe<ShutdownEvent>(InternalShutdownCallback);
+        }
+
+        private void InternalShutdownCallback(ShutdownEvent obj)
+        {
+            journalReader.CurrentJournal.State = JournalFileState.Closed;
+
+            journalReader.ScanFiles();
         }
 
         public JournalEventService EventService { get; }

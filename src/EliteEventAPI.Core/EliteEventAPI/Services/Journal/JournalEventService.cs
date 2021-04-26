@@ -53,11 +53,7 @@ namespace EliteEventAPI.Services.Journal
             //Subscribe<InternalOutfittingEvent>(InternalOutfittingCallback);
             //Subscribe<InternalMarketEvent>(InternalMarketCallback);
             //Subscribe<InternalNavRouteEvent>(InternalNavRouteCallback);
-
-            Subscribe<ShutdownEvent>(ShutdownCallback);
         }
-
-
 
         private void JsonErrorEventHandler(object sender, Newtonsoft.Json.Serialization.ErrorEventArgs e)
         {
@@ -77,11 +73,6 @@ namespace EliteEventAPI.Services.Journal
                 _events.Add(item.Eventname, item.Type);
                 _targets.Add(item.Type, new HashSet<Delegate>());
             }
-        }
-
-        private void ShutdownCallback(ShutdownEvent obj)
-        {
-            logger.Warning($"Shutdown found on {obj.Timestamp}");
         }
 
         public override string Name => "Events";
@@ -116,6 +107,7 @@ namespace EliteEventAPI.Services.Journal
                     catch (Exception ex)
                     {
                         logger.Error($"!!! Unkown format : [{timestamp}] {eventname} - {ex.Message}");
+                        return;
                     }
 
                     EventCall?.Invoke(eventname, model);

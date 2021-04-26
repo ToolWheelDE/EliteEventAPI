@@ -14,13 +14,17 @@ namespace EliteEventAPI.Services.Journal.Parser
         private readonly HashSet<JournalFile> _files = new HashSet<JournalFile>();
         private readonly ClassLogger logger;
         private readonly DirectoryInfo journalDirectory;
+        private readonly FileSystemWatcher fileSystemWatcher;
 
         public JournalReader(DirectoryInfo directory)
         {
             logger = new ClassLogger(this);
             journalDirectory = directory;
+            fileSystemWatcher = new FileSystemWatcher(directory.FullName);
+            fileSystemWatcher.EnableRaisingEvents = true;
+            fileSystemWatcher.Created += FileSystemWatcher_Created;
         }
-
+                
         public JournalFile CurrentJournal { get; private set; }
 
         public string JournalDirectory { get => journalDirectory.FullName; }
@@ -75,6 +79,11 @@ namespace EliteEventAPI.Services.Journal.Parser
             if (!HasNextChuck()) return string.Empty;
 
             return CurrentJournal.Reader.ReadLine();
+        }
+
+        private void FileSystemWatcher_Created(object sender, FileSystemEventArgs e)
+        {
+            ScanFiles();
         }
     }
 }

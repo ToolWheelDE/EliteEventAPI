@@ -108,5 +108,11 @@ namespace EliteEventAPI.Services.Journal.Events
 
         [JsonProperty]
         public SystemFaction SystemFaction { get; internal set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        public float Latitude { get; internal set; }
+
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        public float Longitude {get;internal set;}
     }  
 }
