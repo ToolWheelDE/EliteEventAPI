@@ -5,6 +5,12 @@ namespace EliteEventAPI.Services.Journal.Events
     public sealed class FSDJumpEvent : EventModelBase
     {
         [JsonProperty]
+        public bool Taxi { get; internal set; }
+
+        [JsonProperty]
+        public bool Multicrew { get; internal set; }
+
+        [JsonProperty]
         public string StarSystem { get; internal set; }
 
         [JsonProperty]

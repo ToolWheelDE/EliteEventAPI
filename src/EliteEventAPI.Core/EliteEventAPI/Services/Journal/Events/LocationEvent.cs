@@ -10,6 +10,15 @@ namespace EliteEventAPI.Services.Journal.Events
         public bool Docked { get; internal set; }
 
         [JsonProperty]
+        public bool Taxi { get; internal set; }
+
+        [JsonProperty]
+        public bool Multicrew { get; internal set; }
+
+        [JsonProperty]
+        public bool OnFoot { get; internal set; }
+
+        [JsonProperty]
         public string StationName { get; internal set; }
 
         [JsonProperty]

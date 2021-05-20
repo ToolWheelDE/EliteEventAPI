@@ -9,6 +9,12 @@ namespace EliteEventAPI.Services.Journal.Events
 {
     public class DockedEvent : EventModelBase
     {
+        [JsonProperty]
+        public bool Taxi { get; internal set; }
+
+        [JsonProperty]
+        public bool Multicrew { get; internal set; }
+
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Body { get; internal set; }
 

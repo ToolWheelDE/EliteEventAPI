@@ -29,14 +29,30 @@ namespace EliteEventAPI.Services.Journal
             EventService.Subscribe<InternalOutfittingEvent>(InternalOutfittingCallback);
             EventService.Subscribe<InternalMarketEvent>(InternalMarketCallback);
             EventService.Subscribe<InternalNavRouteEvent>(InternalNavRouteCallback);
+            EventService.Subscribe<InternalCargoEvent>(InternaBackPackCallback);
             EventService.Subscribe<ShutdownEvent>(InternalShutdownCallback);
         }
-
+          
         private void InternalShutdownCallback(ShutdownEvent obj)
         {
             journalReader.CurrentJournal.State = JournalFileState.Closed;
 
             journalReader.ScanFiles();
+        }
+
+        private void InternaBackPackCallback(InternalCargoEvent obj)
+        {
+            var file = new FileInfo(Path.Combine(JournalDirectory, "Backpack.json"));
+            if (file.Exists)
+            {
+                using (var reader = new StreamReader(file.Open(FileMode.Open, FileAccess.Read, FileShare.ReadWrite)))
+                {
+                    var json = reader.ReadToEnd();
+                    var eventobject = JsonConvert.DeserializeObject<BackPackEvent>(json);
+
+                    EventService.CallEvent(eventobject);
+                }
+            }
         }
 
         public JournalEventService EventService { get; }

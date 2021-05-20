@@ -13,6 +13,9 @@ namespace EliteEventAPI.Services.Journal.Events
         public ShipStatusFlags Flags { get; internal set; }
 
         [JsonProperty]
+        public SuitStatusFlags Flags2 { get; internal set; }
+
+        [JsonProperty]
         public int[] Pips { get; internal set; }
 
         [JsonProperty]
@@ -44,6 +47,24 @@ namespace EliteEventAPI.Services.Journal.Events
 
         [JsonProperty]
         public double? PlanetRadius { get; internal set; }
+
+        [JsonProperty]
+        public double Oxygen { get; internal set; }
+
+        [JsonProperty]
+        public double Health { get; internal set; }
+
+        [JsonProperty]
+        public double Gravity { get; internal set; }
+
+        [JsonProperty]
+        public double Temperature { get; internal set; }
+
+        [JsonProperty]
+        public string SelectedWeapon { get; internal set; }
+
+        [JsonProperty]
+        public string SelectedWeapon_Localised { get; internal set; }
 
         [JsonProperty]
         public long Cargo { get; internal set; }
@@ -110,9 +131,48 @@ namespace EliteEventAPI.Services.Journal.Events
 
         public bool IsRunning { get { return (Flags != 0); } }
 
+        public bool InSuit { get { return Flags2 != 0; } }
+
+        public bool InTaxi { get { return GetFlag2(0); } }
+
+        public bool InMulticrew { get { return GetFlag2(1); } }
+
+        public bool OnFootInStation { get { return GetFlag2(2); } }
+
+        public bool OnFootOnPlanet { get { return GetFlag2(3); } }
+
+        public bool AimDownSight { get { return GetFlag2(4); } }
+
+        public bool LowOxygen { get { return GetFlag2(5); } }
+
+        public bool LowHealth { get { return GetFlag2(6); } }
+
+        public bool Cold { get { return GetFlag2(7); } }
+
+        public bool Hot { get { return GetFlag2(8); } }
+
+        public bool VeryCold { get { return GetFlag2(9); } }
+
+        public bool VeryHot { get { return GetFlag2(10); } }
+
+        public bool GlideMode { get { return GetFlag2(11); } }
+
+        public bool OnFootInHangar { get { return GetFlag2(12); } }
+
+        public bool OnFootSocialSpace { get { return GetFlag2(13); } }
+
+        public bool OnFootExterior { get { return GetFlag2(14); } }
+
+        public bool BreathableAtmosphere { get { return GetFlag2(15); } }
+
         public bool GetFlag(int bit)
         {
             return Flags.HasFlag((ShipStatusFlags)(1 << bit));
+        }
+
+        public bool GetFlag2(int bit)
+        {
+            return Flags2.HasFlag((SuitStatusFlags)(1 << bit));
         }
     }
 }

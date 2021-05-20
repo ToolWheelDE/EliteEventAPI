@@ -20,6 +20,12 @@ namespace EliteEventAPI.Services.Journal.Events
         public long Empire { get; internal set; }
 
         [JsonProperty]
+        public long Soldier { get; internal set; }
+
+        [JsonProperty]
+        public long Exobiologist { get; internal set; }
+
+        [JsonProperty]
         public long Federation { get; internal set; }
 
         [JsonProperty]

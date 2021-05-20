@@ -20,6 +20,9 @@ namespace EliteEventAPI.Services.Journal.Events
         public bool Horizons { get; internal set; }
 
         [JsonProperty]
+        public bool Odyssey { get; internal set; }
+
+        [JsonProperty]
         public string Ship { get; internal set; }
 
         [JsonProperty("Ship_Localised")]
@@ -39,6 +42,9 @@ namespace EliteEventAPI.Services.Journal.Events
 
         [JsonProperty]
         public double FuelCapacity { get; internal set; }
+
+        [JsonProperty]
+        public string StartLanded { get; internal set; }
 
         [JsonProperty]
         public string GameMode { get; internal set; }

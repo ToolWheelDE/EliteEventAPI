@@ -1,5 +1,6 @@
 ﻿using EliteEventAPI.Services.Journal;
 using EliteEventAPI.Services.Journal.Events;
+using Pandora;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -146,6 +147,8 @@ namespace EliteEventAPI.Services.Storage.Models
             SetValue(() => AnalysisMode, obj.AnalysisMode);
             SetValue(() => NightVision, obj.NightVision);
             SetValue(() => HyperJump, obj.HyperJump);
+
+            Logger.Warning(obj.Flags2.ToString());
         }
 
         public string Shipname { get => GetValue(() => Shipname); }
