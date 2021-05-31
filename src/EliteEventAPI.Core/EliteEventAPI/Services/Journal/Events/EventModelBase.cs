@@ -21,5 +21,11 @@ namespace EliteEventAPI.Services.Journal.Events
 
         [JsonProperty("event")]
         public string Event { get; internal set; }
+
+        [JsonProperty("odyssey", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        public bool? Odyssey { get; internal set; }
+
+        [JsonProperty("horizons", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        public bool? Horizons { get; internal set; }
     }
 }

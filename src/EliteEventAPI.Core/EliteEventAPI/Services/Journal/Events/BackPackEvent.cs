@@ -10,15 +10,15 @@ namespace EliteEventAPI.Services.Journal.Events
         protected internal override string Eventname => "*BackPack";
 
         [JsonProperty]
-        public object[] Items { get; internal set; }
+        public BackPackItem[] Items { get; internal set; }
 
         [JsonProperty]
-        public object[] Components { get; internal set; }
+        public BackPackItem[] Components { get; internal set; }
 
         [JsonProperty]
-        public object[] Consumables { get; internal set; }
+        public BackPackItem[] Consumables { get; internal set; }
 
         [JsonProperty]
-        public object[] Data { get; internal set; }
+        public BackPackItem[] Data { get; internal set; }
     }
 }

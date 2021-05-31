@@ -18,8 +18,7 @@ namespace EliteEventAPI.Services.Journal.Events
         [JsonProperty]
         public string StarSystem { get; internal set; }
 
-        public bool Horizons { get; internal set; }
-
+        [JsonProperty]
         public OutfitItem[] Items { get; internal set; }
     }
 }

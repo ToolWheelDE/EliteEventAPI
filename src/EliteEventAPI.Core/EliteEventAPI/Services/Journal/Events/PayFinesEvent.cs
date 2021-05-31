@@ -18,5 +18,8 @@ namespace EliteEventAPI.Services.Journal.Events
 
         [JsonProperty]
         public long ShipId { get; internal set; }
+
+        [JsonProperty]
+        public double BrokerPercentage { get; internal set; }
     }
 }

@@ -42,6 +42,9 @@ namespace EliteEventAPI.Services.Journal.Events
         [JsonProperty]
         public long MarketId { get; internal set; }
 
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        public Faction[] Factions { get; internal set; }
+
         [JsonProperty]
         public StationFaction StationFaction { get; internal set; }
 
@@ -68,6 +71,9 @@ namespace EliteEventAPI.Services.Journal.Events
 
         [JsonProperty]
         public double DistFromStarLs { get; internal set; }
+
+        [JsonProperty]
+        public bool Wanted { get; internal set; }
 
         [JsonProperty]
         public long ActiveFine { get; internal set; }

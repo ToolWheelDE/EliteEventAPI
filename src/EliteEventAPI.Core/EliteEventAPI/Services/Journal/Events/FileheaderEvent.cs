@@ -36,11 +36,5 @@ namespace EliteEventAPI.Services.Journal.Events
         /// </summary>
         [JsonProperty]
         public string Build { get; internal set; }
-
-        /// <summary>
-        /// Game use Odyssey DLC
-        /// </summary>
-        [JsonProperty]
-        public bool Odyssey { get; internal set; }
     }
 }

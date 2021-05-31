@@ -91,6 +91,9 @@ namespace EliteEventAPI.Services.Journal.Events
         [JsonProperty]
         public Material[] Materials { get; internal set; }
 
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        public Faction[] Factions { get; internal set; }
+
         [JsonProperty]
         public Composition Composition { get; internal set; }
 
@@ -102,6 +105,9 @@ namespace EliteEventAPI.Services.Journal.Events
 
         [JsonProperty]
         public double Eccentricity { get; internal set; }
+
+        [JsonProperty]
+        public bool? IsUnknownBody { get; internal set; }
 
         [JsonProperty]
         public double OrbitalInclination { get; internal set; }

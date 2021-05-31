@@ -49,6 +49,17 @@ namespace EliteEventAPI.Services.Storage
 
         public JournalEventService EventService { get; }
 
+
+
+
+
+
+
+
+
+
+
+
         public GameModel Game { get; }
 
         public CommanderModel Commander { get; }

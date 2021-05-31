@@ -20,7 +20,7 @@ namespace EliteEventAPI.Services.Journal.Events
         public double[] StarPos { get; internal set; }
 
         [JsonProperty]
-        public long BodyID { get; internal set; }
+        public int BodyID { get; internal set; }
 
         [JsonProperty]
         public SAASignal[] Signals { get; internal set; }

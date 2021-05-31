@@ -17,12 +17,6 @@ namespace EliteEventAPI.Services.Journal.Events
         public string Commander { get; internal set; }
 
         [JsonProperty]
-        public bool Horizons { get; internal set; }
-
-        [JsonProperty]
-        public bool Odyssey { get; internal set; }
-
-        [JsonProperty]
         public string Ship { get; internal set; }
 
         [JsonProperty("Ship_Localised")]

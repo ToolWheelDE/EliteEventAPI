@@ -19,6 +19,9 @@ namespace EliteEventAPI.Services.Journal.Events
         public bool OnFoot { get; internal set; }
 
         [JsonProperty]
+        public bool InSRV { get; internal set; }
+
+        [JsonProperty]
         public string StationName { get; internal set; }
 
         [JsonProperty]
@@ -107,7 +110,7 @@ namespace EliteEventAPI.Services.Journal.Events
         public string Body { get; internal set; }
 
         [JsonProperty]
-        public long BodyId { get; internal set; }
+        public int BodyId { get; internal set; }
 
         [JsonProperty]
         public string BodyType { get; internal set; }
