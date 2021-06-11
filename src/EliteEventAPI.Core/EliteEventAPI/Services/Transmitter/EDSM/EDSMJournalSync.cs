@@ -1,5 +1,4 @@
-﻿using EliteEventAPI.Configuration;
-using EliteEventAPI.Diagnostics.Logging;
+﻿using EliteEventAPI.Diagnostics.Logging;
 using EliteEventAPI.Services;
 using EliteEventAPI.Services.Journal;
 using Newtonsoft.Json;
@@ -17,8 +16,9 @@ namespace EliteEventAPI.Services.Transmitter.EDSM
     public sealed class EDSMJournalSync : ServiceBase
     {
         private readonly Queue<(string, string)> _queue = new Queue<(string, string)>();
-        private readonly EDSMSyncConfiguration _configuration;
         private readonly ClassLogger logger;
+        private string apiKey;
+        private string commandername;
 
         public override string Name => "EDSM Sync Service";
 
@@ -27,8 +27,6 @@ namespace EliteEventAPI.Services.Transmitter.EDSM
         public EDSMJournalSync()
         {
             logger = new ClassLogger(this);
-
-            _configuration = ConfigurationManager.LoadConfiguration<EDSMSyncConfiguration>();
 
             EventManager = ServiceController.GetService<JournalEventService>();
             EventManager.PreEventCall += Events_PreEventCall;
@@ -40,6 +38,12 @@ namespace EliteEventAPI.Services.Transmitter.EDSM
             {
                 _queue.Enqueue((eventname, json));
             }
+        }
+
+        public void SetAuthentication(string apiKey, string commandername)
+        {
+            this.apiKey = apiKey;
+            this.commandername = commandername;
         }
 
         protected override void OnStart()
@@ -64,7 +68,7 @@ namespace EliteEventAPI.Services.Transmitter.EDSM
                         continue;
                     }
 
-                    if (string.IsNullOrWhiteSpace(_configuration.APIKey) || string.IsNullOrWhiteSpace(_configuration.Commandname))
+                    if (string.IsNullOrWhiteSpace(apiKey) || string.IsNullOrWhiteSpace(commandername))
                         continue;
 
                     if (DiscardEvents.AlwaysDiscard.Contains(element.Value.Eventname))
@@ -72,8 +76,8 @@ namespace EliteEventAPI.Services.Transmitter.EDSM
 
                     var list = new Dictionary<string, string>
                     {
-                        { "commanderName", _configuration.Commandname },
-                        { "apiKey", _configuration.APIKey },
+                        { "commanderName", commandername },
+                        { "apiKey", apiKey },
                         { "fromSoftware", "EliteEventAPIEDSMSync" },
                         { "fromSoftwareVersion", "1.0" },
                         { "message", Uri.EscapeDataString(element.Value.Json) }
@@ -136,17 +140,17 @@ namespace EliteEventAPI.Services.Transmitter.EDSM
                         }
                         else
                         {
-                            logger.Warning($"Error send EDSM {requestjson.@event}");
+                            throw new Exception($"Error send EDSM {requestjson.@event}");
+                            Running = false;
                         }
                     }
                     catch (Exception ex)
                     {
-                        lock (_queue)
-                        {
-                            logger.Error(ex.Message);
-                            _queue.Enqueue(element.Value);
-                        }
+
+                        logger.Error(ex.Message);
+                        _queue.Enqueue(element.Value);
                     }
+
                 }
             });
         }

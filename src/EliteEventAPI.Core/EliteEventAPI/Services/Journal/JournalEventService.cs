@@ -1,5 +1,4 @@
-﻿using EliteEventAPI.Configuration;
-using EliteEventAPI.Diagnostics.Logging;
+﻿using EliteEventAPI.Diagnostics.Logging;
 using EliteEventAPI.Services.Journal.Events;
 using EliteEventAPI.Services.Journal.Parser;
 using Newtonsoft.Json;
@@ -24,7 +23,6 @@ namespace EliteEventAPI.Services.Journal
         private readonly ClassLogger logger;
 
         private readonly Queue<string> _queue = new Queue<string>();
-        private readonly JournalEventServiceConfiguration _configuration;
 
         private readonly Dictionary<string, Type> _events = new Dictionary<string, Type>();
         private readonly Dictionary<Type, HashSet<Delegate>> _targets = new Dictionary<Type, HashSet<Delegate>>();
@@ -45,8 +43,6 @@ namespace EliteEventAPI.Services.Journal
                 MissingMemberHandling = MissingMemberHandling.Error,
                 Error = new EventHandler<Newtonsoft.Json.Serialization.ErrorEventArgs>(JsonErrorEventHandler)
             };
-
-            _configuration = ConfigurationManager.LoadConfiguration<JournalEventServiceConfiguration>();
 
             //Subscribe<InternalModuleInfoEvent>(InternalModuleInfoCallback);
             //Subscribe<InternalCargoEvent>(InternaCargoCallback);
@@ -91,37 +87,30 @@ namespace EliteEventAPI.Services.Journal
                 return;
             }
 
-            if (!_configuration.Exclude.Contains(eventname))
+            var modeltype = GetTypeByEventname(eventname);
+            if (modeltype != null)
             {
-                var modeltype = GetTypeByEventname(eventname);
-                if (modeltype != null)
+                logger.Debug($"Call event       : [{timestamp}] {eventname}");
+
+                var model = default(EventModelBase);
+
+                try
                 {
-                    logger.Debug($"Call event       : [{timestamp}] {eventname}");
-
-                    var model = default(EventModelBase);
-
-                    try
-                    {
-                        model = (EventModelBase)JsonConvert.DeserializeObject(json, modeltype, _jsonsettings);
-                    }
-                    catch (Exception ex)
-                    {
-                        logger.Error($"!!! Unkown format : [{timestamp}] {eventname} - {ex.Message}");
-                        return;
-                    }
-
-                    EventCall?.Invoke(eventname, model);
-                    CallEvent(model);
+                    model = (EventModelBase)JsonConvert.DeserializeObject(json, modeltype, _jsonsettings);
                 }
-                else
+                catch (Exception ex)
                 {
-                    logger.Error($"!!! Unkown event : [{timestamp}] {eventname}");
-                    UnkownEventCall?.Invoke(eventname, timestamp, json);
+                    logger.Error($"!!! Unkown format : [{timestamp}] {eventname} - {ex.Message}");
+                    return;
                 }
+
+                EventCall?.Invoke(eventname, model);
+                CallEvent(model);
             }
             else
             {
-                logger.Warning($"Exclude event    : [{timestamp}] {eventname}");
+                logger.Error($"!!! Unkown event : [{timestamp}] {eventname}");
+                UnkownEventCall?.Invoke(eventname, timestamp, json);
             }
         }
 

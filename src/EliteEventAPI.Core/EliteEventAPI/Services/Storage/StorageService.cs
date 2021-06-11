@@ -1,5 +1,4 @@
-﻿using EliteEventAPI.Configuration;
-using EliteEventAPI.Services;
+﻿using EliteEventAPI.Services;
 using EliteEventAPI.Services.Journal;
 using EliteEventAPI.Services.Journal.Events;
 using EliteEventAPI.Services.Storage.Models;
@@ -48,17 +47,6 @@ namespace EliteEventAPI.Services.Storage
         public bool JournalSystemRunning { get; private set; }
 
         public JournalEventService EventService { get; }
-
-
-
-
-
-
-
-
-
-
-
 
         public GameModel Game { get; }
 

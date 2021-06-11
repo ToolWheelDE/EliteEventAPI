@@ -1,5 +1,4 @@
-﻿using EliteEventAPI.Configuration;
-using EliteEventAPI.Services;
+﻿using EliteEventAPI.Services;
 using EliteEventAPI.Services.Journal;
 using EliteEventAPI.Services.Journal.Events;
 using EliteEventAPI.Services.Models.StarSystem;
