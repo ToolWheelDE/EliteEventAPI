@@ -34,7 +34,6 @@ namespace EliteEventAPI.Services.Journal.Events
         public SystemFaction StationFaction { get; internal set; }
 
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
-        [Obsolete]
         public double DistFromStarLS { get; internal set; }
 
         [JsonProperty]

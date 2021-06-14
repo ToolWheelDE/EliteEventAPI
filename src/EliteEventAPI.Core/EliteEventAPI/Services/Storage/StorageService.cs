@@ -16,20 +16,25 @@ namespace EliteEventAPI.Services.Storage
 {
     public sealed class StorageService : ServiceBase
     {
+        private JournalEventService eventService;
+
         public StorageService()
         {
-            EventService = ServiceController.GetService<JournalEventService>();
-            EventService.Subscribe<StatusEvent>(GameStatusCallback);
+            eventService = ServiceController.GetService<JournalEventService>();
+            eventService.PreEventCall += EventService_PreEventCall;
+            eventService.Subscribe<StatusEvent>(GameStatusCallback);
 
-            EventService.PreEventCall += EventService_PreEventCall;
 
-            Game = new GameModel(EventService);
-            Commander = new CommanderModel(EventService);
-            Navigation = new NavigationModel(EventService);
-            StarSystem = new StarSystemModel(EventService);
-            Ship = new ShipModel(EventService);
-            Missions = new MissionsModel(EventService);
+            Game = new GameModel(eventService);
+            Commander = new CommanderModel(eventService);
+            Navigation = new NavigationModel(eventService);
+            StarSystem = new StarSystemModel(eventService);
+            Ship = new ShipModel(eventService);
+            Station = new StationModel(eventService);
+            //Missions = new MissionsModel(eventService);
         }
+
+        public override string Name => "Storage";
 
         private void EventService_PreEventCall(string eventname, DateTime timestamp, string json)
         {
@@ -42,11 +47,13 @@ namespace EliteEventAPI.Services.Storage
             JournalSystemRunning = obj.IsRunning;
         }
 
-        public override string Name => "Storage";
-
         public bool JournalSystemRunning { get; private set; }
 
-        public JournalEventService EventService { get; }
+        public string CurrentEvent { get; private set; }
+
+        public DateTime CurrentEventTimeStamp { get; private set; }
+
+        public object EventService { get; }
 
         public GameModel Game { get; }
 
@@ -58,10 +65,6 @@ namespace EliteEventAPI.Services.Storage
 
         public ShipModel Ship { get; }
 
-        public MissionsModel Missions { get; }
-
-        public string CurrentEvent { get; private set; }
-
-        public DateTime CurrentEventTimeStamp { get; private set; }
+        public StationModel Station { get; }
     }
 }

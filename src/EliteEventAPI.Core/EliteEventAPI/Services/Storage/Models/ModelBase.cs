@@ -1,5 +1,4 @@
-﻿using Pandora;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -29,7 +28,7 @@ namespace EliteEventAPI.Services.Storage.Models
 
         protected void OnAction(string name)
         {
-            Logger.Trace($"Action {_mytypename}.{name}");
+            Debug.WriteLine($"Action {_mytypename}.{name}");
             ModelAction?.Invoke(this, name);
         }
 
@@ -63,7 +62,7 @@ namespace EliteEventAPI.Services.Storage.Models
                 {
                     if (_map.ContainsKey(property.Name))
                     {
-                        if (object.Equals(value, _map[property.Name]))
+                        if (Equals(value, _map[property.Name]))
                             return;
                     }
 
@@ -83,7 +82,7 @@ namespace EliteEventAPI.Services.Storage.Models
 
         protected void OnProperty(string propertyname, object value)
         {
-            Logger.Trace($"PropertyChanged {_mytypename}.{propertyname} = {value}");
+            Debug.WriteLine($"PropertyChanged {_mytypename}.{propertyname} = {value}");
             ModelProperty?.Invoke(this, propertyname, value);
         }
 
@@ -95,7 +94,7 @@ namespace EliteEventAPI.Services.Storage.Models
                 {
                     var value = property.GetValue(this);
 
-                    Logger.Trace($"PropertyChanged {_mytypename}.{property.Name} = {value}");
+                    Debug.WriteLine($"PropertyChanged {_mytypename}.{property.Name} = {value}");
                     ModelProperty?.Invoke(this, property.Name, value);
                 }
                 else

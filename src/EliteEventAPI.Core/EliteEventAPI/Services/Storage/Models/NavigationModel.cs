@@ -37,7 +37,8 @@ namespace EliteEventAPI.Services.Storage.Models
 
         private void FSDJumpCallback(FSDJumpEvent obj)
         {
-            SetValue(() => SystemName, obj.StarSystem);
+            SetValue(() => CurrentSystemName, obj.StarSystem);
+            SetValue(() => CurrentSystemAddress, obj.SystemAddress);
             SetValue(() => HyperJump, false);
             SetValue(() => HyperJumpTarget, "");
 
@@ -46,7 +47,8 @@ namespace EliteEventAPI.Services.Storage.Models
 
         private void LocationCallback(LocationEvent obj)
         {
-            SetValue(() => SystemName, obj.StarSystem);
+            SetValue(() => CurrentSystemName, obj.StarSystem);
+            SetValue(() => CurrentSystemAddress, obj.SystemAddress);
 
             AddNavigationPoint(obj.Timestamp, obj.StarSystem, NavigationPointType.Current, null);
         }
@@ -71,7 +73,9 @@ namespace EliteEventAPI.Services.Storage.Models
             OnAction("AddNavigationPoint");
         }
 
-        public string SystemName { get => GetValue(() => SystemName); }
+        public string CurrentSystemName { get => GetValue(() => CurrentSystemName); }
+
+        public long CurrentSystemAddress { get => GetValue(() => CurrentSystemAddress); }
 
         public string TargetSystemName { get => GetValue(() => TargetSystemName); }
 
@@ -83,7 +87,6 @@ namespace EliteEventAPI.Services.Storage.Models
 
         public string TargetStarClass { get => GetValue(() => TargetStarClass); }
 
-        public NavigationPoint[] NavigationHinstory { get => _history.ToArray(); }
-
+        public NavigationPoint[] NavigationHinstory { get => _history.ToArray(); }               
     }
 }

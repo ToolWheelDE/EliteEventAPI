@@ -1,5 +1,4 @@
-﻿using EliteEventAPI.Diagnostics.Logging;
-using EliteEventAPI.Services.Journal.Events;
+﻿using EliteEventAPI.Services.Journal.Events;
 using EliteEventAPI.Services.Journal.Parser;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -20,7 +19,6 @@ namespace EliteEventAPI.Services.Journal
     public sealed class JournalEventService : ServiceBase
     {
         private readonly DateTime IGNORE_DATE = new DateTime(2019, 1, 1);
-        private readonly ClassLogger logger;
 
         private readonly Queue<string> _queue = new Queue<string>();
 
@@ -34,8 +32,6 @@ namespace EliteEventAPI.Services.Journal
 
         public JournalEventService()
         {
-            logger = new ClassLogger(this);
-
             ScanEvents();
 
             _jsonsettings = new JsonSerializerSettings
@@ -53,7 +49,7 @@ namespace EliteEventAPI.Services.Journal
 
         private void JsonErrorEventHandler(object sender, Newtonsoft.Json.Serialization.ErrorEventArgs e)
         {
-            logger.Error($"Json parser error - Object: {e.CurrentObject} Message: { e.ErrorContext.Error.Message}");
+            Debug.WriteLine($"Json parser error - Object: {e.CurrentObject} Message: { e.ErrorContext.Error.Message}");
         }
 
         private void ScanEvents()
@@ -83,14 +79,14 @@ namespace EliteEventAPI.Services.Journal
 
             if (timestamp < IGNORE_DATE)
             {
-                logger.Error($"Event ignored     : [{timestamp}] {eventname}]");
+                Debug.WriteLine($"Event ignored     : [{timestamp}] {eventname}]");
                 return;
             }
 
             var modeltype = GetTypeByEventname(eventname);
             if (modeltype != null)
             {
-                logger.Debug($"Call event       : [{timestamp}] {eventname}");
+                Debug.WriteLine($"Call event       : [{timestamp}] {eventname}");
 
                 var model = default(EventModelBase);
 
@@ -100,7 +96,7 @@ namespace EliteEventAPI.Services.Journal
                 }
                 catch (Exception ex)
                 {
-                    logger.Error($"!!! Unkown format : [{timestamp}] {eventname} - {ex.Message}");
+                    Debug.WriteLine($"!!! Unkown format : [{timestamp}] {eventname} - {ex.Message}");
                     return;
                 }
 
@@ -109,7 +105,7 @@ namespace EliteEventAPI.Services.Journal
             }
             else
             {
-                logger.Error($"!!! Unkown event : [{timestamp}] {eventname}");
+                Debug.WriteLine($"!!! Unkown event : [{timestamp}] {eventname}");
                 UnkownEventCall?.Invoke(eventname, timestamp, json);
             }
         }

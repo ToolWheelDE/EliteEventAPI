@@ -61,6 +61,29 @@ namespace EliteEventAPI
             return (T)result;
         }
 
+        public static T InstallService<T>(T instance)
+            where T : ServiceBase
+        {
+            var type = typeof(T);
+            ServiceBase result;
+
+            if (_instances.TryGetValue(type, out ServiceBase module))
+            {
+                result = module;
+            }
+            else
+            {
+                _instances.Add(type, instance);
+                result = instance;
+            }
+
+            UpdateModuleInject();
+
+            result.OnInitialize();
+
+            return (T)result;
+        }
+
         /// <summary>
         /// Delivers an installed service
         /// </summary>

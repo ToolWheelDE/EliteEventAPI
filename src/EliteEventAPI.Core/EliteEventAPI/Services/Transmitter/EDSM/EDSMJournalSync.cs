@@ -1,5 +1,4 @@
-﻿using EliteEventAPI.Diagnostics.Logging;
-using EliteEventAPI.Services;
+﻿using EliteEventAPI.Services;
 using EliteEventAPI.Services.Journal;
 using Newtonsoft.Json;
 using System;
@@ -16,17 +15,21 @@ namespace EliteEventAPI.Services.Transmitter.EDSM
     public sealed class EDSMJournalSync : ServiceBase
     {
         private readonly Queue<(string, string)> _queue = new Queue<(string, string)>();
-        private readonly ClassLogger logger;
         private string apiKey;
         private string commandername;
+        private string applicationName;
+        private string applicationVersion;
 
         public override string Name => "EDSM Sync Service";
 
         public JournalEventService EventManager { get; }
 
-        public EDSMJournalSync()
+        public EDSMJournalSync(string apiKey, string commandername, string applicationName, string applicationVersion)
         {
-            logger = new ClassLogger(this);
+            this.apiKey = apiKey;
+            this.commandername = commandername;
+            this.applicationName = applicationName;
+            this.applicationVersion = applicationVersion;
 
             EventManager = ServiceController.GetService<JournalEventService>();
             EventManager.PreEventCall += Events_PreEventCall;
@@ -38,12 +41,6 @@ namespace EliteEventAPI.Services.Transmitter.EDSM
             {
                 _queue.Enqueue((eventname, json));
             }
-        }
-
-        public void SetAuthentication(string apiKey, string commandername)
-        {
-            this.apiKey = apiKey;
-            this.commandername = commandername;
         }
 
         protected override void OnStart()
@@ -78,13 +75,13 @@ namespace EliteEventAPI.Services.Transmitter.EDSM
                     {
                         { "commanderName", commandername },
                         { "apiKey", apiKey },
-                        { "fromSoftware", "EliteEventAPIEDSMSync" },
-                        { "fromSoftwareVersion", "1.0" },
+                        { "fromSoftware", applicationName },
+                        { "fromSoftwareVersion", applicationVersion },
                         { "message", Uri.EscapeDataString(element.Value.Json) }
                     };
 
 
-                    var request = HttpWebRequest.Create("https://www.edsm.net/api-journal-v1");
+                    var request = WebRequest.Create("https://www.edsm.net/api-journal-v1");
                     request.Method = "POST";
                     request.ContentType = "application/x-www-form-urlencoded; charset=UTF-8";
                     var writer = new StreamWriter(request.GetRequestStream());
@@ -136,18 +133,17 @@ namespace EliteEventAPI.Services.Transmitter.EDSM
 
                             }
 
-                            logger.Normal($"Send EDSM {requestjson.@event}{name} {responsejson.msg}");
+                            Debug.WriteLine($"Send EDSM {requestjson.@event}{name} {responsejson.msg}");
                         }
                         else
                         {
                             throw new Exception($"Error send EDSM {requestjson.@event}");
-                            Running = false;
                         }
                     }
                     catch (Exception ex)
                     {
 
-                        logger.Error(ex.Message);
+                        Debug.WriteLine(ex.Message);
                         _queue.Enqueue(element.Value);
                     }
 

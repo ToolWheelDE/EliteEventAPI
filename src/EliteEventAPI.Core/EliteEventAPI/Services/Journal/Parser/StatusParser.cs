@@ -14,7 +14,6 @@ namespace EliteEventAPI.Services.Journal.Parser
     {
         private readonly FileSystemWatcher _watcher;
         private readonly FileInfo _file;
-        private readonly JournalEventService eventService;
 
         public event StatusParserDelegate GameStatusChanged;
 

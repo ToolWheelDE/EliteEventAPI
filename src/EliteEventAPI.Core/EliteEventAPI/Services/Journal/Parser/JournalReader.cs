@@ -1,5 +1,4 @@
-﻿using EliteEventAPI.Diagnostics.Logging;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -12,13 +11,11 @@ namespace EliteEventAPI.Services.Journal.Parser
     sealed class JournalReader
     {
         private readonly HashSet<JournalFile> _files = new HashSet<JournalFile>();
-        private readonly ClassLogger logger;
         private readonly DirectoryInfo journalDirectory;
         private readonly FileSystemWatcher fileSystemWatcher;
 
         public JournalReader(DirectoryInfo directory)
         {
-            logger = new ClassLogger(this);
             journalDirectory = directory;
             fileSystemWatcher = new FileSystemWatcher(directory.FullName);
             fileSystemWatcher.EnableRaisingEvents = true;
@@ -53,7 +50,7 @@ namespace EliteEventAPI.Services.Journal.Parser
                             {
                                 file.State = JournalFileState.Closed;
                                 forcenext = true;
-                                logger.Warning($"Journal {file.Name} -> Shutdown");
+                                Debug.WriteLine($"Journal {file.Name} -> Shutdown");
                             }
                         }
 
@@ -62,7 +59,7 @@ namespace EliteEventAPI.Services.Journal.Parser
 
                         file.State = JournalFileState.Progress;
                         file.ResetStream();
-                        logger.Normal($"Journal {file.Name} -> Ok");
+                        Debug.WriteLine($"Journal {file.Name} -> Ok");
                         return;
                     }
                 }

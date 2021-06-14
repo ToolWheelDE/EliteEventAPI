@@ -1,10 +1,13 @@
-﻿public enum DockingStates
+﻿namespace EliteEventAPI.Services.Storage.Models
 {
-    Requested,
-    Granted,
-    Docked,
-    Undocked,
-    Timeout,
-    Cancelled,
-    Denied
+    public enum DockingStates
+    {
+        Requested,
+        Granted,
+        Docked,
+        Undocked,
+        Timeout,
+        Cancelled,
+        Denied
+    }
 }
