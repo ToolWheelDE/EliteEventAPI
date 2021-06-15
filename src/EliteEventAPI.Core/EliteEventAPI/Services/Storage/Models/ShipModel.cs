@@ -32,6 +32,63 @@ namespace EliteEventAPI.Services.Storage.Models
             SetValue(() => Shipname, string.IsNullOrEmpty(obj.ShipName) ? obj.Ship : obj.ShipName);
             SetValue(() => ShipIdent, obj.ShipIdent);
             SetValue(() => ShipId, obj.ShipId);
+            SetValue(() => Ship, obj.Ship);
+            SetValue(() => LandingPadSize, GetShipSizeByShipType(obj.Ship));
+
+
+        }
+
+        private int GetShipSizeByShipType(string shipType)
+        {
+            switch (shipType)
+            {
+                case "Adder":
+                case "Cobra MkIII":
+                case "Cobra MkIV":
+                case "Diamondback Explorer":
+                case "Diamondback Scout":
+                case "Dolphin":
+                case "Eagle MkII":
+                case "Hauler":
+                case "Imperial Courier":
+                case "Imperial Eagle":
+                case "Sidewinder MkI":
+                case "Viper MkIII":
+                case "Viper MkIV":
+                case "Vulture":
+                    return 1;
+
+                case "Alliance Challenger":
+                case "Alliance Chieftain":
+                case "Alliance Crusader":
+                case "Asp Explorer":
+                case "Asp Scout":
+                case "Federal Assault Ship":
+                case "Federal Dropship":
+                case "Federal Gunship":
+                case "Fer-de-Lance":
+                case "Keelback":
+                case "Krait MkII":
+                case "Krait Phantom":
+                case "Mamba":
+                case "Python":
+                case "Type-6 Transporter":
+                    return 2;
+
+                case "Anaconda":
+                case "Beluga Liner":
+                case "Federal Corvette":
+                case "Imperial Clipper":
+                case "Imperial Cutter":
+                case "Orca":
+                case "Type- 7 Transporter":
+                case "Type- 9 Heavy":
+                case "Type- 10 Defender":
+                    return 3;
+
+                default:
+                    return 0;
+            }
         }
 
         private void GameStatusCallback(StatusEvent obj)
@@ -104,6 +161,10 @@ namespace EliteEventAPI.Services.Storage.Models
         public string ShipIdent { get => GetValue(() => ShipIdent); }
 
         public long ShipId { get => GetValue(() => ShipId); }
+
+        public string Ship { get => GetValue(() => Ship); }
+
+        public int LandingPadSize { get => GetValue(() => LandingPadSize); }
 
         public double Heading { get; private set; }
 

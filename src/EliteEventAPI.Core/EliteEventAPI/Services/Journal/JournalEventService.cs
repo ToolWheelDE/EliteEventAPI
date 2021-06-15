@@ -39,12 +39,6 @@ namespace EliteEventAPI.Services.Journal
                 MissingMemberHandling = MissingMemberHandling.Error,
                 Error = new EventHandler<Newtonsoft.Json.Serialization.ErrorEventArgs>(JsonErrorEventHandler)
             };
-
-            //Subscribe<InternalModuleInfoEvent>(InternalModuleInfoCallback);
-            //Subscribe<InternalCargoEvent>(InternaCargoCallback);
-            //Subscribe<InternalOutfittingEvent>(InternalOutfittingCallback);
-            //Subscribe<InternalMarketEvent>(InternalMarketCallback);
-            //Subscribe<InternalNavRouteEvent>(InternalNavRouteCallback);
         }
 
         private void JsonErrorEventHandler(object sender, Newtonsoft.Json.Serialization.ErrorEventArgs e)
