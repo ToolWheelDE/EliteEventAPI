@@ -1,16 +1,7 @@
-﻿using ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services;
-using ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Journal;
+﻿using ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Journal;
 using ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Journal.Events;
 using ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Storage.Models;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Storage
 {

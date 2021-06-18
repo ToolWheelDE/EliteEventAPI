@@ -1,5 +1,4 @@
-﻿using ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services;
-using ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Journal;
+﻿using ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Journal;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

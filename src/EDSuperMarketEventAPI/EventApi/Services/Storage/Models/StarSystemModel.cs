@@ -1,11 +1,8 @@
 ﻿using ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Journal;
 using ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Journal.Events;
 using ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Models.StarSystem;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
 
 namespace ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Storage.Models
 {

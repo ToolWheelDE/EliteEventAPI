@@ -1,8 +1,5 @@
 ﻿using ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Journal;
 using ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Journal.Events;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Storage.Models
 {

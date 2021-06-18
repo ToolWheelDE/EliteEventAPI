@@ -1,12 +1,4 @@
-﻿using EliteEventAPI;
-using Ionic.Zlib;
-using NetMQ;
-using NetMQ.Sockets;
-using System;
-using System.Diagnostics;
-using System.IO;
-using System.Text;
-using System.Threading;
+﻿using System.Threading;
 using ToolWheel.EliteDangerours.SuperMarket.EventAPI;
 using ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Journal;
 using ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.StarsystemMap;

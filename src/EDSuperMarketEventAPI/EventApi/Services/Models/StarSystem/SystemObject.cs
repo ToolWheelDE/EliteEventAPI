@@ -1,8 +1,6 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Linq;
 using ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Journal.Events;
-using ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Storage.Models;
 
 namespace ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Models.StarSystem
 {

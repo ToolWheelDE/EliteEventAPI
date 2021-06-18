@@ -1,13 +1,8 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Threading;
-using System.Threading.Tasks;
 using ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Journal.Events;
 
 namespace ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Journal

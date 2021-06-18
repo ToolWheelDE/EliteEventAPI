@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Journal;
 using ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Journal.Events;
 

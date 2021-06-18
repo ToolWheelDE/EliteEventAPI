@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Journal;
 
 namespace ToolWheel.EliteDangerours.SuperMarket.EventAPI
