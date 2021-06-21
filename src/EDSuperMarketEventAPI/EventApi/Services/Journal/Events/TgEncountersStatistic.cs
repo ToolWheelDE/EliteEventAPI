@@ -2,7 +2,7 @@
 
 namespace ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Journal.Events
 {
-    public class TgEncounters
+    public class TgEncountersStatistic
     {
         [JsonProperty("TG_ENCOUNTER_TOTAL")]
         public long TgEncounterTotal { get; internal set; }

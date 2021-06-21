@@ -2,7 +2,7 @@
 
 namespace ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Journal.Events
 {
-    public class Multicrew
+    public class MulticrewStatistic
     {
         [JsonProperty("Multicrew_Time_Total")]
         public long MulticrewTimeTotal { get; internal set; }

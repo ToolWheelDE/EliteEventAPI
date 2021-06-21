@@ -6,48 +6,53 @@ namespace ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Journal.Events
     public sealed class StatisticsEvent : EventModelBase
     {
         [JsonProperty("Bank_Account")]
-        public Dictionary<string, long> BankAccount { get; internal set; }
+        public BankAccountStatistic BankAccount { get; internal set; }
 
         [JsonProperty("Combat")]
-        public Combat Combat { get; internal set; }
+        public CombatStatistic Combat { get; internal set; }
 
         [JsonProperty("Crime")]
-        public Crime Crime { get; internal set; }
+        public CrimeStatistic Crime { get; internal set; }
 
         [JsonProperty("Smuggling")]
-        public Smuggling Smuggling { get; internal set; }
+        public SmugglingStatistic Smuggling { get; internal set; }
 
         [JsonProperty("Trading")]
-        public Trading Trading { get; internal set; }
+        public TradingStatistic Trading { get; internal set; }
 
         [JsonProperty("Mining")]
-        public Mining Mining { get; internal set; }
+        public MiningStatistic Mining { get; internal set; }
 
         [JsonProperty("Exploration")]
-        public Dictionary<string, double> Exploration { get; internal set; }
+        public ExplorationStatistic Exploration { get; internal set; }
 
         [JsonProperty("Passengers")]
-        public Passengers Passengers { get; internal set; }
+        public PassengersStatistic Passengers { get; internal set; }
 
         [JsonProperty("Search_And_Rescue")]
-        public SearchAndRescue SearchAndRescue { get; internal set; }
+        public SearchAndRescueStatistic SearchAndRescue { get; internal set; }
 
-        [JsonProperty("TG_ENCOUNTERS")]
-        public TgEncounters TgEncounters { get; internal set; }
+        [Obsolete("Not found in newer journal files.")]
+        [JsonProperty("TG_ENCOUNTERS", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public TgEncountersStatistic TgEncounters { get; internal set; }
 
         [JsonProperty("Crafting")]
-        public Crafting Crafting { get; internal set; }
+        public CraftingStatistic Crafting { get; internal set; }
 
         [JsonProperty("Crew")]
-        public Crew Crew { get; internal set; }
+        public CrewStatistic Crew { get; internal set; }
 
         [JsonProperty("Multicrew")]
-        public Multicrew Multicrew { get; internal set; }
+        public MulticrewStatistic Multicrew { get; internal set; }
 
         [JsonProperty("Material_Trader_Stats")]
-        public MaterialTraderStats MaterialTraderStats { get; internal set; }
+        public MaterialTraderStatistic MaterialTraderStats { get; internal set; }
 
-        [JsonProperty("CQC")]
+        [Obsolete("Not found in newer journal files.")]
+        [JsonProperty("CQC", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public Dictionary<string, double> Cqc { get; internal set; }
+
+        [JsonProperty("Exobiology")]
+        public ExobiologyStatistic Exobiology { get; internal set; }
     }
 }

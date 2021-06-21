@@ -44,7 +44,7 @@ namespace ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Journal.Parser
                         while (!file.EndOfStream)
                         {
                             var line = file.Reader.ReadLine();
-                            if (line.IndexOf("Shutdown", StringComparison.InvariantCultureIgnoreCase) >= 0)
+                            if (line.IndexOf("\"event\":\"Shutdown\"", StringComparison.InvariantCultureIgnoreCase) >= 0)
                             {
                                 file.State = JournalFileState.Closed;
                                 forcenext = true;

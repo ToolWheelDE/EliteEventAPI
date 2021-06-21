@@ -48,5 +48,14 @@ namespace ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Journal.Events
 
         [JsonProperty]
         public long Loan { get; internal set; }
+
+        [JsonProperty("language", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        public string Language { get; internal set; }
+
+        [JsonProperty("gameversion", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        public string GameVersion { get; internal set; }
+
+        [JsonProperty("build", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        public string Build { get; internal set; }
     }
 }

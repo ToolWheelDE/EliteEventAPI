@@ -2,7 +2,7 @@
 
 namespace ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Journal.Events
 {
-    public class Crew
+    public class CrewStatistic
     {
         [JsonProperty("NpcCrew_TotalWages")]
         public long NpcCrewTotalWages { get; internal set; }

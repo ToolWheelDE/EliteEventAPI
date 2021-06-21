@@ -10,6 +10,9 @@ namespace ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Journal.Events
         [JsonProperty]
         public string Target { get; internal set; }
 
+        [JsonProperty("Target_Localised", DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        public string TargetLocalised { get; internal set; }
+
         [JsonProperty]
         public long TotalReward { get; internal set; }
 

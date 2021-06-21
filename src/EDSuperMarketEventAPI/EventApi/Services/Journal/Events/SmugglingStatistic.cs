@@ -2,7 +2,7 @@
 
 namespace ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Journal.Events
 {
-    public class Smuggling
+    public class SmugglingStatistic
     {
         [JsonProperty("Black_Markets_Traded_With")]
         public long BlackMarketsTradedWith { get; internal set; }
