@@ -6,6 +6,9 @@ namespace ToolWheel.EliteDangerours.SuperMarket.EventAPI.Services.Journal.Events
 {
     public sealed class CarrierJumpEvent : EventModelBase
     {
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate)]
+        public bool Multicrew { get; internal set; }
+
         [JsonProperty]
         public bool Docked { get; internal set; }
 
