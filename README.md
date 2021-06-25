@@ -8,3 +8,5 @@ Events and their information are passed on in the form of objects.
 # EliteEventAPI EDSM Sync - Library
 EliteEventAPI EDSM Sync allows you to upload your game data directly to EDSM ( ED StarMap ).
 Account and API key required.
+
+Project moved to : https://github.com/ToolWheelDE/EDSuperMarket
